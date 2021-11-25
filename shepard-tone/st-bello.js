@@ -20,7 +20,7 @@ function shepardscale () {
         if(step[i]) step[i].stop();
 
         tone = c.createOscillator();
-        freq = 440 * Math.pow(base, current_step+i);
+        freq = 440 * Math.pow(base, current_step + i);
         tone.frequency.value = freq; 
 
         tone.connect(g);
