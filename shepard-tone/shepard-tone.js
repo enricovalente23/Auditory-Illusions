@@ -1,67 +1,57 @@
-c = new AudioContext()
-var o;
-o = c.createOscillator()
-o.connect(c.destination)
+var c = new AudioContext();
 
-function play(note) {
-    o = c.createOscillator()
-    o.frequency.value=440*Math.pow(2,note/12);
-    o.connect(c.destination)
-    c.resume()
-    o.start()
-    setTimeout(stop, 200)
-}
+var one_loop_duration = 5; // millisec
+var step_speed = 1000 * one_loop_duration / 12; // sec
 
-function stop() {
-    o.stop()
-}
+var current_step = 0;
+var step = [];
 
-function playst() {
-    setTimeout(()=>play(-9),0)
-    setTimeout(()=>play(3),0)
-    setTimeout(()=>play(-21),0)
+var gt = [];
 
-    setTimeout(()=>play(-8),300)
-    setTimeout(()=>play(4),300)
-    setTimeout(()=>play(-20),300)
+var base = Math.pow(2, 1/12);
 
-    setTimeout(()=>play(-7),600)
-    setTimeout(()=>play(5),600)
-    setTimeout(()=>play(-19),600)
+function shepardscale() {
 
-    setTimeout(()=>play(-6),900)
-    setTimeout(()=>play(6),900)
-    setTimeout(()=>play(-18),900)
+    for(i = 0; i < 3; i++) {
+      
+        if(step[i]) {
+            step[i].stop()
+        }
 
-    setTimeout(()=>play(-5),1200)
-    setTimeout(()=>play(7),1200)
-    setTimeout(()=>play(-17),1200)
+        tone = c.createOscillator();
 
-    setTimeout(()=>play(-4),1500)
-    setTimeout(()=>play(8),1500)
-    setTimeout(()=>play(-16),1500)
+        var octave = 0;
+        
+        if (i == 1) {
+            octave = 12;
+        }
+        if (i == 2) {
+            octave = 24;
+        }
 
-    setTimeout(()=>play(-3),1800)
-    setTimeout(()=>play(9),1800)
-    setTimeout(()=>play(-15),1800)
+        freq = 440*Math.pow(base, current_step + octave);
+        tone.frequency.value = freq;
 
-    setTimeout(()=>play(-2),2100)
-    setTimeout(()=>play(10),2100)
-    setTimeout(()=>play(-14),2100)
+        gt[i] = c.createGain();
 
-    setTimeout(()=>play(-1),2400)
-    setTimeout(()=>play(11),2400)
-    setTimeout(()=>play(-13),2400)
+        if (octave == 12) {
+            gt[i].gain.value = 1;
+        }
+        else if (octave == 0) {
+            gt[i].gain.value = current_step/12;
+        }
+        else if (octave == 24) {
+            gt[i].gain.value = 1 - current_step/12;
+        }
 
-    setTimeout(()=>play(0),2700)
-    setTimeout(()=>play(1),2700)
-    setTimeout(()=>play(-1),2700)
+        tone.connect(gt[i]);
 
-    setTimeout(()=>play(1),3000)
-    setTimeout(()=>play(13),3000)
-    setTimeout(()=>play(-11),3000)
+        gt[i].connect(c.destination); 
+        tone.start();
 
-    setTimeout(()=>play(2),3300)
-    setTimeout(()=>play(14),3300)
-    setTimeout(()=>play(-10),3300)
+        step[i] = tone;
+    }
+
+    current_step = (current_step + 1) % 12; // 12 steps in ogni loop
+    setTimeout(shepardscale, step_speed); 
 }
