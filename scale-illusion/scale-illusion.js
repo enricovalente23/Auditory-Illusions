@@ -144,3 +144,33 @@ resetStep1();
 updateStep2();
 resetStep2();
 }
+
+var step3 = 0;
+var timer3;
+function render3() {
+  document.querySelectorAll(".dot3").forEach(renderDot3)
+}
+
+function renderDot3(dot , index) {
+ dot.classList.toggle("active-dot3", index == step3)}
+
+function updateStep3() {
+  render3()
+  step3 += 1;
+  if(step3 >= rett3.children.length)
+  return;   
+}
+timer3= setInterval(updateStep3, 260)
+
+function resetStep3() {
+  step3 = 0
+  clearInterval(timer3)
+  timer3=setInterval(updateStep3, 260)
+  render3 ()
+}
+function insieme(){
+  playfm1(); 
+  playfm2(); 
+  updateStep3();
+resetStep3();
+}
