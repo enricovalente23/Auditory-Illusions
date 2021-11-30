@@ -1,35 +1,73 @@
-import * as Tone from 'tone'
+var Gain = 11;
+var FilterFreq = 1500;
+var FilterNum = 4;
+var init = false;
+var audioCtx, filters, gainNode;
+var filterGain = -24;
 
-function play() {
-var audio = new Audio('https://upload.wikimedia.org/wikipedia/en/transcoded/8/8b/YannyLaurel.ogg/YannyLaurel.ogg.mp3');
-  audio.play();
+var onPlay = function() {
+  if (!init) {      // delete
+    if (!createFilters()) {
+      alert("Web Audio API is not supported in this browser");
+      return;
+    }
+    init = true;
+  }
+  onConfig();
+};
+
+var onConfig = function() {
+  if (!init) {
+    return;
+  }
+  filterGain = parseFloat(document.getElementById("filterGain").value);
+  updateFilters();
 }
 
-const sampler = new Tone.Sampler({
-	baseUrl: "https://upload.wikimedia.org/wikipedia/en/transcoded/8/8b/YannyLaurel.ogg/YannyLaurel.ogg.mp3",
-}).toDestination();
+var createFilters = function() {
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) {
+    return false;
+  }
+  audioCtx = new AudioContext();
+  filters = [];
+  for (var i = 0; i < FilterNum; i++) {
+    var f = audioCtx.createBiquadFilter();
+    f.type = "highshelf";
+    f.Q = Math.SQRT1_2;
+    f.frequency.value = FilterFreq;
+    f.gain.value = 0;
+    filters.push(f);
+  }
+  gainNode = audioCtx.createGain();
+  gainNode.gain.value = 0;
 
-Tone.loaded().then(
-  () =>
-  {
-	sampler.triggerAttackRelease(["Eb4", "G4", "Bb4"], 4);
-})
+  var audioElem = document.querySelector('audio');
+  var source = audioCtx.createMediaElementSource(audioElem);
+  var pin = source;
+  for (var i = 0; i < FilterNum; i++) {
+    pin.connect(filters[i]);
+    pin = filters[i];
+  }
+  pin.connect(gainNode);
+  pin = gainNode;
+  pin.connect(audioCtx.destination);
+  return true;
+};
 
-document.querySelector('button')?.addEventListener('click', async () => {
-	await Tone.start()
-	console.log('Audio is ready')
-})
+var updateFilters = function() {
+  gainNode.gain.value = 0;
+  for (var i = 0; i < filters.length; i++) {
+    filters[i].type = filterGain > 0 ? "lowshelf" : "highshelf";
+    filters[i].gain.value = - Math.abs(filterGain) / FilterNum;
+  }
+  gainNode.gain.value = dbToField(Gain) / Math.sqrt(0.5 + 0.5 * dbToPower(-Math.abs(filterGain)));
+};
 
-const player = new Tone.Player({
-	url: "https://upload.wikimedia.org/wikipedia/en/transcoded/8/8b/YannyLaurel.ogg/YannyLaurel.ogg.mp3",
-	autostart: true,
-});
-const filter = new Tone.Filter(400, 'lowpass').toDestination();
+var dbToPower = function(x) {
+  return Math.exp(x / 10 * Math.LN10);
+};
 
-// connect the player to the feedback delay and filter in parallel
-player.connect(filter);
-
-function playLOW() {
-  player.play();
-}
-
+var dbToField = function(x) {
+  return Math.exp(x / 20 * Math.LN10);
+};
