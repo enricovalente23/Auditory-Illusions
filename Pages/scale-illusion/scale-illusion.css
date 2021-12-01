@@ -1,4 +1,9 @@
-
+button{
+  width: 70px;
+  height: 50px;
+  color: white;
+  background-image: linear-gradient(to right, rgb(230, 150, 230), rgb(53, 196, 101));
+}
 
 .dot1{
     position: relative;
@@ -7,7 +12,7 @@
     height: 40px;
     border-radius: 50%;
     margin-left:40px;
-    background-color:#884DA7;
+    background-color:#b269da;
     display: inline-block;
     border-style: solid;
     border-width: 5px;
@@ -42,7 +47,7 @@
     height: 40px;
     border-radius: 50%;
     margin-left:40px;
-    background-color:#008000;
+    background-color:#2cca1d;
     display: inline-block;
     border-style: solid;
     border-width: 5px;
@@ -76,17 +81,17 @@
     height: 40px;
     border-radius: 50%;
     margin-left:40px;
-    background-color:#1E90FF;
+    background-color: white;
     display: inline-block;
     border-style: solid;
     border-width: 5px;
-    border-color:#1E90FF;
+    border-color: rgb(226, 223, 223);
   }
   
   #rett3 {
     margin: auto;
     bottom: 10%;
-    background-color: #CCFFFF;
+    background-image:linear-gradient(to right,#E0B0FF, #A6FBB2);
     padding: 15px;
     border-radius:5px;
     width: 1300px;
@@ -99,5 +104,5 @@
   .SOL3{bottom:-190px;}
   
   .active-dot3{
-    background-color:#99CBFF;
+    background-color:#a8d2ff;
   }
