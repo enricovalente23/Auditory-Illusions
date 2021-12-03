@@ -1,9 +1,9 @@
-var Gain = 11;
+var Gain = 10;
 var FilterFreq = 1500;
 var FilterNum = 4;
 var init = false;
 var audioCtx, filters, gainNode;
-var filterGain = -24;
+var filterGain = -25;
 
 var onPlay = function()
 {
@@ -77,8 +77,7 @@ var updateFilters = function()
 
   for (var i = 0; i < filters.length; i++)
   {
-    fi
-    lters[i].type = filterGain > 0 ? "lowshelf" : "highshelf";
+    filters[i].type = filterGain > 0 ? "lowshelf" : "highshelf";
     filters[i].gain.value = - Math.abs(filterGain) / FilterNum;
   }
   gainNode.gain.value = dbToField(Gain) / Math.sqrt(0.5 + 0.5 * dbToPower(- Math.abs(filterGain)));
