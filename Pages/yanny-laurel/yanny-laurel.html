@@ -1,21 +1,17 @@
-
-</html>
-    <body>
+<body>
     <div>
-        <title>Yanny or Laurel?</title>
-      </div>
-  </body>
-  
-      <head>
-          <link rel="stylesheet" href="scale-illusion.css">
-        </head>
-  
-  <audio controls="controls" loop="true" onplay="onPlay()">
-          <source src="https://upload.wikimedia.org/wikipedia/en/transcoded/8/8b/YannyLaurel.ogg/YannyLaurel.ogg.mp3" type="audio/mpeg">
-      </audio>
-      <div>
-          <span>Laurel</span>
-          <input id="filterGain" name="filterGain" type="range" style="width:200px" min="-40" max="40" step="any" value="0" oninput="onConfig()" onchange="onConfig()">
-          <span>Yanny</span>
-      </div>
-  
+    <p>Yanny or Laurel?</p>
+    <script src="yanny-laurel.js"></script>
+    <link rel="stylesheet" href="yanny-laurel.css">
+    
+    <audio controls="controls" loop="true" onplay="onPlay()">
+        <source src="../../Audio Files/YannyLaurel_long.mp3" type="audio/mpeg">
+    </audio>
+
+    <div>
+        <span>Laurel</span>
+        <input id="filterGain" name="filterGain" type="range" style="width:210px" min="-80" max="80" step="any" value="10" oninput="onConfig()" onchange="onConfig()">
+        <span>Yanny</span>
+    </div>
+    </div> 
+</body>
