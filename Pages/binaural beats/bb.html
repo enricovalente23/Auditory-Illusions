@@ -1,6 +1,9 @@
 <html>
     <body>
+        
+        <canvas id = "canvas1"></canvas>
         <script src='bb.js'></script>
+        <link rel="stylesheet" href="style.css">
 
         <div>
             <button id = "right" class = "b blob vis" onclick = "play1()">RIGHT EAR</button></html> 
@@ -12,62 +15,9 @@
             <button id = "stop" class = "b blob" onclick = "stopboth()">STOP</button></html>
         </div>
 
-        <div>
+        <!-- <div id = 'container'>
             <canvas id = "canvas"></canvas>
-        </div>
-
-        <style>
-            .b {
-                height: 55px;
-                width: 80px;
-                border-radius: 5px;
-                background-color: #782680;
-                color: white;
-                margin: 5px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                margin-right: -50%;
-                transform: translate(-50%, -50%);
-                display: none;
-            }
-
-            .blob {
-                box-shadow: 0 0 0 0 #782680;
-	            transform: scale(1);
-	            animation: pulse 2s infinite;
-            }
-
-            @keyframes pulse {
-                0% {
-                    transform: scale(0.95);
-                    box-shadow: 0 0 0 0 #782680;
-                }
-
-                70% {
-                    transform: scale(1);
-                    box-shadow: 0 0 0 10px rgba(38, 224, 14, 0);
-                }
-
-                100% {
-                    transform: scale(0.95);
-                    box-shadow: 0 0 0 0 rgba(86, 243, 38, 0);
-                }
-            }
-
-            .vis {
-                display: block;
-            }
-
-            #canvas {
-                border: 1px solid black;
-                position: absolute;
-                left: 42.5%;
-                top: 20%;
-            }
-
-        </style>
-
-
+        </div> -->
+        
     </body>
 </html>

@@ -1,9 +1,13 @@
 var c = new AudioContext()
 
-var a1 = c.createAnalyser();
-a1.fftSize = 2048;
-var a2 = c.createAnalyser();
-a2.fftSize = 2048;
+var options = {
+    numberOfInputs : 2
+  }
+var mergerNode = new ChannelMergerNode(c, options);
+
+console.log(c);
+let analyser = c.createAnalyser();
+analyser.fftSize = 128;
 
 var p1 = c.createStereoPanner()
 var p2 = c.createStereoPanner()
@@ -13,44 +17,46 @@ p2.pan.value = -1 // left
 o1 = c.createOscillator()
 o2 = c.createOscillator()
 
-o1.frequency.value = 200
-o2.frequency.value = 405
+o1.frequency.value = 200;
+o2.frequency.value = 405;
 
-g1 = c.createGain()
-g2 = c.createGain()
-g1.gain.value = 0
-g2.gain.value = 0
+g1 = c.createGain();
+g2 = c.createGain();
+g1.gain.value = 0;
+g2.gain.value = 0;
 
-o1.connect(g1)
-g1.connect(a1)
-a1.connect(p1)
-p1.connect(c.destination)
-o1.start()
+o1.connect(g1);
+g1.connect(p1);
 
-o2.connect(g2)
-g2.connect(a2)
-a2.connect(p2)
-p2.connect(c.destination)
-o2.start()
+o2.connect(g2);
+g2.connect(p2);
 
-var canvasElement = document.querySelector("#canvas");
-var ctx = canvasElement.getContext("2d");
+o1.start();
+o2.start();
 
-var data1 = new Float32Array(2048);
-a1.getFloatTimeDomainData(data1);
-var data2 = new Float32Array(2048);
-a2.getFloatTimeDomainData(data2);
+p1.connect(mergerNode, 0, 0); 
+p2.connect(mergerNode, 0, 1); 
 
-console.log(data1);
-console.log(data2);
+mergerNode.connect(analyser);
+analyser.connect(c.destination);
+
+const canvas = document.getElementById('canvas1');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext('2d');
+
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+const barWidth = (canvas.width/2)/bufferLength;
+let barHeight;
+let x = 0;
 
 function play1() {
     g1.gain.value = 0.5
 
     document.getElementById("right").classList.remove("vis");
     document.getElementById("left").classList.add("vis");
-
-    draw();
 }
 
 function play2() {
@@ -59,8 +65,6 @@ function play2() {
 
     document.getElementById("left").classList.remove("vis");
     document.getElementById("both").classList.add("vis");
-
-    draw();
 }
 
 function both() {
@@ -72,8 +76,6 @@ function both() {
 
     document.getElementById("both").classList.remove("vis");
     document.getElementById("stop").classList.add("vis");
-
-    draw();
 }
 
 function stopboth() {
@@ -86,16 +88,38 @@ function stopboth() {
     document.getElementById("right").classList.add("vis");
 }
 
-function draw() {
-    a1.getFloatTimeDomainData(data1);
-    a2.getFloatTimeDomainData(data2);
-    ctx.clearRect(0,0,1000,1000);
-    ctx.beginPath();
-    const h = canvasElement.height;
-    ctx.moveTo(0,h/2)
-    for(var i=0;i<2048;i++) {
-        ctx.lineTo(i, h/2+data1[i]*h/2)
-        ctx.lineTo(i, h/2+data2[i]*h/2)
+
+
+window.addEventListener('click', function() {
+
+    function animate() {
+        x = 0;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        analyser.getByteFrequencyData(dataArray);
+        drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray);
+        requestAnimationFrame(animate);
     }
-    ctx.stroke()
+    animate();
+});
+
+function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
+    for (let i=0; i < bufferLength; i++){
+        barHeight = dataArray[i]*2;
+        const red = i*barHeight/2;
+        const green = i*4;
+        const blue = barHeight/2;
+        ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        ctx.fillRect(canvas.width/2 - x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth;
+    }
+    for (let i=0; i < bufferLength; i++){
+        barHeight = dataArray[i]*2;
+        const red = i*barHeight/2;
+        const green = i*4;
+        const blue = barHeight/2;
+        ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth;
+    }
 }
+
