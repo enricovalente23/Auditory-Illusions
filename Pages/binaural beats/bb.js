@@ -7,7 +7,7 @@ var mergerNode = new ChannelMergerNode(c, options);
 
 console.log(c);
 let analyser = c.createAnalyser();
-analyser.fftSize = 128;
+analyser.fftSize = 64;
 
 var p1 = c.createStereoPanner()
 var p2 = c.createStereoPanner()
@@ -34,8 +34,8 @@ g2.connect(p2);
 o1.start();
 o2.start();
 
-p1.connect(mergerNode, 0, 0); 
-p2.connect(mergerNode, 0, 1); 
+p1.connect(mergerNode, 0, 1); 
+p2.connect(mergerNode, 0, 0); 
 
 mergerNode.connect(analyser);
 analyser.connect(c.destination);
@@ -89,7 +89,6 @@ function stopboth() {
 }
 
 
-
 window.addEventListener('click', function() {
 
     function animate() {
@@ -105,18 +104,18 @@ window.addEventListener('click', function() {
 function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
     for (let i=0; i < bufferLength; i++){
         barHeight = dataArray[i]*2;
-        const red = i*barHeight/2;
-        const green = i*4;
-        const blue = barHeight/2;
+        const red = i * barHeight/20;
+        const green = i/2;
+        const blue = barHeight/2
         ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         ctx.fillRect(canvas.width/2 - x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth;
     }
     for (let i=0; i < bufferLength; i++){
         barHeight = dataArray[i]*2;
-        const red = i*barHeight/2;
-        const green = i*4;
-        const blue = barHeight/2;
+        const red = i * barHeight/20;
+        const green = i/2;
+        const blue = barHeight/2
         ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth;
