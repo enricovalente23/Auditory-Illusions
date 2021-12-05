@@ -81,8 +81,8 @@ function both() {
 function stopboth() {
     g1.gain.value = 0
     g2.gain.value = 0
-    o1.frequency.value = 250
-    o2.frequency.value = 355
+    o1.frequency.value = 200
+    o2.frequency.value = 405
 
     document.getElementById("stop").classList.remove("vis");
     document.getElementById("right").classList.add("vis");
@@ -121,4 +121,3 @@ function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
         x += barWidth;
     }
 }
-

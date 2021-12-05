@@ -1,20 +1,67 @@
 <html>
     <body>
 
-        <script src='shep-glissando.js'></script>
+        <p>Shepard Tone</p>
 
         <div>
             <canvas id="canvas"></canvas>
         </div>
-        <div>
-            <button onclick = "shepardtone()">SCANNA</button></html>
-            <button onclick = "stop()">STOPPA</button></html>
+
+        <script src='shep-glissando.js'></script>
+
+        <div id = "buttons">
+            <button class = "b" onclick = "shepardtone()"><b>SCANNA</b></button></html>
+            <button class = "b" onclick = "stop()"><b>STOPPA</b></button></html>
         </div>
 
         <style>
-            #canvas {
-                border: 1px solid black;
+            body {
+                background: black;
             }
+
+            p {
+                color: whitesmoke;
+                font-size: 40px;
+                font-style: italic;
+                font-weight: bold;
+                position: absolute;
+                top: 6%;
+                left: 51%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .b {
+                height: 60px;
+                width: 100px;
+                border-radius: 100px;
+                border-color: black;
+                background-color: #0043a8;
+                color: white;
+            }
+
+            #buttons {
+                margin: 2px;
+                position: absolute;
+                top: 20%;
+                left: 50.8%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+                font-size: 20px;
+                font-family: arial;
+            }
+
+            #canvas {
+                position: absolute;
+                width: 200%;
+                height: 90%;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+                filter: blur(1px) contrast(1);
+            }
+            
         </style>
 
     </body>

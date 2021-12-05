@@ -6,7 +6,7 @@ var osc = [];
 var gain = [];
 
 var a = c.createAnalyser();
-a.fftSize = 2048;
+a.fftSize = 512;
 
 var freq = [8000]; // 8000
 var lowestFreq = 50; // 50 
@@ -49,7 +49,7 @@ function shepardtone() {
 
         }
 
-        var data = new Float32Array(2048);
+        /* var data = new Float32Array(2048);
         a.getFloatTimeDomainData(data);
         console.log(data);
 
@@ -64,7 +64,7 @@ function shepardtone() {
             }
             ctx.stroke()
         }
-        draw();
+        draw(); */
 
     }, 100); //update hz every 75ms
 
@@ -79,3 +79,49 @@ function stop() {
         osc[i].stop();
     }
 } 
+
+
+const canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext('2d');
+
+const bufferLength = a.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+const barWidth = (canvas.width/2)/bufferLength;
+let barHeight;
+let x = 0;
+
+window.addEventListener('click', function() {
+
+    function animate() {
+        x = 0;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        a.getByteFrequencyData(dataArray);
+        drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray);
+        requestAnimationFrame(animate);
+    }
+    animate();
+});
+
+function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
+    for (let i=0; i < bufferLength; i++){
+        barHeight = dataArray[i]*3;
+        const red = i * barHeight/30;
+        const green = i/2;
+        const blue = i * barHeight;
+        ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        ctx.fillRect(canvas.width/2 - x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth;
+    }
+    for (let i=0; i < bufferLength; i++){
+        barHeight = dataArray[i]*3;
+        const red = i * barHeight/30;
+        const green = i/2;
+        const blue = i * barHeight;
+        ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth;
+    }
+}
