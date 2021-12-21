@@ -3,13 +3,15 @@ const ctx = canvas.getContext('2d');
 
 let score;
 let scoreText;
-let highscore;
+let highscore = 0;
 let highscoreText;
 let player;
 let gravity;
 let obstacles = [];
 let gameSpeed;
 let keys = {};
+
+let flag = 0;
 
 document.addEventListener('keydown', function(evt) {
     keys[evt.code] = true;
@@ -123,13 +125,14 @@ class Text {
         ctx.fillText(this.t, this.x, this.y);
         ctx.closePath();
     }
+
 }
 
 //game functions
 function SpawnObstacle() {
     let size = RandomIntInRange(20, 70);
     let type = RandomIntInRange(0, 1);
-    let obstacle = new Obstacle(canvas.width + size, canvas.height - size, size, size, '#2484E4');
+    let obstacle = new Obstacle(canvas.width + size, canvas.height - size, size, size, '#2a952f');
 
     if (type == 1) {
         obstacle.y -= player.originalHeight - 10;
@@ -140,28 +143,34 @@ function RandomIntInRange(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
+canvas.width = 1000;
+canvas.height = 500;
+ctx.font = "20px sans-serif";
+
+scoreText = new Text(score, 115, 46, "left", "#212121", "20");
+
 function Start () {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.font = "20px sans-serif";
+    
     gameSpeed = 3;
     gravity = 1;
     score = 0;
-    highscore = 0;
-    if (localStorage.getItem('highscore')) {
+    //highscore = 0;
+    /* if (localStorage.getItem('highscore')) {
         highscore = localStorage.getItem('highscore');
-    }
-
-    player = new Player(25, 0, 50, 50, '#ff5858');
-    scoreText = new Text("Score: " + score, 25, 25, "left", "#212121", "20");
-    highscoreText = new Text("Highscore: " + highscore, canvas.width - 25, 25, "right", "#212121", "20");
+    } */
+    highscoreText = new Text(highscore, canvas.width - 55, 46, "right", "#212121", "20");
+    player = new Player(25, 0, 50, 50, '#4c239d');
     requestAnimationFrame(Update);
 }
 
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
+
 function Update() {
-    requestAnimationFrame(Update);
+    if (flag == 0) {
+     requestAnimationFrame(Update);   
+    }
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     spawnTimer--;
@@ -188,7 +197,9 @@ function Update() {
             score = 0;
             spawnTime = initialSpawnTimer;
             gameSpeed = 3;
-            window.localStorage.setItem('highscore', highscore);
+
+            flag = 1;
+            /* window.localStorage.setItem('highscore', highscore); */
         }
 
         o.Update();
@@ -197,12 +208,12 @@ function Update() {
     player.Animate();
 
     score++;
-    scoreText.t = "Score: " +  score;
+    scoreText.t = score;
     scoreText.Draw();
 
     if (score > highscore) {
         highscore = score;
-        highscoreText.t = "Highscore " + highscore;
+        highscoreText.t = highscore;
     }
     highscoreText.Draw();
 
@@ -211,8 +222,7 @@ function Update() {
 
 //Start();
 
-/* window.addEventListener('click', function(e) {
-    if (keys[e.code] = 'Space') {
-       Start(); 
-    }
-}); */
+canvas.addEventListener('click', function(e) {
+    flag = 0;
+    Start()
+});

@@ -6,13 +6,44 @@
             padding: 0;
             box-sizing: border-box;
             } 
-            canvas {
+            #game {
                 display: block;
+                border: 1px solid black;
+                top: 50%;
+            }
+            .text {
+                color: black;
+                position: absolute;
+                margin-left: 25;
+                margin-top: 25;
+                font-size: 25px;
+                font-style: italic;
+            }
+
+            .h {
+                margin-left: 770;
+            }
+
+            #canvas1 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
             }
         </style>
     </head>
     <body>
-        <canvas id="game" width="640" height="400"></canvas>
-        <script src='game.js'></script> 
+        <div id = "canvas1">
+            <div class = "text">
+            Score:
+            </div>
+            <div class = "text h">
+                Highscore:
+            </div>
+            <canvas id="game" width="640" height="400"></canvas>
+            <script src='game.js'></script>   
+        </div>
+        
     </body>
 </html>
