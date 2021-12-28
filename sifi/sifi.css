@@ -1,0 +1,35 @@
+.dot {
+    height: 180px;
+    width: 180px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: -435px;    
+  }
+
+.active {
+    background-color: white;
+}
+
+#rett {
+    background-color: white;
+    width: 70%;
+    height: 80%;
+    padding: 50px 50px 50px 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+p {
+    color: #0075ff;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+span {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
