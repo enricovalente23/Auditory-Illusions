@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>The Cocktail Party Effect</title>
+	<title>The Stereo Salesman Effect</title>
 
 	<link rel="stylesheet" type="text/css" href="../../jquery.pagepiling.css" />
 	<link rel="stylesheet" type="text/css" href="examples.css" />
@@ -18,7 +18,7 @@
 		$(document).ready(function() {
 	    	$('#pagepiling').pagepiling({
 	    		menu: '#menu',
-	    		anchors: ['page1', 'page2', 'page3'],
+	    		anchors: ['page1', 'page2', 'page3', 'page4'],
 	    		navigation: {
 		            'textColor': '#f2f2f2',
 		            'bulletsColor': '#ccc',
@@ -76,9 +76,6 @@
 	}
 	}
 
-
-
-
     </script>
 
 
@@ -117,37 +114,34 @@
 		padding:0;
 	}
 
-	/* Centered texts in each section
-	* --------------------------------------- */
-	.section{
-		text-align:center;
-	}
-
 
 	/* Backgrounds will cover all the section
 	* --------------------------------------- */
 	#section1,
 	#section2,
-	#section3{
+	#section3,
+	#section4{
 		background-size: cover;
 	}
 
 	/* Defining each section background and styles
 	* --------------------------------------- */
+
 	#section1{
 		background-color: rgb(255, 255, 255);
+		text-align:center;
 	}
 	#section2{
-		background-color: white;
+		background-color: rgb(209, 163, 37);
 		padding: 6% 0 0 0;
 	}
 	#section3{
 		background-color: white;
-		padding: 6% 0 0 0;
 	}
-	#section3 h1{
-		color: #000;
+	#section4{
+		background-color: rgb(255, 255, 255);
 	}
+
 
 
 
@@ -170,18 +164,21 @@
 	#section2 h1,
 
 
-	#section3 h1,
-
-	#section3 p{
-
-		color: rgb(0, 0, 0);
-	}
-
 	#infoMenu li a{
 			color: #fff;
 	}
 
 
+
+
+
+	#bar {
+		display: inline-block;
+		position: relative;
+		margin-left: 5%;
+		margin-right: 5%;
+		bottom: 0%;
+	}
 
 
     
@@ -226,12 +223,6 @@
 </head>
 <body>
 
-	<ul id="menu">
-		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
-		<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
-		<li data-menuanchor="page3"><a href="#page3">Page 3</a></li>
-	</ul>
-
 	<div id="pagepiling">
 
 	    <div class="section" id="section1">
@@ -252,9 +243,24 @@
 	    </div>
 
 	    <div class="section" id="section3">
-	    	<div class="intro">
-                <p>Move</p>
+	    	<div class="stereobello">
+                <img src="../../Images/stereobrutto.jpg" alt="Stereo Brutto"
+				position="relative";
+				left= 10%;
+				width= 50%>
 	    	</div>
+	    </div>
+
+		<div class="section" id="section4">
+            <div id = "bar">
+
+				<img src="../../Images/stereobello.jpg" alt="Stereo Bello"
+				width = 45%>
+				
+				<img src="../../Images/salesman.jpg" alt="Salesman"
+				width = 45%>
+
+			</div>	
 	    </div>
 
 	</div>
