@@ -5,9 +5,13 @@
     
     <div id = "rett">
         <p>SIFI<br>(Sound Induced Flash Illusion)</p>
-        <div class = "dot active"></div>
+        <div id = "blink" class = "dot active"></div>
     </div>
 
-    <button onclick = "startBlink()">CLICK</button>
-
+    <div>
+        <button class = "button play" onclick = "startBlink()"></button>
+        <button class = "button play" onclick = "startBlinkTwice()"></button>
+        <button class = "button stop" onclick = "stopBlink()"></button>
+    </div>
+    
 </body>

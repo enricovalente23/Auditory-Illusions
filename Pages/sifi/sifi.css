@@ -14,7 +14,7 @@
 #rett {
     background-color: white;
     width: 70%;
-    height: 80%;
+    height: 70%;
     padding: 50px 50px 50px 50px;
     border-radius: 10px;
     text-align: center;
@@ -33,3 +33,17 @@ span {
     text-align: center;
 }
 
+button.play {
+    width: 60px;
+    height: 60px;
+    border-width: 40px 0px 40px 70px;
+    border-color: transparent transparent transparent #0075ff;
+  }
+
+button.stop {
+    width: 70px;
+    height: 70px;
+    border-color: #0075ff;
+    border-style: double;
+    border-width: 0px 0px 0px 40px;
+  }
