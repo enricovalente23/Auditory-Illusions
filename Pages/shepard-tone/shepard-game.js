@@ -12,6 +12,8 @@ var freq = [8000]; // 8000
 var lowestFreq = 50; // 50 
 var highestFreq = 16000; // 16000
 
+let flag2 = 0;
+
 function ascendingShepard() {
 
     if (play) {
@@ -31,7 +33,7 @@ function ascendingShepard() {
     }
 
     play = setInterval(function() {
-
+        flag2 = 0;
         for (i = 1; i <= num_osc; i++) {
 
             if (freq[i] > 20000) {
@@ -137,10 +139,10 @@ window.addEventListener('click', function() {
 function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
     for (let i=0; i < bufferLength; i++){
         barHeight = dataArray[i]*3.5;
-        /* const red = i * barHeight/50;
+        const red = i * barHeight/50;
         const green = i/2;
-        const blue = i * barHeight; */
-        ctxO.fillStyle = "#e5e5e5";
+        const blue = i * barHeight; 
+        ctxO.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         ctxO.fillRect(canvasO.width - x, canvasO.height - barHeight, barWidth, barHeight);
         x += barWidth;
     }
@@ -188,7 +190,7 @@ class Player {
         this.h = h;
 
         this.dy = 0;
-        this.jumpForce = 15;
+        this.jumpForce = 11;
         this.originalHeight = h;
         this.grounded = false;
         this.jumpTimer = 0;
@@ -251,55 +253,26 @@ function animateSprite(x, y, w, h) {
 };
 
 class Obstacle {
-    constructor (x, y, w, h, swing, c) {
+    constructor (x, y, w, h, c) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.s = swing;
         this.c = c;
 
         this.dx = -gameSpeed;
-        this.dy = -gameSpeed;
-        this.dw = -gameSpeed;
-        this.dh = -gameSpeed;
     }
 
     Update () {
         this.x += this.dx;
-        this.y += this.dy;
-        this.h += this.dh;
-
-        /* if (swing == 1) {
-           if (this.x > 500) {
-            this.w += this.dw; 
-            } else {
-                this.w -= this.dw
-            } 
-        }
-        if (swing == 2) {
-            if (this.x > 500) {
-                this.w -= this.dw; 
-                } else {
-                    this.w += this.dw
-                } 
-        }
-         */
         this.Draw();
-
         this.dx = -gameSpeed;
-        this.dy = -gameSpeed;
-        //this.dw = -gameSpeed;
-        this.dh = -gameSpeed;
     }
 
     Draw () {
         ctx.beginPath();
         ctx.fillStyle = this.c;
-        ctx.moveTo(this.x, canvas.height)
-        ctx.quadraticCurveTo(this.y, this.w, this.h, canvas.height);
-        ctx.stroke();
-        ctx.fill();
+        ctx.fillRect(this.x, this.y, this.w, this.h);
         ctx.closePath();
     }
 }
@@ -326,34 +299,33 @@ class Text {
 }
 
 function SpawnObstacle() {
-    let size = RandomIntInRange(100, 190); // base width of the obstacle
-    let type = RandomIntInRange(0, 2);
-    let swing = RandomIntInRange(0, 2);
-    x = canvas.width - size; //x of the start point
-    y = canvas.width - (size/2); // x of the control point
-    w = canvas.height/3; // y of the control point
-    h = canvas.width; // x of the end point
+    let size = RandomIntInRange(20, 70);
+    let type = RandomIntInRange(0, 3);
+    let color = RandomIntInRange(0, 5)
+    let obstacle = new Obstacle(canvas.width + size, canvas.height - size, size, size, '#2a952f');
 
     if (type == 1) {
-        w -= w - 20;
+        obstacle.y -= player.originalHeight - 10;
     }
-    if (type == 2){
-        w -= w - 40;
-    }
-
-    let obstacle = new Obstacle(x, y, w, h, swing, "#12a31d");
     obstacles.push(obstacle);
+
+    if (color == 2) {
+        obstacle.c = '#ff0000';
+    } else if (color == 3) {
+        obstacle.c = '#0400ff';
+    }
 }
+
 function RandomIntInRange(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-canvas.width = 1000;
-canvas.height = 400;
+canvas.width = 700;
+canvas.height = 300;
 ctx.font = "20px sans-serif";
 
 let scr = 'Score: ' + score;
-scoreText = new Text(scr, 115, 46, "left", "#792897", "20");
+scoreText = new Text(scr, 115, 46, "left", "rgb(255, 255, 255)", "20");
 
 document.getElementById("start").addEventListener('click', function() {
     flag = 0;
@@ -370,8 +342,8 @@ function Start () {
         highscore = localStorage.getItem('highscore');
     }  */
     let hscr = "Highscore: " + highscore;
-    highscoreText = new Text(hscr, canvas.width - 55, 46, "right", "#792897", "20"); 
-    player = new Player(25, 0, 100, 100);
+    highscoreText = new Text(hscr, canvas.width - 55, 46, "right", "rgb(255, 255, 255)", "20"); 
+    player = new Player(25, 0, 50, 50);
     requestAnimationFrame(Update);  
 }
 
@@ -396,23 +368,45 @@ function Update() {
         }
     }
 
-    for (let i = 0; i < obstacles.length; i++) {
+    for (let i=0; i<obstacles.length; i++) {
         let o = obstacles[i];
 
-        if (o.h < 0) {
+        if (o.x + o.w < 0) {
             obstacles.splice(i, 1);
         }
-        
-        // collision detection
-        /* let obstacle_width = o.h - o.x;
-        if (player.x < o.x + obstacle_width && player.x + player.w > o.x && player.y < o.w && player.y + player.h > o.w) {
-            obstacles = [];
-            score = 0;
-            spawnTime = initialSpawnTimer;
-            gameSpeed = 3;
 
-            flag = 1;
-        }  */
+        if (player.x < o.x + o.w && player.x + player.w > o.x && player.y < o.y + o.h && player.y + player.h > o.y) {
+            if (o.c == '#2a952f' && flag2 == 0) {          
+                obstacles = [];
+                score = 0;
+                spawnTime = initialSpawnTimer;
+                gameSpeed = 3;
+                flag = 1;
+
+                clearInterval(play);
+                for (i = 1; i <= num_osc; i++) {
+                    osc[i].stop();
+                }
+                /* window.localStorage.setItem('highscore', highscore); */  
+            }   
+            if (o.c == '#2a952f' && flag2 == 1) {          
+                ascendingShepard(); 
+            }             
+            if (o.c == '#ff0000') {
+                clearInterval(play);
+                for (i = 1; i <= num_osc; i++) {
+                    osc[i].stop();
+                }
+                flag2 = 1;                       
+            }
+            if (o.c == '#0400ff') {
+                clearInterval(play);
+                for (i = 1; i <= num_osc; i++) {
+                    osc[i].stop();
+                }
+                flag2 = 1;
+            }         
+        }
 
         o.Update();
     }

@@ -1,7 +1,7 @@
 <html>
     <body>
 
-        <p>Shepard Tone +  Game</p>
+        <p>Shepard Tone</p>
         
         <div id = graphics>
 
@@ -14,8 +14,8 @@
         <div class = "text h"><b>Highscore:</b></div> -->
 
         <div id = "buttons">
-            <button id = "start" class = "b" onclick = "ascendingShepard()"><b>ASC</b></button>
-            <button class = "b" onclick = "descendingShepard()"><b>DESC</b></button>
+            <button id = "start" class = "b" onclick = "ascendingShepard()"><b>PLAY</b></button>
+            <button class = "b" onclick = "descendingShepard()"><b>[no]</b></button>
             <button class = "b" onclick = "Stop()"><b>STOP</b></button>
         </div>
         
@@ -23,7 +23,7 @@
 
         <style>
             body {
-                background: black;
+                background: rgb(0, 0, 0);
             }
 
             p {
@@ -50,7 +50,7 @@
             #buttons {
                 margin: 2px;
                 position: absolute;
-                top: 20%;
+                top: 18%;
                 left: 50.8%;
                 margin-right: -50%;
                 transform: translate(-50%, -50%);
@@ -58,24 +58,22 @@
                 font-family: arial;
             }
 
-
             #canvasO {
                 border: 1px solid rgb(255, 255, 255);
                 position: absolute;
-                width: 1000;
-                height: 400;
-                top: 50%;
+                width: 700;
+                height: 300;
+                top: 75%;
                 left: 50%;
                 margin-right: -50%;
                 transform: translate(-50%, -50%);
-                background-color: rgb(79, 155, 255);
-                filter: blur(8px) contrast(1);
+                /* filter: blur(8px) contrast(1); */
             } 
 
             #canvas {
                 border: 1px solid rgb(255, 255, 255);
                 position: absolute;
-                top: 50%;
+                top: 41%;
                 left: 50%;
                 margin-right: -50%;
                 transform: translate(-50%, -50%);
