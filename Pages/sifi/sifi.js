@@ -7,77 +7,74 @@ function blink()
     })
 }
 
-// var timesRun = 0;
-// var interval = setInterval(play(), 1000); 
+// BLINKING DOT IMAGE
 
-// function play()
-// {
-//     timesRun += 1;
-//     if(timesRun == 1)
-//     {
-//         clearInterval(interval);
-//         clearInterval(interval + 5000)
-//     }
-// }
+var delay = 1000
 
-var f = 100
-
-function startBlink()
+function startBlinkOnce()
 {
-  var start = setInterval(blink, f)
-  // if (f == 100)
-  //   clearInterval(start)
-  // return
+  var start = setTimeout(blink, delay)    // after 1 sec
+  start = setTimeout(blink, delay + 100)        // 0.1 sec delay: ON
+  return
+}
+
+function startBlinkTwice()
+{
+  var start = setTimeout(blink, delay)   // after 1 sec
+  start = setTimeout(blink, delay + 100)       // 0.1 sec delay: ON
+  start = setTimeout(blink, delay + 200)       // 0.2 sec delay: OFF
+  start = setTimeout(blink, delay + 300)       // 0.3 sec delay: ON
+  return
 }
 
 function stopBlink()
 {
-  clearInterval(start);
+  if (start)
+    clearInterval(start);
 }
 
-// function stopBlink()
-// {
-//     var start = setInterval(blink, 0)
-//     return
-// }
+// AUDIO
 
-//   function stopBlink(start)
-// {
-//     var stop = clearInterval(start)
-// }
+var c = new AudioContext()
+var duration = 0.1
 
-// // blink "on" state (black)
-// function on()
-// {
-// 	if (document.getElementById)
-// 	  document.getElementById("blink").style.visibility = "visible";
-// }
+function playNote(n)
+{
+  var o = c.createOscillator()
+  var g = c.createGain()
+  o.frequency.value = 440 * Math.pow(2, n / 12)     // all notes multiples of A (440 Hz)
+  o.connect(g)
+  g.connect(c.destination)
+  o.start()
+  o.stop(c.currentTime + duration)
+}
 
-// // blink "off" state (white)
-// function off()
-// {
-// 	if (document.getElementById)
-// 	  document.getElementById("blink").style.visibility = "hidden";
-// }
+var N = 36                // sound "beep" frequency
+var delaySound = 1100
 
-// var myButton = document.getElementByID("blinkOnce");
+function playOnce()
+{
+  var note = setTimeout(() => playNote(N), delaySound)
+  return
+}
 
-// function playOnce()
-// // toggle "on" and "off" states every 300 ms to achieve a blink effect
-// // end after 10000 ms (less than ten seconds)
-//   for(var i = 0; i < 10000; i += 6000)
-//   {
-//     setTimeout("off()", i);
-//     setTimeout("on()", i + 200);
-//   }
+function playTwice()
+{
+  var note = setTimeout(() => playNote(N), delaySound)
+  note = setTimeout(() => playNote(N), delaySound + 200)
+  return
+}
 
-// function playTwice()
-//   // toggle "on" and "off" states every 200 ms to achieve a blink effect
-//   // end after 6000 ms (6 seconds)
-//     for(var i = 0; i < 10000; i += 6000)
-//     {
-//       setTimeout("off()", i);
-//       setTimeout("on()", i + 200);
-//       setTimeout("off()", i + 400);
-//       setTimeout("on()", i + 600);
-//     }
+// BOTH
+
+function blinkOnce()
+{
+  startBlinkOnce()
+  playOnce()
+}
+
+function blinkTwice()
+{
+  startBlinkTwice()
+  playTwice()
+}
