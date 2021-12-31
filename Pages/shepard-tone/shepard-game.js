@@ -6,7 +6,7 @@ var osc = [];
 var gain = [];
 
 var a = c.createAnalyser();
-a.fftSize = 1024; //512
+a.fftSize = 1024; 
 
 var freq = [8000]; // 8000
 var lowestFreq = 50; // 50 
@@ -170,6 +170,7 @@ let gameSpeed;
 let keys = {};
 
 let flag = 0;
+let no_doublestart = 0;
 let AR;
 
 const playerImg = new Image();
@@ -177,7 +178,7 @@ playerImg.src = 'eggchild.png';
 const spriteWidth = 128;
 const spriteHeight = 128;
 let frameX = 0;
-let frameY = 0; // 4
+let frameY = 0;
 
 const background = new Image();
 background.src = 'BG.png'; 
@@ -212,7 +213,7 @@ class Player {
         }
 
         if (keys['ArrowDown']) {
-            this.h = this.originalHeight / 2;
+            this.h = this.originalHeight / 2;            
         } else {
             this.h = this.originalHeight;
         }
@@ -243,18 +244,23 @@ class Player {
     }
     
     Draw () {
-        animateSprite(this.x, this.y, this.w, this.h);
+        animateSprite(this.x, this.y, this.w, this.h);            
     }
 }
 
 function animateSprite(x, y, w, h) {
     ctx.clearRect(x, y, w, h);
-    ctx.drawImage(playerImg, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
-                  x-30, y-30, w*4, h*2);
-    if (frameX < 8) { //10
-        frameX++;
+    if (keys['ArrowDown'] == true) {
+        duckX = 6;
+        duckY = 1;           
+        ctx.drawImage(playerImg, duckX*spriteWidth, duckY*spriteHeight, spriteWidth, spriteHeight, x-30, y-53, w*4, h*4);                
     } else {
-        frameX = 0;
+        ctx.drawImage(playerImg, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight, x-30, y-30, w*4, h*2);
+        if (frameX < 8) { 
+            frameX++;
+        } else {
+            frameX = 0;
+        }   
     }
     requestAnimationFrame(animateSprite);
 };
@@ -316,7 +322,11 @@ class Text {
         ctx.fillStyle = this.c;
         ctx.font = this.s + "px sans-serif";
         ctx.textAlign = this.a;
-        ctx.fillText(this.t, this.x, this.y);
+        if (this.a == 'left') {
+            ctx.fillText('Score: ' + this.t, this.x, this.y);
+        } else {
+            ctx.fillText('Highscore: ' + this.t, this.x, this.y)
+        }
         ctx.closePath();
     }
 
@@ -326,7 +336,7 @@ function SpawnObstacle() {
     let size = RandomIntInRange(20, 70);
     let type = RandomIntInRange(0, 3);
     let color = RandomIntInRange(0, 5)
-    let obstacle = new Obstacle(canvas.width + size, canvas.height - size, size, size, '#2a952f');
+    let obstacle = new Obstacle(canvas.width + size, canvas.height - size, size, size, '#323232');
 
     if (type == 1) {
         obstacle.y -= player.originalHeight - 10;
@@ -347,25 +357,21 @@ function RandomIntInRange(min, max) {
 
 document.getElementById("start").addEventListener('click', function() {
     flag = 0;
-    Start();
+    if (no_doublestart == 0) {
+        Start();  
+    }
 });
 
 function Start () {
 
+    no_doublestart = 1;
+
     gameSpeed = 3;
     gravity = 1;
-    score = 0;
+    score = 0; 
 
-    //highscore = 0;
-
-    /* if (localStorage.getItem('highscore')) {
-        highscore = localStorage.getItem('highscore');
-    }  */
-
-    scr = "Score: " + score;
-    scoreText = new Text(scr, 115, 46, "left", "#000000", "20");
-    hscr = "Highscore: " + highscore;
-    highscoreText = new Text(hscr, canvas.width - 55, 46, "right", "#000000", "20"); 
+    scoreText = new Text(score, 55, 46, "left", "#000000", "20");
+    highscoreText = new Text(highscore, canvas.width - 55, 46, "right", "#000000", "20"); 
 
     player = new Player(25, 0, 20, 40);
 
@@ -403,20 +409,21 @@ function Update() {
         }
 
         if (player.x < o.x + o.w && player.x + player.w > o.x && player.y < o.y + o.h && player.y + player.h > o.y) {
-            if (o.c == '#2a952f' && flag2 == 0) {          
+            if (o.c == '#323232' && flag2 == 0) {          
                 obstacles = [];
                 score = 0;
                 spawnTime = initialSpawnTimer;
                 gameSpeed = 3;
                 flag = 1;
+                no_doublestart = 0;
 
                 clearInterval(play);
                 for (i = 1; i <= num_osc; i++) {
                     osc[i].stop();
                 }
-                /* window.localStorage.setItem('highscore', highscore); */  
+                
             }   
-            if (o.c == '#2a952f' && flag2 == 1) {          
+            if (o.c == '#323232' && flag2 == 1) {          
                 ascendingShepard(); 
             }             
             if (o.c == '#ff0000') {
@@ -424,7 +431,7 @@ function Update() {
                 for (i = 1; i <= num_osc; i++) {
                     osc[i].stop();
                 }
-                flag2 = 1;                       
+                flag2 = 1;                     
             }
             if (o.c == '#0400ff') {
                 clearInterval(play);
@@ -446,7 +453,7 @@ function Update() {
 
     if (score > highscore) {
         highscore = score;
-        highscoreText.t = highscore;
+        highscoreText.t = highscore; 
     }
     highscoreText.Draw();
 
@@ -459,13 +466,13 @@ function Stop() {
         osc[i].stop();
     }
     cancelAnimationFrame(AR);
+    no_doublestart = 0;
 } 
 
-// FIX THE DUCK BUG
-// CHECK IF COLLISION DETECTION STILL HOLDS
+
+// CHECK COLLISION DETECTION 
 // OBSTACLES SPRITES
-// WHY TEXT NOT DISPLAYING
 // SHIFT PLAYER A LITTLE RIGHT
+// SOVRAPPOSIZIONE PLAYER E SCORE QUANDO SALTA
 
 // IMPLEMENTARE TUTTI I DIVERSI CASI NELL'OSC
-
