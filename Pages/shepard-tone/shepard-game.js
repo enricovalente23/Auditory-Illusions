@@ -155,6 +155,10 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
 
+canvas.width = 700;
+canvas.height = 300;
+ctx.font = "20px sans-serif";
+
 let score;
 let scoreText;
 let highscore = 0;
@@ -175,6 +179,9 @@ const spriteHeight = 128;
 let frameX = 0;
 let frameY = 0; // 4
 
+const background = new Image();
+background.src = 'BG.png'; 
+
 document.addEventListener('keydown', function(evt) {
     keys[evt.code] = true;
 });
@@ -186,7 +193,7 @@ class Player {
     constructor (x, y, w, h) {
         this.x = x;
         this.y = y;
-        this.w = w;
+        this.w = w; 
         this.h = h;
 
         this.dy = 0;
@@ -213,13 +220,13 @@ class Player {
         this.y += this.dy;
 
         //gravity
-        if (this.y + this.h < canvas.height) {
+        if (this.y + this.h*1.2 < canvas.height) {
             this.dy += gravity;
             this.grounded = false;
         } else {
             this.dy = 0;
             this.grounded = true;
-            this.y = canvas.height - this.h;
+            this.y = canvas.height - this.h*1.2;
         }
 
         this.Draw();
@@ -234,16 +241,16 @@ class Player {
             this.dy = -this.jumpForce - (this.jumpTimer / 50);
         }
     }
-
+    
     Draw () {
-        ctx.drawImage(playerImg, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight, this.x, this.y, this.w, this.h);
         animateSprite(this.x, this.y, this.w, this.h);
     }
 }
 
 function animateSprite(x, y, w, h) {
     ctx.clearRect(x, y, w, h);
-    ctx.drawImage(playerImg, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight, x, y, w, h);
+    ctx.drawImage(playerImg, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+                  x-30, y-30, w*4, h*2);
     if (frameX < 8) { //10
         frameX++;
     } else {
@@ -251,6 +258,23 @@ function animateSprite(x, y, w, h) {
     }
     requestAnimationFrame(animateSprite);
 };
+
+const BG = {
+    x1: 0,
+    x2: canvas.width,
+    y: 0,
+    width: canvas.width,
+    height: canvas.height
+}
+
+function handleBackground() {
+    if (BG.x1 <= -BG.width + gameSpeed*3) BG.x1 = BG.width;
+    else BG.x1 -= gameSpeed/2;
+    if (BG.x2 <= -BG.width + gameSpeed*3) BG.x2 = BG.width;
+    else BG.x2 -= gameSpeed/2;
+    ctx.drawImage(background, BG.x1, BG.y, BG.width, BG.height);
+    ctx.drawImage(background, BG.x2, BG.y, BG.width, BG.height);
+}
 
 class Obstacle {
     constructor (x, y, w, h, c) {
@@ -320,12 +344,6 @@ function RandomIntInRange(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-canvas.width = 700;
-canvas.height = 300;
-ctx.font = "20px sans-serif";
-
-let scr = 'Score: ' + score;
-scoreText = new Text(scr, 115, 46, "left", "rgb(255, 255, 255)", "20");
 
 document.getElementById("start").addEventListener('click', function() {
     flag = 0;
@@ -337,13 +355,20 @@ function Start () {
     gameSpeed = 3;
     gravity = 1;
     score = 0;
-    highscore = 0;
+
+    //highscore = 0;
+
     /* if (localStorage.getItem('highscore')) {
         highscore = localStorage.getItem('highscore');
     }  */
-    let hscr = "Highscore: " + highscore;
-    highscoreText = new Text(hscr, canvas.width - 55, 46, "right", "rgb(255, 255, 255)", "20"); 
-    player = new Player(25, 0, 50, 50);
+
+    scr = "Score: " + score;
+    scoreText = new Text(scr, 115, 46, "left", "#000000", "20");
+    hscr = "Highscore: " + highscore;
+    highscoreText = new Text(hscr, canvas.width - 55, 46, "right", "#000000", "20"); 
+
+    player = new Player(25, 0, 20, 40);
+
     requestAnimationFrame(Update);  
 }
 
@@ -356,6 +381,8 @@ function Update() {
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    handleBackground();
 
     spawnTimer--;
     if (spawnTimer <= 0) {
@@ -433,3 +460,12 @@ function Stop() {
     }
     cancelAnimationFrame(AR);
 } 
+
+// FIX THE DUCK BUG
+// CHECK IF COLLISION DETECTION STILL HOLDS
+// OBSTACLES SPRITES
+// WHY TEXT NOT DISPLAYING
+// SHIFT PLAYER A LITTLE RIGHT
+
+// IMPLEMENTARE TUTTI I DIVERSI CASI NELL'OSC
+
