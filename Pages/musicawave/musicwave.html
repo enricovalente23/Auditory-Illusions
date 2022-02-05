@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Wave</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
+</head>
+
+
+<body>
+    <div class="hero">
+        <div class="music">
+            <img src="../../Images/omino marzapane.png">
+            <div class="info">
+                <h1>ALO</h1>
+                <p>Album - blablabla</p>
+                <div id="waveform"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'violet',
+        progressColor: 'purple'
+    });
+
+    wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams TAGLIATA.mp3');
+
+</script>
+    
+</body>
+
+
+</html>
