@@ -6,7 +6,6 @@
 	<title>The Stereo Salesman Effect</title>
 
 	<link rel="stylesheet" type="text/css" href="../../jquery.pagepiling.css" />
-	<link rel="stylesheet" type="text/css" href="examples.css" />
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
@@ -72,8 +71,43 @@
 	function closeDragElement() {
 		/* stop moving when mouse button is released:*/
 		document.onmouseup = null;
-		document.onmousemove = null;
+		document.onmousemove
+		 = null;
 	}
+
+
+		var wavesurfer = WaveSurfer.create({
+	container: '#waveform',
+	waveColor: 'violet'
+	});
+
+	wavesurfer.load('../../audio');
+
+	wavesurfer.on('ready', function () {
+	// Enable creating regions by dragging
+	wavesurfer.enableDragSelection({});
+
+	// Add a couple of pre-defined regions
+	wavesurfer.addRegion({
+		start: 2, // time in seconds
+		end: 5, // time in seconds
+		color: 'hsla(100, 100%, 30%, 0.1)'
+	});
+	
+	wavesurfer.addRegion({
+		start: 8,
+		end: 14,
+		color: 'hsla(200, 100%, 30%, 0.1)'
+	});
+	
+	wavesurfer.addRegion({
+		start: 28,
+		end: 36,
+		color: 'hsla(400, 100%, 30%, 0.1)'
+	});
+	});
+
+
 	}
 
     </script>
@@ -253,6 +287,21 @@
 
 		<div class="section" id="section4">
             <div id = "bar">
+
+				<!-- main wavesurfer.js lib -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+
+				<!-- wavesurfer.js regions -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
+		  
+				<div id="waveform"></div>
+		  
+				<p align="center">
+				  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+					<i class="glyphicon glyphicon-play"></i>
+					Play
+				  </button>
+				</p>
 
 				<img src="../../Images/stereobello.jpg" alt="Stereo Bello"
 				width = 45%>
