@@ -3,13 +3,8 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>pagePiling.js plugin</title>
-	<meta name="author" content="Alvaro Trigo Lopez" />
-	<meta name="description" content="pagePiling.js plugin by Alvaro Trigo." />
-	<meta name="keywords"  content="pile,piling,piling.js,stack,pages,scrolling,stacking,touch,fullpile,scroll,plugin,jquery" />
-	<meta name="Resource-type" content="Document" />
+	<title>The Shepard Tone</title>
 
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700" />
 	<link rel="stylesheet" type="text/css" href="../jquery.pagepiling.css" />
 	<link rel="stylesheet" type="text/css" href="examples.css" />
 
@@ -19,176 +14,190 @@
 	<script type="text/javascript">
 
 
-
 		$(document).ready(function() {
 
-			/*
-			* Plugin intialization
-			*/
 	    	$('#pagepiling').pagepiling({
 	    		menu: '#menu',
-	    		anchors: ['page1', 'page2', 'page3', 'page4'],
-			    sectionsColor: ['white', '#ee005a', '#2C3E50', '#39C'],
+	    		anchors: ['page1', 'page2'],
+			    sectionsColor: ['#ffffff', '#000000'],
 			    navigation: {
 			    	'position': 'right',
-			   		'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4']
-			   	},
-			    afterRender: function(){
-			    	$('#pp-nav').addClass('custom');
-			    },
-			    afterLoad: function(anchorLink, index){
-			    	if(index>1){
-			    		$('#pp-nav').removeClass('custom');
-			    	}else{
-			    		$('#pp-nav').addClass('custom');
-			    	}
-			    }
-			});
-
-
-			/*
-		    * Internal use of the demo website
-		    */
-		    $('#showExamples').click(function(e){
-				e.stopPropagation();
-				e.preventDefault();
-				$('#examplesList').toggle();
-			});
-
-			$('html').click(function(){
-				$('#examplesList').hide();
+			   		'tooltips': ['Page 1', 'Page 2']
+			   	}
 			});
 	    });
     </script>
 
-
-    <style>
-    /* Section 1
-	 * --------------------------------------- */
-	#section1 h1{
-		color: #444;
-	}
-	#section1 p{
-		color: #333;
-		color: rgba(0,0,0,0.3);
-	}
-	#section1 img{
-		margin: 20px 0;
-		opacity: 0.7;
-	}
-
-	/* Section 2
-	 * --------------------------------------- */
-	#section2 h1,
-	#section2 p{
-		z-index: 3;
-	}
-	#section2 p{
-		opacity: 0.8;
-	}
-
-	#section2 #colors{
-		right: 60px;
-		bottom: 0;
-		position: absolute;
-		height: 413px;
-		width: 258px;
-		background-image: url(imgs/colors.gif);
-		background-repeat: no-repeat;
-	}
-
-	/* Section 3
-	 * --------------------------------------- */
-	#section3 #colors{
-		left: 60px;
-		bottom: 0;
-	}
-	#section3 p{
-		color: #757575;
-	}
-
-	#colors2,
-	#colors3{
-		position: absolute;
-		height: 163px;
-		width: 362px;
-		z-index: 1;
-		background-repeat: no-repeat;
-		left: 0;
-		margin: 0 auto;
-		right: 0;
-	}
-	#colors2{
-		background-image: url(imgs/colors2.gif);
-		top:0;
-	}
-	#colors3{
-		background-image: url(imgs/colors3.gif);
-		bottom:0;
-	}
-
-	/* Section 4
-	 * --------------------------------------- */
-	#section4 p{
-		opacity: 0.6;
-	}
-
-	/* Overwriting fullPage.js tooltip color
-	* --------------------------------------- */
-	#pp-nav.custom .pp-tooltip{
-		color: #AAA;
-	}
-	#markup{
-		display: block;
-		width: 450px;
-		margin: 20px auto;
-		text-align: left;
-	}
-
-</style>
-
 </head>
+
 <body>
 	<ul id="menu">
 		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
 		<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
-		<li data-menuanchor="page3"><a href="#page3">Page 3</a></li>
-		<li data-menuanchor="page4"><a href="#page4">Page 4</a></li>
 	</ul>
 
-
 	<div id="pagepiling">
+
 	    <div class="section" id="section1">
-	    	<h1>pagePiling.js</h1>
-			<p>Create an original scrolling site</p>
-			<img src="imgs/pagePiling-plugin.gif" alt="pagePiling" />
-			<br />
+
+	    	<h1><b>The Shepard Tone</b></h1>
+
+			<style>
+
+				#section1 {
+					background-image: url(escherian_stairs.png);
+					background-size: cover;
+				}
+				#section1 h1 {
+					color: black;
+					font-size: 7em;
+    				font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+				}
+
+			</style>
 
 	    </div>
+
 	    <div class="section" id="section2">
-	    	<div class="intro">
-	    		<div id="colors"></div>
-	    		<h1>jQuery plugin</h1>
-	    		<p>Pile your sections one over another and access them scrolling or by URL!</p>
-	    		<div id="markup">
-	    			<script src="https://gist.github.com/alvarotrigo/4a87a4b8757d87df8a72.js"></script>
-	    		</div>
-	    	</div>
-	    </div>
-	    <div class="section" id="section3">
-	    	<div class="intro">
-	    		<h1>Configurable</h1>
-	    		<p>Plenty of options, methods and callbacks to use.</p>
-	    		<div id="colors2"></div>
-	    		<div id="colors3"></div>
-	    	</div>
-	    </div>
-	    <div class="section" id="section4">
-	    	<div class="intro">
-	    		<h1>Compatible</h1>
-	    		<p>Designed to work on tablet and mobile devices.</p>
-	    		<p>Oh! And its compatible with old browsers such as IE 8 or Opera 12!</p>
-	    	</div>
+
+			<div id = "p1">The Shepard Tone is an auditory illusion of a tone that seems to continually <br>
+				ascend or descend in pitch, yet which ultimately gets no higher or lower.<br>
+				Here, the effect is presented in a glissando fashion: a continuous<br>
+				never-ending rising sound is perceived.<br><br>
+				Play with us to learn how in works!<br>
+				<div id = 'i'><b>Press W to jump and S to duck.</b></div>
+			</div>
+
+			<div id = "p2">
+
+				<div id = "p21" class = "hide">
+					In the lower box an oscilloscope reveals how the infinite scale is made: the illusion<br>
+					comes from the superposition of 10 dephased oscillators with rising frequencies.<br>
+					Each bell shape is an oscillator, they are made by visible rectangles only because<br>
+					of the choice of the FFT size.<br><br>
+				</div>
+
+				<div id = "p22" class = "hide">
+					Hitting a red obstacle focuses the oscilloscope on a single oscillator, highlighting its behaviour.<br><br>
+				</div>
+
+				<div id = "p23" class = "hide">
+					The ultimate effect is given by fading in and out each scale/oscillator once it reaches a certain<br>
+					frequency lower or upper bound, so that hearing the beginning or end of any given scale<BR>
+					is impossible and a continuous sound is perceived.
+				</div>
+
+			</div>
+
+			<div id = graphics>
+
+				<canvas id="canvasO"></canvas>
+				<canvas id="canvas"></canvas>   
+				<div id = "gray" class = "text hide"><b>Avoid the gray obstacles!</b></div>
+				<div id = "red" class = "text hide"><b>Avoid the red obstacles!</b></div>
+	
+			</div>
+	
+			<div id = "buttons">
+				<button id = "start" class = "b" onclick = "ascendingShepard()"><b>PLAY</b></button>
+				<button class = "b" onclick = "Stop()"><b>STOP</b></button>
+			</div>
+			
+			<script src='shepard-game.js'></script>
+	
+			<style>
+
+				#section2 {
+					background-image: url(escherian_stairs2.png);
+					background-size: cover;
+				}
+				
+				#p1 {
+					position: absolute;
+					top: 28%;
+					left: 27%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 25px;
+					color: black;
+					font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+				}
+				#i {
+					position: relative;
+					margin: 20px;
+					font-size: 20px;
+					color: purple;
+				}
+
+				#p2 {
+					position: absolute;
+					top: 70%;
+					left: 27%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 24px;
+					color: black;
+				}
+	
+				.b {
+					height: 60px;
+					width: 100px;
+					border-radius: 100px;
+					border-color: black;
+					background-color: #0043a8;
+					color: rgb(255, 255, 255);
+				}
+	
+				#buttons {
+					margin: 20px;
+					position: absolute;
+					top: 42%;
+					left: 26%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 20px;
+					font-family: arial;
+				}
+	
+				#canvasO {
+					border: 0.5px solid rgb(0, 0, 0);
+					position: absolute;
+					top: 70%;
+					left: 70%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					background-color: #ddf8ff;
+					/* filter: blur(8px) contrast(1); */
+				} 
+	
+				#canvas {
+					border: 0.5px solid rgb(0, 0, 0);
+					position: absolute;
+					top: 30%;
+					left: 70%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					background-image: url('BG.png');
+					background-size: 100% 100%;
+				} 
+				
+			   .text {
+					color: rgb(0, 0, 0);
+					position: absolute;
+					top: 25%;
+					left: 69.5%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 25px;
+					font-style: italic;
+				}
+	
+				.hide {
+					color: transparent;
+				}
+				
+			</style>
+
 	    </div>
 	</div>
 

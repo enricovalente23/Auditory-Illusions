@@ -7,15 +7,13 @@
 
             <canvas id="canvasO"></canvas>
             <canvas id="canvas"></canvas>   
+            <div id = "gray" class = "text hide"><b>Avoid the gray obstacles!</b></div>
+            <div id = "red" class = "text hide"><b>Avoid the red obstacles!</b></div>
 
         </div>
 
-        <!-- <div class = "text"><b>Score:</b></div>
-        <div class = "text h"><b>Highscore:</b></div> -->
-
         <div id = "buttons">
-            <button id = "start" class = "b" onclick = "ascendingShepard()"><b>PLAY</b></button>
-            <button class = "b" onclick = "descendingShepard()"><b>[no]</b></button>
+            <button id = "start" class = "b" onclick = "ascendingShepard()"><b>START</b></button>
             <button class = "b" onclick = "Stop()"><b>STOP</b></button>
         </div>
         
@@ -82,18 +80,20 @@
                 background-size: 100% 100%;
             } 
             
-            /* .text {
-                color: rgb(218, 68, 68);
+           .text {
+                color: rgb(0, 0, 0);
                 position: absolute;
-                margin-left: 6%;
-                margin-top: 27%;
+                top: 35%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
                 font-size: 25px;
                 font-style: italic;
             }
 
-            .h {
-                margin-left: 770;
-            } */
+            .hide {
+                color: transparent;
+            }
             
         </style>
 

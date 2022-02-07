@@ -1,7 +1,7 @@
 var c = new AudioContext();
 
 var play;
-var num_osc = 5; // 10
+var num_osc = 10; // 10
 var osc = []; 
 var gain = [];
 
@@ -27,13 +27,13 @@ function ascendingShepard() {
         osc[i].frequency.value = freq[i]; 
 
         gain[i] = c.createGain(); 
-        gain[i].gain.value = 0; 
+        gain[i].gain.value = 0.2; 
     }
 
     play = setInterval(function() {
-
+        flag2 = 0;
         for (i = 1; i <= num_osc; i++) {
-                
+
             if (freq[i] > 20000) {
                 freq[i] = 20;
             } 
@@ -43,17 +43,13 @@ function ascendingShepard() {
 
             osc[i].frequency.value = freq[i]; 
 
-            if (lowestFreq < freq[i] < highestFreq) {
-                gain[i].gain.value = 0.02; 
-            }
-
             osc[i].connect(gain[i]);
             gain[i].connect(a);
             a.connect(c.destination);
 
         }
 
-    }, 30); //update hz (set of oscillators) every 100 ms
+    }, 100); // update every 100 ms
 
     for (i = 1; i <= num_osc; i++) {
         osc[i].start(); 
