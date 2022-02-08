@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Binaural Beats</title>
+
+		<link rel="stylesheet" type="text/css" href="../jquery.pagepiling.css" />
+		<link rel="stylesheet" type="text/css" href="../Examples/examples.css" />
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+		<script type="text/javascript" src="../jquery.pagepiling.min.js"></script>
+		<script type="text/javascript">
+
+
+			$(document).ready(function() {
+
+				$('#pagepiling').pagepiling({
+					menu: '#menu',
+					anchors: ['page1', 'page2'],
+					sectionsColor: ['#ffffff', '#000000'],
+					navigation: {
+						'position': 'right',
+						'tooltips': ['Page 1', 'Page 2']
+					}
+				});
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<ul id="menu">
+			<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
+			<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
+		</ul>
+
+		<div id="pagepiling">
+
+			<div class="section" id="section1">
+
+				<h1><b>Binaural Beats</b></h1>
+
+				<style>
+
+					#section1 {
+						background-image: url(bb.png);
+						background-size: contain;
+					}
+					#section1 h1 {
+						color: rgb(198, 221, 255);
+						font-size: 7em;
+						font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+						text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+					}
+	
+				</style>
+
+			</div>
+
+			<div class="section" id="section2">
+
+				<div id = "text">
+
+					<div id = "t1">
+						This acoustic illusion is perceived when two different pure-tone<br>
+						sine waves are presented to a listener dichotically (one through<br>
+						each ear), with f2 slightly off 2f1.<br><br>
+						
+						As a result, a single tone with frequency |2f1 - f2| and<br>
+						modulated amplitude is perceived. These beats are called<br>
+						"binaural" because they are originated in the brain:<br>
+						in the ears, the regions of the cochlea that are responsive<br>
+						to the two frequencies are far apart.
+					</div>
+		
+					<div id = "t2">
+						Hence, note that in this demonstration <b>earphones are<br>
+						required</b> in order to correctly perceive the effect.<br><br>
+
+						In the first place, two different tones are individually<br>
+						presented to each ear. Then the two tones are played<br>
+						simultaneously, reaching after few seconds the frequency<br>
+						ratio required to ear the beats (oscillating amplitude).
+					</div>		
+
+				</div>
+
+				<canvas id = "canvas1"></canvas>
+
+				<script src='bb.js'></script>
+				
+				<div>
+					<button id = "right" class = "b blob vis" onclick = "play1()"><b>RIGHT EAR</b></button></html> 
+					<button id = "left" class = "b blob" onclick = "play2()"><b>LEFT EAR</b></button></html>
+				</div>
+				
+				<div>
+					<button id = "both" class = "b blob" onclick = "both()"><b>BOTH</b></button></html>
+					<button id = "stop" class = "b blob" onclick = "stopboth()"><b>STOP</b></button></html>
+				</div>
+
+				<style>
+					
+					#t {
+						margin-right: -50%;
+						transform: translate(-50%, -50%);
+					}
+
+					#t1 {
+						position: absolute;
+						top: 30%;
+						left: 8%;
+						font-size: 25px;
+						color: rgb(255, 255, 255);
+						font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+					}
+
+					#t2 {
+						position: absolute;
+						top: 33.5%;
+						left: 61.5%;
+						font-size: 25px;
+						color: rgb(255, 255, 255);
+						font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+					}
+					
+					#canvas1 {
+						position: absolute;
+						width: 100%;
+						height: 90%;
+						top: 55%;
+						left: 50%;
+						margin-right: -50%;
+						transform: translate(-50%, -50%);
+						filter: blur(1px) contrast(1);
+					}
+					
+					.b {
+						height: 100px;
+						width: 100px;
+						border-radius: 100px;
+						border-color: black;
+						background-color: #0105f0;
+						color: white;
+						margin: 5px;
+						position: absolute;
+						top: 20%;
+						left: 48.2%;
+						margin-right: -50%;
+						transform: translate(-50%, -50%);
+						display: none;
+						font-size: 20px;
+						font-family: arial;
+					}
+					
+					.blob {
+						box-shadow: 0 0 0 0 #4b1c81;
+						transform: scale(1);
+						animation: pulse 2s infinite;
+					}
+					
+					@keyframes pulse {
+						0% {
+							transform: scale(0.95);
+							box-shadow: 0 0 0 0 #5f2680;
+						}
+					
+						70% {
+							transform: scale(1);
+							box-shadow: 0 0 0 10px rgba(38, 224, 14, 0);
+						}
+					
+						100% {
+							transform: scale(0.95);
+							box-shadow: 0 0 0 0 rgba(86, 243, 38, 0);
+						}
+					}
+					
+					.vis {
+						display: block;
+					}
+					
+				</style>	
+
+			</div>
+		</div>
+
+	</body>
+</html>
