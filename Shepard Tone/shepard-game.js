@@ -2,11 +2,11 @@ var c = new AudioContext();
 
 var play;
 var num_osc = 10; // 10
-var osc = []; 
+var osc = [];
 var gain = [];
 
 var a = c.createAnalyser();
-a.fftSize = 1024; 
+a.fftSize = 1024;
 
 var freq = [8000]; // 8000
 var lowestFreq = 50; // 50 
@@ -23,31 +23,31 @@ function ascendingShepard() {
 
     for (i = 1; i <= num_osc; i++) {
         if (osc[i]) {
-            osc[i].stop();  
+            osc[i].stop();
         }
         osc[i] = c.createOscillator();
         freq[i] = freq[i - 1] / 2; // highest[1] 8000, lowest[10] 7.81
-        osc[i].frequency.value = freq[i]; 
+        osc[i].frequency.value = freq[i];
 
-        gain[i] = c.createGain(); 
-        gain[i].gain.value = 0; 
+        gain[i] = c.createGain();
+        gain[i].gain.value = 0;
     }
 
-    play = setInterval(function() {
+    play = setInterval(function () {
         flag2 = 0;
         for (i = 1; i <= num_osc; i++) {
 
             if (freq[i] > 20000) {
                 freq[i] = 20;
-            } 
+            }
             else {
                 freq[i] = freq[i] + (freq[i] / 200); // 192
             }
 
-            osc[i].frequency.value = freq[i]; 
+            osc[i].frequency.value = freq[i];
 
             if (lowestFreq < freq[i] < highestFreq) {
-                gain[i].gain.value = 0.02; 
+                gain[i].gain.value = 0.02;
             }
 
             osc[i].connect(gain[i]);
@@ -59,8 +59,8 @@ function ascendingShepard() {
     }, 100); // update every 100 ms
 
     for (i = 1; i <= num_osc; i++) {
-        osc[i].start(); 
-    } 
+        osc[i].start();
+    }
 }
 
 function redCollision() {
@@ -71,33 +71,33 @@ function redCollision() {
 
     for (i = 1; i <= num_osc; i++) {
         if (osc[i]) {
-            osc[i].stop();  
+            osc[i].stop();
         }
         osc[i] = c.createOscillator();
         freq[i] = freq[i - 1] / 2; // highest[1] 8000, lowest[10] 7.81
-        osc[i].frequency.value = freq[i]; 
+        osc[i].frequency.value = freq[i];
 
-        gain[i] = c.createGain(); 
-        gain[i].gain.value = 0; 
+        gain[i] = c.createGain();
+        gain[i].gain.value = 0;
     }
 
-    play = setInterval(function() {
+    play = setInterval(function () {
 
         flag3 = 0;
 
         for (i = 1; i <= num_osc; i++) {
-                
+
             if (freq[i] > 3000) {
                 freq[i] = 200;
-            } 
+            }
             else {
                 freq[i] = freq[i] + (freq[i] / 100); // 200
             }
 
-            osc[i].frequency.value = freq[i]; 
+            osc[i].frequency.value = freq[i];
 
             if (lowestFreq < freq[i] < highestFreq) {
-                gain[i].gain.value = 0.02; 
+                gain[i].gain.value = 0.02;
             }
 
             osc[i].connect(gain[i]);
@@ -106,11 +106,11 @@ function redCollision() {
 
         }
 
-    }, 80); 
+    }, 80);
 
     for (i = 1; i <= num_osc; i++) {
-        osc[i].start(); 
-    } 
+        osc[i].start();
+    }
 }
 
 // OSCILLOSCOPE
@@ -126,11 +126,11 @@ canvasO.height = 300;
 const bufferLength = a.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 
-const barWidth = (canvasO.width*10)/bufferLength;
+const barWidth = (canvasO.width * 10) / bufferLength;
 let barHeight;
 let x = 0;
 
-window.addEventListener('click', function() {
+window.addEventListener('click', function () {
 
     function animate() {
         x = 0;
@@ -143,11 +143,11 @@ window.addEventListener('click', function() {
 });
 
 function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
-    for (let i=0; i < bufferLength; i++){
-        barHeight = dataArray[i]*1.2;
-        const red = i * barHeight/50;
-        const green = i/2;
-        const blue = i * barHeight; 
+    for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i] * 1.2;
+        const red = i * barHeight / 50;
+        const green = i / 2;
+        const blue = i * barHeight;
         ctxO.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         ctxO.fillRect(canvasO.width - x, canvasO.height - barHeight, barWidth, barHeight);
         x += barWidth;
@@ -186,21 +186,27 @@ const spriteHeight = 128;
 let frameX = 0;
 let frameY = 0;
 
-const background = new Image();
-background.src = 'BG.png'; 
+const obsG = new Image();
+obsG.src = 'brickG.png';
+const obsR = new Image();
+obsR.src = 'brickR.png';
+const obsDim = 903;
 
-document.addEventListener('keydown', function(evt) {
+const background = new Image();
+background.src = 'BG.png';
+
+document.addEventListener('keydown', function (evt) {
     keys[evt.code] = true;
 });
-document.addEventListener('keyup', function(evt) {
+document.addEventListener('keyup', function (evt) {
     keys[evt.code] = false;
 });
 
 class Player {
-    constructor (x, y, w, h) {
+    constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
-        this.w = w; 
+        this.w = w;
         this.h = h;
 
         this.dy = 0;
@@ -210,7 +216,7 @@ class Player {
         this.jumpTimer = 0;
     }
 
-    Animate () {
+    Animate() {
         //jump
         if (keys['KeyW']) {
             this.Jump();
@@ -219,7 +225,7 @@ class Player {
         }
 
         if (keys['KeyS']) {
-            this.h = this.originalHeight / 2;            
+            this.h = this.originalHeight / 2;
         } else {
             this.h = this.originalHeight;
         }
@@ -227,19 +233,19 @@ class Player {
         this.y += this.dy;
 
         //gravity
-        if (this.y + this.h*1.2 < canvas.height) {
+        if (this.y + this.h * 1.2 < canvas.height) {
             this.dy += gravity;
             this.grounded = false;
         } else {
             this.dy = 0;
             this.grounded = true;
-            this.y = canvas.height - this.h*1.2;
+            this.y = canvas.height - this.h * 1.2;
         }
 
         this.Draw();
     }
 
-    Jump () {
+    Jump() {
         if (this.grounded && this.jumpTimer == 0) {
             this.jumpTimer = 1;
             this.dy = -this.jumpForce;
@@ -248,9 +254,9 @@ class Player {
             this.dy = -this.jumpForce - (this.jumpTimer / 50);
         }
     }
-    
-    Draw () {
-        animateSprite(this.x, this.y, this.w, this.h);            
+
+    Draw() {
+        animateSprite(this.x, this.y, this.w, this.h);
     }
 }
 
@@ -258,15 +264,15 @@ function animateSprite(x, y, w, h) {
     ctx.clearRect(x, y, w, h);
     if (keys['KeyS'] == true) {
         duckX = 6;
-        duckY = 1;           
-        ctx.drawImage(playerImg, duckX*spriteWidth, duckY*spriteHeight, spriteWidth, spriteHeight, x-30, y-53, w*4, h*4);                
+        duckY = 1;
+        ctx.drawImage(playerImg, duckX * spriteWidth, duckY * spriteHeight, spriteWidth, spriteHeight, x - 30, y - 53, w * 4, h * 4);
     } else {
-        ctx.drawImage(playerImg, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight, x-30, y-30, w*4, h*2);
-        if (frameX < 8) { 
+        ctx.drawImage(playerImg, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, x - 30, y - 30, w * 4, h * 2);
+        if (frameX < 8) {
             frameX++;
         } else {
             frameX = 0;
-        }   
+        }
     }
     requestAnimationFrame(animateSprite);
 };
@@ -280,16 +286,16 @@ const BG = {
 }
 
 function handleBackground() {
-    if (BG.x1 <= -BG.width + gameSpeed*3) BG.x1 = BG.width;
-    else BG.x1 -= gameSpeed/2;
-    if (BG.x2 <= -BG.width + gameSpeed*3) BG.x2 = BG.width;
-    else BG.x2 -= gameSpeed/2;
+    if (BG.x1 <= -BG.width + gameSpeed * 3) BG.x1 = BG.width;
+    else BG.x1 -= gameSpeed / 2;
+    if (BG.x2 <= -BG.width + gameSpeed * 3) BG.x2 = BG.width;
+    else BG.x2 -= gameSpeed / 2;
     ctx.drawImage(background, BG.x1, BG.y, BG.width, BG.height);
     ctx.drawImage(background, BG.x2, BG.y, BG.width, BG.height);
 }
 
 class Obstacle {
-    constructor (x, y, w, h, c) {
+    constructor(x, y, w, h, c) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -299,19 +305,25 @@ class Obstacle {
         this.dx = -gameSpeed;
     }
 
-    Update () {
+    Update() {
         this.x += this.dx;
         this.Draw();
         this.dx = -gameSpeed;
     }
 
-    Draw () {
-        ctx.beginPath();
-        ctx.fillStyle = this.c;
-        ctx.fillRect(this.x, this.y, this.w, this.h);
-        ctx.closePath();
+    Draw() {
+        fillObstacle(this.x, this.y, this.w, this.h, this.c);         
     }
 }
+
+function fillObstacle(x, y, w, h, c) {
+    
+    if (c == '#323232') {
+       ctx.drawImage(obsG, 0, 0, obsDim, obsDim, x, y, w, h);
+    } else if (c == '#ff0000') {
+        ctx.drawImage(obsR, 0, 0, obsDim, obsDim, x, y, w, h);
+    }
+};
 
 class Text {
     constructor(t, x, y, a, c, s) {
@@ -323,7 +335,7 @@ class Text {
         this.s = s;
     }
 
-    Draw () {
+    Draw() {
         ctx.beginPath();
         ctx.fillStyle = this.c;
         ctx.font = this.s + "px sans-serif";
@@ -351,10 +363,7 @@ function SpawnObstacle() {
 
     if (color == 2) {
         obstacle.c = '#ff0000';
-    } 
-    /* else if (color == 3) {
-        obstacle.c = '#0400ff';
-    } */
+    }
 }
 
 function RandomIntInRange(min, max) {
@@ -362,39 +371,39 @@ function RandomIntInRange(min, max) {
 }
 
 
-document.getElementById("start").addEventListener('click', function() {
+document.getElementById("start").addEventListener('click', function () {
     flag = 0;
     flag3 = 1;
     num_osc = 10;
     if (no_doublestart == 0) {
 
-        setTimeout( function () {
+        setTimeout(function () {
             document.getElementById("gray").classList.remove("hide");
-            setTimeout( function() {
+            setTimeout(function () {
                 document.getElementById("gray").classList.add("hide");
                 document.getElementById("p21").classList.remove("hide");
-            }, 1500);            
+            }, 1500);
         }, 1000);
 
-        Start();  
+        Start();
         ascendingShepard();
     }
 });
 
-function Start () {
+function Start() {
 
     no_doublestart = 1;
 
     gameSpeed = 3;
     gravity = 1;
-    score = 0; 
+    score = 0;
 
     scoreText = new Text(score, 80, 46, "left", "#000000", "20");
-    highscoreText = new Text(highscore, canvas.width - 80, 46, "right", "#000000", "20"); 
+    highscoreText = new Text(highscore, canvas.width - 80, 46, "right", "#000000", "20");
 
     player = new Player(25, 0, 20, 40);
 
-    requestAnimationFrame(Update);  
+    requestAnimationFrame(Update);
 }
 
 let initialSpawnTimer = 200;
@@ -402,7 +411,7 @@ let spawnTimer = initialSpawnTimer;
 
 function Update() {
     if (flag == 0) {
-     AR = requestAnimationFrame(Update);   
+        AR = requestAnimationFrame(Update);
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -420,7 +429,7 @@ function Update() {
         }
     }
 
-    for (let i=0; i<obstacles.length; i++) {
+    for (let i = 0; i < obstacles.length; i++) {
         let o = obstacles[i];
 
         if (o.x + o.w < 0) {
@@ -428,7 +437,15 @@ function Update() {
         }
 
         if (player.x < o.x + o.w && player.x + player.w > o.x && player.y < o.y + o.h && player.y + player.h > o.y) {
-            if (o.c == '#323232' && flag2 == 0) {          
+            if (o.c == '#323232' && flag2 == 0) {
+
+                setTimeout(function () {
+                    document.getElementById("go").classList.remove("hide");
+                    setTimeout(function () {
+                        document.getElementById("go").classList.add("hide");
+                    }, 1500);
+                }, 10);
+
                 obstacles = [];
                 score = 0;
                 spawnTime = initialSpawnTimer;
@@ -440,21 +457,21 @@ function Update() {
                 for (i = 1; i <= num_osc; i++) {
                     osc[i].stop();
                 }
-                
-            }   
+
+            }
             if (o.c == '#323232' && flag2 == 1) {  // grey
                 num_osc = 10;
 
                 document.getElementById("p23").classList.remove("hide");
 
                 document.getElementById("gray").classList.remove("hide");
-                setTimeout( function() {
+                setTimeout(function () {
                     document.getElementById("gray").classList.add("hide");
-                }, 1500);  
+                }, 1500);
 
-                ascendingShepard(); 
+                ascendingShepard();
                 flag3 = 1;
-            }             
+            }
             if (o.c == '#ff0000' && flag3 == 1) { // red
                 clearInterval(play);
                 for (i = 1; i <= num_osc; i++) {
@@ -462,17 +479,25 @@ function Update() {
                 }
                 flag2 = 1;
                 num_osc = 1;
-                
+
                 document.getElementById("p22").classList.remove("hide");
 
                 document.getElementById("red").classList.remove("hide");
-                setTimeout( function() {
+                setTimeout(function () {
                     document.getElementById("red").classList.add("hide");
                 }, 1500);
 
                 redCollision();
             }
             if (o.c == '#ff0000' && flag3 == 0) {
+
+                setTimeout(function () {
+                    document.getElementById("go").classList.remove("hide");
+                    setTimeout(function () {
+                        document.getElementById("go").classList.add("hide");
+                    }, 1500);
+                }, 10);
+
                 obstacles = [];
                 score = 0;
                 spawnTime = initialSpawnTimer;
@@ -485,13 +510,13 @@ function Update() {
                     osc[i].stop();
                 }
             }
-        /* if (o.c == '#0400ff') { // blue
-                clearInterval(play);
-                for (i = 1; i <= num_osc; i++) {
-                    osc[i].stop();
-                }
-                flag2 = 1;
-            } */      
+            /* if (o.c == '#0400ff') { // blue
+                    clearInterval(play);
+                    for (i = 1; i <= num_osc; i++) {
+                        osc[i].stop();
+                    }
+                    flag2 = 1;
+                } */
         }
 
         o.Update();
@@ -505,7 +530,7 @@ function Update() {
 
     if (score > highscore) {
         highscore = score;
-        highscoreText.t = highscore; 
+        highscoreText.t = highscore;
     }
     highscoreText.Draw();
 
@@ -520,6 +545,3 @@ function Stop() {
     cancelAnimationFrame(AR);
     no_doublestart = 0;
 } 
-
-// OBSTACLES SPRITES
-// 'GAME OVER'

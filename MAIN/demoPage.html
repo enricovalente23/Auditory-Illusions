@@ -19,7 +19,6 @@
 				$('#pagepiling').pagepiling({
 					menu: '#menu',
 					anchors: ['page1', 'page2', 'page3', 'page4'],
-					sectionsColor: ['#ffffff', '#000000', '#ffffff', '#000000'],
 					navigation: {
 						'position': 'right',
 						'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4']
@@ -105,6 +104,10 @@
 
 				<style>
 					
+					#section2 {
+						background-color: black;
+					}
+
 					#t {
 						margin-right: -50%;
 						transform: translate(-50%, -50%);
@@ -130,9 +133,7 @@
 					
 					#cnvs1 {
 						position: absolute;
-						width: 100%;
-						height: 90%;
-						top: 55%;
+						top: 50%;
 						left: 50%;
 						margin-right: -50%;
 						transform: translate(-50%, -50%);
@@ -148,7 +149,7 @@
 						color: white;
 						margin: 5px;
 						position: absolute;
-						top: 20%;
+						top: 15%;
 						left: 48.2%;
 						margin-right: -50%;
 						transform: translate(-50%, -50%);
@@ -244,6 +245,7 @@
 					<canvas id="canvas"></canvas>   
 					<div id = "gray" class = "text hide"><b>Avoid the gray obstacles!</b></div>
 					<div id = "red" class = "text hide"><b>Avoid the red obstacles!</b></div>
+					<div id = "go" class = "text hide"><b>GAME OVER!</b></div>
 		
 				</div>
 		

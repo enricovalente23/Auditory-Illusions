@@ -2,11 +2,11 @@ var cc = new AudioContext()
 
 var options = {
     numberOfInputs : 2
-  }
+}
 var mergerNode = new ChannelMergerNode(cc, options);
 
 console.log(cc);
-let anal = cc.createAnalyser();
+anal = cc.createAnalyser();
 anal.fftSize = 64;
 
 var p1 = cc.createStereoPanner()
@@ -46,7 +46,7 @@ cnvs.height = window.innerHeight;
 const ct = cnvs.getContext('2d');
 
 const bufferLen = anal.frequencyBinCount;
-const dataAr = new Uint8Array(bufferLen);
+const data = new Uint8Array(bufferLen);
 
 const barW = (cnvs.width/2)/bufferLen;
 let barH;
@@ -94,28 +94,28 @@ window.addEventListener('click', function() {
     function animate() {
         xx = 0;
         ct.clearRect(0, 0, cnvs.width, cnvs.height);
-        anal.getByteFrequencyData(dataAr);
-        drawVisualizer(bufferLen, xx, barW, barH, dataAr);
+        anal.getByteFrequencyData(data);
+        drawVis(bufferLen, xx, barW, barH, data);
         requestAnimationFrame(animate);
     }
     animate();
 });
 
-function drawVisualizer(bufferLen, xx, barW, barH, dataAr) {
+function drawVis(bufferLen, xx, barW, barH, data) {
     for (let i=0; i < bufferLen; i++){
-        barH = dataAr[i]*2.5;
+        barH = data[i]*2.5;
         const red = i * barH/20;
         const green = i/2;
-        const blue = barH/2
+        const blue = barH/2;
         ct.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         ct.fillRect(cnvs.width/2 - xx, cnvs.height - barH, barW, barH);
         xx += barW;
     }
     for (let i=0; i < bufferLen; i++){
-        barH = dataAr[i]*2.5;
+        barH = data[i]*2.5;
         const red = i * barH/20;
         const green = i/2;
-        const blue = barH/2
+        const blue = barH/2;
         ct.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         ct.fillRect(xx, cnvs.height - barH, barW, barH);
         xx += barW;

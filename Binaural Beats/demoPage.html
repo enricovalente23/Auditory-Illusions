@@ -87,18 +87,18 @@
 
 				</div>
 
-				<canvas id = "canvas1"></canvas>
+				<canvas id = "cnvs1"></canvas>
 
-				<script src='bb.js'></script>
+				<script src='../Binaural Beats/bb.js'></script>
 				
 				<div>
-					<button id = "right" class = "b blob vis" onclick = "play1()"><b>RIGHT EAR</b></button></html> 
-					<button id = "left" class = "b blob" onclick = "play2()"><b>LEFT EAR</b></button></html>
+					<button id = "right" class = "btt blob vis" onclick = "play1()"><b>RIGHT EAR</b></button></html> 
+					<button id = "left" class = "btt blob" onclick = "play2()"><b>LEFT EAR</b></button></html>
 				</div>
 				
 				<div>
-					<button id = "both" class = "b blob" onclick = "both()"><b>BOTH</b></button></html>
-					<button id = "stop" class = "b blob" onclick = "stopboth()"><b>STOP</b></button></html>
+					<button id = "both" class = "btt blob" onclick = "both()"><b>BOTH</b></button></html>
+					<button id = "stop" class = "btt blob" onclick = "stopboth()"><b>STOP</b></button></html>
 				</div>
 
 				<style>
@@ -126,10 +126,9 @@
 						font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 					}
 					
-					#canvas1 {
+					#cnvs1 {
 						position: absolute;
-						width: 100%;
-						height: 90%;
+						border: 1px solid green;
 						top: 55%;
 						left: 50%;
 						margin-right: -50%;
@@ -137,7 +136,7 @@
 						filter: blur(1px) contrast(1);
 					}
 					
-					.b {
+					.btt {
 						height: 100px;
 						width: 100px;
 						border-radius: 100px;
