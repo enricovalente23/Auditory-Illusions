@@ -1,0 +1,50 @@
+
+.dot {
+    height: 180px;
+    width: 180px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: -435px;    
+}
+
+.active {
+    background-color: white;
+}
+
+#rett {
+    background-color: white;
+    width: 70%;
+    height: 70%;
+    padding: 40px 40px 40px 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+p {
+    color: #0075ff;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+span {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+button.play {
+    width: 60px;
+    height: 60px;
+    border-width: 40px 0px 40px 70px;
+    border-color: transparent transparent transparent #0075ff;
+  }
+
+button.stop {
+    width: 70px;
+    height: 70px;
+    border-color: #0075ff;
+    border-style: double;
+    border-width: 0px 0px 0px 40px;
+  }

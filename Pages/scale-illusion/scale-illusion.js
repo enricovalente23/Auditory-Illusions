@@ -12,7 +12,7 @@ var note2 = [];
 function play(n) {
   const o = c.createOscillator();
   const g = c.createGain();
-  o.frequency.value = 440*Math.pow(2,n/12);
+  o.frequency.value = 440*Math.pow(2, n/12);
   o.connect(g);
   g.connect(c.destination);
   const now = c.currentTime;
@@ -22,6 +22,7 @@ function play(n) {
   o.start();
   o.stop(now+attack+release);
 }
+
 function play1(n) {
   const o = c.createOscillator();
   const g = c.createGain();
@@ -36,8 +37,8 @@ function play1(n) {
   o.stop(now+attack1+release1);
 }
 
-
 function playfm1() {
+<<<<<<< HEAD
 
   for (i=0; i < note1.length; i++) {
     clearTimeout(note1[i])
@@ -82,28 +83,62 @@ note2.push(setTimeout(()=>play(2),c.currentTime+3300))// RE
 
 function resetplay(){ c
   o.frequency.value = 440*Math.pow(2,3/12);
+=======
+  setTimeout(()=>play1(3),c.currentTime) //DO
+  setTimeout(()=>play(-7),c.currentTime+300) // RE
+  setTimeout(()=>play(0),c.currentTime+600) // LA
+  setTimeout(()=>play1(-4),c.currentTime+900) // FA
+  setTimeout(()=>play(0),c.currentTime+1200)// LA
+  setTimeout(()=>play(-7),c.currentTime+1500)// RE
+  setTimeout(()=>play1(3),c.currentTime+1800) // DO
+  setTimeout(()=>play(-7),c.currentTime+2100) // RE
+  setTimeout(()=>play(0),c.currentTime+2400) // LA
+  setTimeout(()=>play1(-4),c.currentTime+2700) // FA
+  setTimeout(()=>play(0),c.currentTime+3000)// LA
+  setTimeout(()=>play(-7),c.currentTime+3300)// RE
 }
 
+function playfm2() {
+  setTimeout(()=>play1(-9),c.currentTime) // DO
+  setTimeout(()=>play(2),c.currentTime+300) // SI
+  setTimeout(()=>play(-5),c.currentTime+600) // SOL
+  setTimeout(()=>play1(-2),c.currentTime+900) // FA
+  setTimeout(()=>play(-5),c.currentTime+1200)// MI
+  setTimeout(()=>play(2),c.currentTime+1500)// RE
+  setTimeout(()=>play1(-9),c.currentTime+1800) // DO
+  setTimeout(()=>play(2),c.currentTime+2100) // RE
+  setTimeout(()=>play(-5),c.currentTime+2400) // MI
+  setTimeout(()=>play1(-2),c.currentTime+2700) // FA
+  setTimeout(()=>play(-5),c.currentTime+3000)// MI
+  setTimeout(()=>play(2),c.currentTime+3300)// RE
+}
+
+function todo() {
+  playfm1(); 
+  playfm2();
+>>>>>>> b428a268834ed9aebf8138705a7c31a05db1b692
+}
 
 var step1 = 0;
 var step2 = 0;
 var timer1;
 var timer2;
 
-
-
 function render1() {
   document.querySelectorAll(".dot1").forEach(renderDot1)
 }
+
 function render2() {
   document.querySelectorAll(".dot2").forEach(renderDot2)
 }
 
 function renderDot1(dot , index) {
- dot.classList.toggle("active-dot1", index == step1)}
+  dot.classList.toggle("active-dot1", index == step1)
+}
 
 function renderDot2(dot , index) {
- dot.classList.toggle("active-dot2", index == step2)}
+  dot.classList.toggle("active-dot2", index == step2)
+}
 
 function updateStep1() {
   render1()
@@ -118,11 +153,8 @@ function updateStep2() {
   return;   
 }
 
-
-
 timer1= setInterval(updateStep1, 260)
 timer2= setInterval(updateStep2, 260)
-
 
 function resetStep1() {
   step1 = 0
@@ -130,6 +162,7 @@ function resetStep1() {
   timer1=setInterval(updateStep1, 260)
   render1 ()
 }
+
 function resetStep2() {
   step2 = 0
   clearInterval(timer2)
@@ -137,25 +170,27 @@ function resetStep2() {
   render2 ()
 }
 
-function scala1(){
-
+function scala1() {
 playfm1(); 
 updateStep1();
 resetStep1();
+<<<<<<< HEAD
 resetplay();
+=======
+>>>>>>> b428a268834ed9aebf8138705a7c31a05db1b692
 }
-function scala2(){
 
+function scala2() {
 playfm2(); 
 updateStep2();
 resetStep2();
-
 }
-function insieme(){
-  playfm1(); 
+
+function insieme() {
+playfm1(); 
 updateStep1();
 resetStep1();
-  playfm2(); 
+playfm2(); 
 updateStep2();
 resetStep2();
 }
@@ -167,7 +202,8 @@ function render3() {
 }
 
 function renderDot3(dot , index) {
- dot.classList.toggle("active-dot3", index == step3)}
+  dot.classList.toggle("active-dot3", index == step3)
+}
 
 function updateStep3() {
   render3()
@@ -175,7 +211,8 @@ function updateStep3() {
   if(step3 >= rett3.children.length)
   return;   
 }
-timer3= setInterval(updateStep3, 260)
+
+timer3 = setInterval(updateStep3, 260)
 
 function resetStep3() {
   step3 = 0
@@ -183,7 +220,8 @@ function resetStep3() {
   timer3=setInterval(updateStep3, 260)
   render3 ()
 }
-function insieme(){
+
+function insieme() {
   playfm1(); 
   playfm2(); 
   updateStep3();

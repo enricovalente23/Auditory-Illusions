@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>The Shepard Tone</title>
+
+	<link rel="stylesheet" type="text/css" href="../jquery.pagepiling.css" />
+	<link rel="stylesheet" type="text/css" href="../Examples/examples.css" />
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+	<script type="text/javascript" src="../jquery.pagepiling.min.js"></script>
+	<script type="text/javascript">
+
+
+		$(document).ready(function() {
+
+	    	$('#pagepiling').pagepiling({
+	    		menu: '#menu',
+	    		anchors: ['page1', 'page2'],
+			    sectionsColor: ['#ffffff', '#000000'],
+			    navigation: {
+			    	'position': 'right',
+			   		'tooltips': ['Page 1', 'Page 2']
+			   	}
+			});
+	    });
+    </script>
+
+</head>
+
+<body>
+	<ul id="menu">
+		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
+		<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
+	</ul>
+
+	<div id="pagepiling">
+
+	    <div class="section" id="section1">
+
+	    	<h1><b>The Shepard Tone</b></h1>
+
+			<style>
+
+				#section1 {
+					background-image: url(escherian_stairs.png);
+					background-size: cover;
+				}
+				#section1 h1 {
+					color: black;
+					font-size: 7em;
+    				font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+				}
+
+			</style>
+
+	    </div>
+
+	    <div class="section" id="section2">
+
+			<div id = "p1">The Shepard Tone is an auditory illusion of a tone that seems to continually <br>
+				ascend or descend in pitch, yet which ultimately gets no higher or lower.<br>
+				Here, the effect is presented in a glissando fashion: a continuous<br>
+				never-ending rising sound is perceived.<br><br>
+				Play with us to learn how in works!<br>
+				<div id = 'i'><b>Press W to jump and S to duck.</b></div>
+			</div>
+
+			<div id = "p2">
+
+				<div id = "p21" class = "hide">
+					In the lower box an oscilloscope reveals how the infinite scale is made: the illusion<br>
+					comes from the superposition of 10 dephased oscillators with rising frequencies.<br>
+					Each bell shape is an oscillator, they are made by visible rectangles only because<br>
+					of the choice of the FFT size.<br><br>
+				</div>
+
+				<div id = "p22" class = "hide">
+					Hitting a red obstacle focuses the oscilloscope on a single oscillator, highlighting its behaviour.<br><br>
+				</div>
+
+				<div id = "p23" class = "hide">
+					The ultimate effect is given by fading in and out each scale/oscillator once it reaches a certain<br>
+					frequency lower or upper bound, so that hearing the beginning or end of any given scale<BR>
+					is impossible and a continuous sound is perceived.
+				</div>
+
+			</div>
+
+			<div id = graphics>
+
+				<canvas id="canvasO"></canvas>
+				<canvas id="canvas"></canvas>   
+				<div id = "gray" class = "text hide"><b>Avoid the gray obstacles!</b></div>
+				<div id = "red" class = "text hide"><b>Avoid the red obstacles!</b></div>
+	
+			</div>
+	
+			<div id = "buttons">
+				<button id = "start" class = "b" onclick = "ascendingShepard()"><b>PLAY</b></button>
+				<button class = "b" onclick = "Stop()"><b>STOP</b></button>
+			</div>
+			
+			<script src='shepard-game.js'></script>
+	
+			<style>
+
+				#section2 {
+					background-image: url(escherian_stairs2.png);
+					background-size: cover;
+				}
+				
+				#p1 {
+					position: absolute;
+					top: 28%;
+					left: 27%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 25px;
+					color: black;
+					font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+				}
+				#i {
+					position: relative;
+					margin: 20px;
+					font-size: 20px;
+					color: purple;
+				}
+
+				#p2 {
+					position: absolute;
+					top: 70%;
+					left: 27%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 24px;
+					color: black;
+				}
+	
+				.b {
+					height: 60px;
+					width: 100px;
+					border-radius: 100px;
+					border-color: black;
+					background-color: #0043a8;
+					color: rgb(255, 255, 255);
+				}
+	
+				#buttons {
+					margin: 20px;
+					position: absolute;
+					top: 42%;
+					left: 26%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 20px;
+					font-family: arial;
+				}
+	
+				#canvasO {
+					border: 0.5px solid rgb(0, 0, 0);
+					position: absolute;
+					top: 70%;
+					left: 70%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					background-color: #ddf8ff;
+					/* filter: blur(8px) contrast(1); */
+				} 
+	
+				#canvas {
+					border: 0.5px solid rgb(0, 0, 0);
+					position: absolute;
+					top: 30%;
+					left: 70%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					background-image: url('BG.png');
+					background-size: 100% 100%;
+				} 
+				
+			   .text {
+					color: rgb(0, 0, 0);
+					position: absolute;
+					top: 25%;
+					left: 69.5%;
+					margin-right: -50%;
+					transform: translate(-50%, -50%);
+					font-size: 25px;
+					font-style: italic;
+				}
+	
+				.hide {
+					color: transparent;
+				}
+				
+			</style>
+
+	    </div>
+	</div>
+
+</body>
+</html>

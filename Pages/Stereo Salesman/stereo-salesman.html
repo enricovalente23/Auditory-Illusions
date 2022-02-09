@@ -3,10 +3,9 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>The Cocktail Party Effect</title>
+	<title>The Stereo Salesman Effect</title>
 
 	<link rel="stylesheet" type="text/css" href="../../jquery.pagepiling.css" />
-	<link rel="stylesheet" type="text/css" href="examples.css" />
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
@@ -18,7 +17,7 @@
 		$(document).ready(function() {
 	    	$('#pagepiling').pagepiling({
 	    		menu: '#menu',
-	    		anchors: ['page1', 'page2', 'page3'],
+	    		anchors: ['page1', 'page2', 'page3', 'page4'],
 	    		navigation: {
 		            'textColor': '#f2f2f2',
 		            'bulletsColor': '#ccc',
@@ -72,12 +71,44 @@
 	function closeDragElement() {
 		/* stop moving when mouse button is released:*/
 		document.onmouseup = null;
-		document.onmousemove = null;
+		document.onmousemove
+		 = null;
 	}
+
+
+		var wavesurfer = WaveSurfer.create({
+	container: '#waveform',
+	waveColor: 'violet'
+	});
+
+	wavesurfer.load('../../audio');
+
+	wavesurfer.on('ready', function () {
+	// Enable creating regions by dragging
+	wavesurfer.enableDragSelection({});
+
+	// Add a couple of pre-defined regions
+	wavesurfer.addRegion({
+		start: 2, // time in seconds
+		end: 5, // time in seconds
+		color: 'hsla(100, 100%, 30%, 0.1)'
+	});
+	
+	wavesurfer.addRegion({
+		start: 8,
+		end: 14,
+		color: 'hsla(200, 100%, 30%, 0.1)'
+	});
+	
+	wavesurfer.addRegion({
+		start: 28,
+		end: 36,
+		color: 'hsla(400, 100%, 30%, 0.1)'
+	});
+	});
+
+
 	}
-
-
-
 
     </script>
 
@@ -117,37 +148,34 @@
 		padding:0;
 	}
 
-	/* Centered texts in each section
-	* --------------------------------------- */
-	.section{
-		text-align:center;
-	}
-
 
 	/* Backgrounds will cover all the section
 	* --------------------------------------- */
 	#section1,
 	#section2,
-	#section3{
+	#section3,
+	#section4{
 		background-size: cover;
 	}
 
 	/* Defining each section background and styles
 	* --------------------------------------- */
+
 	#section1{
-		background-image: url(../../Images/folla.jpg);
+		background-color: rgb(255, 255, 255);
+		text-align:center;
 	}
 	#section2{
-		background-image: url(../../Images/3522.jpg);
+		background-color: rgb(209, 163, 37);
 		padding: 6% 0 0 0;
 	}
 	#section3{
-		background-image: url(imgs/bg3.jpg);
-		padding: 6% 0 0 0;
+		background-color: white;
 	}
-	#section3 h1{
-		color: #000;
+	#section4{
+		background-color: rgb(255, 255, 255);
 	}
+
 
 
 
@@ -168,21 +196,23 @@
 		top: 30px;
 	}
 	#section2 h1,
-	#section2 p{
-		text-shadow: 1px 5px 20px #000;
-	}
 
-	#section3 h1,
-	#section3 p{
-		text-shadow: 1px 5px 20px #000;
-		color: #fff;
-	}
 
 	#infoMenu li a{
 			color: #fff;
 	}
 
 
+
+
+
+	#bar {
+		display: inline-block;
+		position: relative;
+		margin-left: 5%;
+		margin-right: 5%;
+		bottom: 0%;
+	}
 
 
     
@@ -227,16 +257,10 @@
 </head>
 <body>
 
-	<ul id="menu">
-		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
-		<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
-		<li data-menuanchor="page3"><a href="#page3">Page 3</a></li>
-	</ul>
-
 	<div id="pagepiling">
 
 	    <div class="section" id="section1">
-	    	<h1>The Cocktail Party Effect</h1>
+	    	<h1>The Stereo Salesman</h1>
 	    </div>
 
 	    <div class="section" id="section2">
@@ -253,8 +277,39 @@
 	    </div>
 
 	    <div class="section" id="section3">
-	    	<div class="intro">
+	    	<div class="stereobello">
+                <img src="../../Images/stereobrutto.jpg" alt="Stereo Brutto"
+				position="relative";
+				left= 10%;
+				width= 50%>
 	    	</div>
+	    </div>
+
+		<div class="section" id="section4">
+            <div id = "bar">
+
+				<!-- main wavesurfer.js lib -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+
+				<!-- wavesurfer.js regions -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
+		  
+				<div id="waveform"></div>
+		  
+				<p align="center">
+				  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+					<i class="glyphicon glyphicon-play"></i>
+					Play
+				  </button>
+				</p>
+
+				<img src="../../Images/stereobello.jpg" alt="Stereo Bello"
+				width = 45%>
+				
+				<img src="../../Images/salesman.jpg" alt="Salesman"
+				width = 45%>
+
+			</div>	
 	    </div>
 
 	</div>
