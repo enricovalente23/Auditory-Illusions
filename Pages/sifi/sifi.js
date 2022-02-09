@@ -13,19 +13,21 @@ var delay = 1000
 
 function startBlinkOnce()
 {
-  var start = setTimeout(blink, delay)    // after 1 sec
+  var start = setTimeout(blink, delay)          // after 1 sec
   start = setTimeout(blink, delay + 100)        // 0.1 sec delay: ON
   return
 }
 
-function startBlinkTwice()
-{
-  var start = setTimeout(blink, delay)   // after 1 sec
-  start = setTimeout(blink, delay + 100)       // 0.1 sec delay: ON
-  start = setTimeout(blink, delay + 200)       // 0.2 sec delay: OFF
-  start = setTimeout(blink, delay + 300)       // 0.3 sec delay: ON
-  return
-}
+// maybe not useful because two blinking dots are not needed, just playTwice()
+
+// function startBlinkTwice()
+// {
+//   var start = setTimeout(blink, delay)         // after 1 sec
+//   start = setTimeout(blink, delay + 100)       // 0.1 sec delay: ON
+//   start = setTimeout(blink, delay + 200)       // 0.2 sec delay: OFF
+//   start = setTimeout(blink, delay + 300)       // 0.3 sec delay: ON
+//   return
+// }
 
 function stopBlink()
 {
@@ -61,7 +63,7 @@ function playOnce()
 function playTwice()
 {
   var note = setTimeout(() => playNote(N), delaySound)
-  note = setTimeout(() => playNote(N), delaySound + 200)
+  note = setTimeout(() => playNote(N), delaySound + 150)    // repeating after 0.15 s
   return
 }
 
@@ -75,6 +77,6 @@ function blinkOnce()
 
 function blinkTwice()
 {
-  startBlinkTwice()
+  startBlinkOnce()
   playTwice()
 }
