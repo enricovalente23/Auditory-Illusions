@@ -6,6 +6,9 @@ var release = 0.2;
 var attack1 =0.02;
 var release1 = 0.4;
 
+var note1 = [];
+var note2 = [];
+
 function play(n) {
   const o = c.createOscillator();
   const g = c.createGain();
@@ -35,38 +38,50 @@ function play1(n) {
 
 
 function playfm1() {
-setTimeout(()=>play1(3),c.currentTime) //DO
-setTimeout(()=>play(-7),c.currentTime+300) // RE
-setTimeout(()=>play(0),c.currentTime+600) // LA
-setTimeout(()=>play1(-4),c.currentTime+900) //    FA
-setTimeout(()=>play(0),c.currentTime+1200)// LA
-setTimeout(()=>play(-7),c.currentTime+1500)// RE
-setTimeout(()=>play1(3),c.currentTime+1800) //    DO
-setTimeout(()=>play(-7),c.currentTime+2100) // RE
-setTimeout(()=>play(0),c.currentTime+2400) // LA
-setTimeout(()=>play1(-4),c.currentTime+2700) //    FA
-setTimeout(()=>play(0),c.currentTime+3000)// LA
-setTimeout(()=>play(-7),c.currentTime+3300)// RE
+
+  for (i=0; i < note1.length; i++) {
+    clearTimeout(note1[i])
+   }
+  
+    note1 = []
+
+note1.push(setTimeout(()=>play1(3),c.currentTime)) //DO
+note1.push(setTimeout(()=>play(-7),c.currentTime+300)) // RE
+note1.push(setTimeout(()=>play(0),c.currentTime+600)) // LA
+note1.push(setTimeout(()=>play1(-4),c.currentTime+900)) //    FA
+note1.push(setTimeout(()=>play(0),c.currentTime+1200))// LA
+note1.push(setTimeout(()=>play(-7),c.currentTime+1500))// RE
+note1.push(setTimeout(()=>play1(3),c.currentTime+1800)) //    DO
+note1.push(setTimeout(()=>play(-7),c.currentTime+2100)) // RE
+note1.push(setTimeout(()=>play(0),c.currentTime+2400)) // LA
+note1.push(setTimeout(()=>play1(-4),c.currentTime+2700)) //    FA
+note1.push(setTimeout(()=>play(0),c.currentTime+3000))// LA
+note1.push(setTimeout(()=>play(-7),c.currentTime+3300))// RE
 
 }
+
 function playfm2() {
-setTimeout(()=>play1(-9),c.currentTime) //    DO
-setTimeout(()=>play(2),c.currentTime+300) // SI
-setTimeout(()=>play(-5),c.currentTime+600) // SOL
-setTimeout(()=>play1(-2),c.currentTime+900) //    FA
-setTimeout(()=>play(-5),c.currentTime+1200)// MI
-setTimeout(()=>play(2),c.currentTime+1500)// RE
-setTimeout(()=>play1(-9),c.currentTime+1800) //   DO
-setTimeout(()=>play(2),c.currentTime+2100) // RE
-setTimeout(()=>play(-5),c.currentTime+2400) // MI
-setTimeout(()=>play1(-2),c.currentTime+2700) //    FA
-setTimeout(()=>play(-5),c.currentTime+3000)// MI
-setTimeout(()=>play(2),c.currentTime+3300)// RE
+  for (i=0; i < note2.length; i++) {
+    clearTimeout(note2[i])
+   }
+  
+    note2 = []
+note2.push(setTimeout(()=>play1(-9),c.currentTime))//    DO
+note2.push(setTimeout(()=>play(2),c.currentTime+300)) // SI
+note2.push(setTimeout(()=>play(-5),c.currentTime+600)) // SOL
+note2.push(setTimeout(()=>play1(-2),c.currentTime+900)) //    FA
+note2.push(setTimeout(()=>play(-5),c.currentTime+1200))// MI
+note2.push(setTimeout(()=>play(2),c.currentTime+1500))// RE
+note2.push(setTimeout(()=>play1(-9),c.currentTime+1800))//   DO
+note2.push(setTimeout(()=>play(2),c.currentTime+2100)) // RE
+note2.push(setTimeout(()=>play(-5),c.currentTime+2400)) // MI
+note2.push(setTimeout(()=>play1(-2),c.currentTime+2700)) //    FA
+note2.push(setTimeout(()=>play(-5),c.currentTime+3000))// MI
+note2.push(setTimeout(()=>play(2),c.currentTime+3300))// RE
 }
 
-function todo(){
-playfm1(); 
-playfm2();
+function resetplay(){ c
+  o.frequency.value = 440*Math.pow(2,3/12);
 }
 
 
@@ -127,7 +142,7 @@ function scala1(){
 playfm1(); 
 updateStep1();
 resetStep1();
-
+resetplay();
 }
 function scala2(){
 
