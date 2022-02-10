@@ -18,11 +18,11 @@
 
 	    	$('#pagepiling').pagepiling({
 	    		menu: '#menu',
-	    		anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
-			    sectionsColor: ['black', 'white', 'white', 'black,', 'white', 'white'],
+	    		anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9'],
+			    sectionsColor: ['black', 'white', 'white', 'black,', 'white', 'white', 'black', 'white', 'white'],
 			    navigation: {
 			    	'position': 'right',
-			   		'tooltips': ['SIFI', 'Effect', 'Explanation', 'Yanny-Laurel', 'Effect', 'Explanation']
+			   		'tooltips': ['SIFI', 'Effect', 'Explanation', 'Yanny-Laurel', 'Effect', 'Explanation', 'Illusory Discontinuity', 'Effect', 'Explanation']
 			   	}
 			});
 	    });
@@ -39,6 +39,9 @@
 		<li data-menuanchor = "page4"><a href = "#page4">Yanny-Laurel</a></li>
 		<li data-menuanchor = "page5"><a href = "#page5">Effect</a></li>
 		<li data-menuanchor = "page6"><a href = "#page6">Explanation</a></li>
+		<li data-menuanchor = "page6"><a href = "#page7">Illusory Discontinuity</a></li>
+		<li data-menuanchor = "page6"><a href = "#page8">Effect</a></li>
+		<li data-menuanchor = "page6"><a href = "#page9">Explanation</a></li>
 	</ul>
 
 	<div id = "pagepiling">
@@ -158,9 +161,10 @@
 			<br><br>
 			<h2>If you said one flash each: you are CORRECT!<br><br>
 				Sometimes, some people say they see TWO flashes when they hear TWO beeps.<br><br>
-				This auditory illusion is a cross-modal effect, in which what is processed in one sensory modality affect what is processed or experienced in another.<br>
-				What you visually experience is affected by what you hear.<br>
-				As seen, although the same number of dots flashes on the screen when one and two beeps are sounded, when there are two beeps, people frequently report experiencing two flashes.<br>
+				This auditory illusion is a cross-modal effect, in which what is processed in one sensory modality<br>
+				affect what is processed or experienced in another. What you visually experience is affected by what you hear.<br>
+				As seen, although the same number of dots flashes on the screen when one and two beeps are sounded, when there are two beeps,<br>
+				people frequently report experiencing two flashes.<br>
 				L. Shams and colleagues hypothesise that the “alteration of the visual percept is due to cross-modal perceptual interactions as opposed to cognitive, attentional, or other origins” (Shams et al., 2002).</b>
 			</h2>
 
@@ -174,7 +178,8 @@
 
 				#section3 h2 {
 					color: #0075ff;
-					font-size: 1.3em;
+					font-size: 1.2em;
+					line-height: 1.5em;
 					text-align: center;
 					margin-left: 8em;
 					margin-right: 8em;
@@ -211,12 +216,18 @@
 			
 				<div>
 					<span>Laurel</span>
-					<input id="filterGain" name="filterGain" type="range" style="width: 210px" min="-80" max="80" step="any" value="10" oninput="onConfig()" onchange="onConfig()">
+					<input id = "filterGain" name = "filterGain" type = "range" style = "width: 210px" min = "-80" max = "80" step = "any" value = "10" oninput = "onConfig()" onchange = "onConfig()">
 					<span>Yanny</span>
 				</div>
 			</div>
 
 				<style>
+
+					#section5 div {
+						background-color: #53744a;
+						border-radius: 10px;
+						text-align: center;
+					}
 
 					#section5 audio {
 						filter: hue-rotate(120deg);
@@ -224,6 +235,7 @@
 						filter: sepia(40%);
 						width: 350px;
 						height: 30px;
+						margin: 10px 0px 40px 0px;
 					}
 
 					#section5 p {
@@ -232,20 +244,12 @@
 						font-style: italic;
 						font-weight: bold;
 						text-align: center;
-						padding: 30px 30px 30px 30px;
+						margin: 30px 30px 30px 30px;
 					}
 
 					#section5 span {
 						color: black;
 						font-weight: bold;
-						text-align: center;
-					}
-
-					#section5 div {
-						background-color: lightgreen;
-						width: 70%;
-						padding: 30px 70px 30px 70px;
-						border-radius: 10px;
 						text-align: center;
 					}
 
@@ -256,23 +260,28 @@
         <div class = "section" id = "section6">
 
 			<h1><b><i>Explanation</i></h1>
-			<br><br>
-			<h2>write explanation<br><br>
-
-			</b>
+			<br><br><br>
+			<h2>This is an auditory illusion which became popular in 2018, in which a short audio recording of speech can be heard as one of two words.<br>
+				By pitch shifting the original audio to higher or lower frequencies, the same listener can report different interpretations.<br>
+				Analysis of the sound frequencies has confirmed that both sets of sounds are present in the mixed recording,<br>
+				but some users focus on the higher frequency sounds in "Yanny" and cannot seem to hear the lower sounds of the word "Laurel".<br>
+				When the audio clip is slowed to lower frequencies, the word "Yanny" is heard by more listeners, while faster playback makes percieve "Laurel".
+			</b><br><br><br>
+			<img src = "../Images/yanny-laurel.gif" width = "25%">
 			</h2>
 
 			<style>
 
 				#section6 h1 {
-					color: orange;
+					color: #6e526f;
 					font-size: 3em;
 					text-align: center;
 				}
 
 				#section6 h2 {
 					color: #0075ff;
-					font-size: 1.3em;
+					font-size: 1.2em;
+					line-height: 1.5em;
 					text-align: center;
 					margin-left: 8em;
 					margin-right: 8em;
@@ -281,6 +290,114 @@
 			</style>
 
 		</div>
+
+		<div class = "section" id = "section7">
+
+	    	<h1><b><i>Illusory Discontinuity</i></b></h1>
+
+				<style>
+
+					#section7 {
+						background-image: url(../Images/discontinuity.png);
+						background-size: cover;
+						background-position: center; 
+					}
+
+					#section7 h1 {
+						color: orange;
+						font-size: 4em;
+						text-align: center;
+					}
+
+				</style>
+
+		</div>
+
+		<div class = "section" id = "section8">
+
+			<script src = "../Pages/illusory-discontinuity/illusory-discontinuity.js"></script>
+
+			<h1><b>You are about to hear a 5 seconds tone sound.<br>
+			<br>Is the sound continuous?</b></h1>
+
+			<button onclick = "suonarumore()"></button>
+			<button onclick = "suonatono()"></button>
+
+				<style>
+
+					#section8 {
+						background-image: url(../Images/discontinuity.png);
+						background-size: cover;
+						background-position: center;
+					}
+
+					#section8 h1 {
+						color: orange;
+						font-size: 1.5em;
+						font-style: italic;
+						font-weight: bold;
+						text-align: left;
+						float: left;
+						margin-top: 55px;
+						margin-left: 8em;
+					}
+
+					#section8 button {
+						width: 50px;
+						height: 50px;
+						border-width: 25px 0px 25px 40px;
+						border-color: transparent transparent transparent orange;
+						float: right;
+						margin-top: 80px;
+						margin-right: 300px;
+					}
+
+				</style>
+
+		</div>
+
+
+		<div class = "section" id = "section9">
+
+			<h1><b><i>Explanation</i></h1>
+				<br><br><br>
+				<h2>When those bursts of noise happened, did the tone seem to stop for the duration of the noise?<br>
+					A 2011 study indicated that roughly one in four people will mistakenly perceive the tone as having been broken up.<br>
+					There seem to be detectable neurological differences in the brains of people that hear the tone as broken.<br>
+					The "Illusory discontinuity" is an auditory illusion in which a continuous ongoing sound becomes inaudible during a brief, non-masking noise.<br>
+					The illusion is perceived only by some listeners, but not by others, reflecting individual variation in hearing abilities.<br>
+					The most susceptible listeners describe their sensations in terms of the sound actually containing a physical gap.<br>
+					The illusory discontinuity is strongest when the interrupting sound is short (50ms). Longer sounds elicit weaker illusory discontinuity;<br>
+					this effect may be related to better auditory segregation.
+				</b><br>
+				</h2>
+	
+				<style>
+
+					#section9 {
+						background-image: url(../Images/discontinuity.png);
+						background-size: cover;
+						background-position: center;
+					}
+	
+					#section9 h1 {
+						color: orange;
+						font-size: 3em;
+						text-align: center;
+					}
+	
+					#section9 h2 {
+						color: white;
+						font-size: 1.2em;
+						line-height: 1.5em;
+						text-align: center;
+						margin-left: 8em;
+						margin-right: 8em;
+					}
+	
+				</style>
+		</div>
+
 
 	</div>
 
