@@ -1,0 +1,146 @@
+body{background-image: url("background.jpg");}
+
+button{
+  width: 80px;
+  height: 60px;
+  color: black;
+  margin-top: 60px;
+  margin-left: 490px;
+  
+  position:relative;
+  display: inline-block;
+  font-family: "Trirong", serif;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.viola{
+  background-color: #ce74ffbd;
+}
+.verde{
+  background-color:#1bdb1b
+}
+.dot1{
+    position: relative;
+    bottom:-30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left:40px;
+    background-color:#ce74ffbd;
+    display: inline-block;
+    border-style: solid;
+    border-width: 4px;
+    border-color:#ce74ffbd;
+  }
+  
+  #rett1 {
+    margin: auto;
+    margin-top: 110px;
+    padding: 15px;
+    border-radius:5px;
+    width: 1300px;
+    height: 250px;
+     
+  }
+  
+  .LA{bottom:-100px;}
+  .FA{bottom:-150px;}
+  .RE{bottom:-190px;}
+  
+  .active-dot1{
+    background-color:#E0B0FF;
+    transform: scale(1);
+	  animation: pulse 2s infinite;
+    transform: translate(-50%, -50%);
+  }
+
+  
+  .dot2{
+    position: relative;
+    bottom:-30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left:40px;
+    background-color:#1bdb1b;
+    display: inline-block;
+    border-style: solid;
+    border-width: 5px;
+  
+  }
+  #rett2 {
+     margin: auto;
+    bottom: 10%;
+    
+    padding: 15px;
+    border-radius:5px;
+    width: 1300px;
+    height: 250px;
+  }
+  .active-dot2{
+    background-color:#00FF7F;
+    transform: scale(1);
+	  animation: pulse 2s infinite;
+    transform: translate(-50%, -50%);
+  }
+  .SI{bottom:-50px;
+  border-color:#21e021}
+  .MI{bottom:-170px;
+  border-color:#21e021}
+  .SOL{bottom:-100px;
+  border-color:#21e021}
+  .DO{bottom:-200px;
+  border-color:#21e021}
+
+  .dot3{
+    position: relative;
+    bottom:-30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left:40px;
+    background-color: white;
+    display: inline-block;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+  }
+  
+  #rett3 {
+    margin: auto;
+    bottom: 10%;
+    padding: 15px;
+    border-radius:5px;
+    width: 1300px;
+    height: 250px;
+     
+  }
+  
+  .SI3{bottom:-100px;}
+  .LA3{bottom:-150px;}
+  .SOL3{bottom:-190px;}
+  
+  .active-dot3{
+    background-color:#b9dbff;
+    transform: scale(1);
+	  animation: pulse 2s infinite;
+    transform: translate(-50%, -50%);
+  }
+
+  
+  @keyframes pulse {
+    0% {
+        transform: scale(0.3);
+        box-shadow: 0 0 0 0 #a46fc0;
+    }
+
+    70% {
+        transform: scale(1.5);
+        box-shadow: 0 0 0 10px rgba(38, 224, 14, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(86, 243, 38, 0);
+    }
+}

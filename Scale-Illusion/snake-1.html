@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url("background.jpg");
+            
+        }
+        canvas{
+            box-shadow: black 20px 10px 50px;
+            
+        }
+        h1{ margin-top: 10px;
+            color:white;
+            text-shadow: 2px 2px 5px black;
+            font-family: "Trirong", serif;
+        }
+        h2{ 
+            margin-top: 0px;
+            color:white;
+            text-shadow: 2px 2px 5px black;
+            font-family: "Trirong", serif;
+        }
+        
+        button{
+         width: 80px;
+         height: 50px;
+         color:black;
+         border-radius: 10px;
+         background-color: #ffffff;
+         margin-bottom: 20px;
+         font-family: "Trirong", serif;
+        }          
+        #rettangolo {
+         margin: auto;
+         bottom: 10%;
+         background-color: "#E0B0FF";
+         padding: 15px;
+         border-radius:5px;
+         width: 800px;
+         height: 230px;
+          }
+          
+  .dott{
+    position: relative;
+    bottom:-30px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-left:24px;
+    background-color:#b269da;
+    display: inline-block;
+    border-style: solid;
+   
+    border-color:#884DA7;
+  }
+  .LA{bottom:-100px;
+  border-color:#884DA7}
+  .FA{bottom:-150px;}
+  .RE{bottom:-190px;
+  border-color:#884DA7}
+  
+  .active-dott{
+    background-color:#8136b3;
+    transform: scale(1);
+	animation: pulsee 2s infinite;
+    transform: translate(-50%, -50%);
+  }
+       
+  @keyframes pulsee {
+                0% {
+                    transform: scale(0.5);
+                    box-shadow: 0 0 0 0 #884DA7;
+                }
+
+                70% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 10px rgba(38, 224, 14, 0);
+                }
+
+                100% {
+                    transform: scale(0.95);
+                    box-shadow: 0 0 0 0 rgba(86, 243, 38, 0);
+                }
+            }
+    </style> 
+      
+</head>
+
+<body>
+    <h1>SNAKE EATING SCALE</h1>
+    <h2>press an arrow key or ASWD to start, eat all the notes and you will listen to the illusion</h2>
+    <button onclick="location.reload()"><strong>RESTART</strong></button>
+    <button name="forward" style="display:none "> <strong> NEXT </strong></button>
+    
+    
+    <div id ="rettangolo">
+        <div class = "dott active-dott"></div>
+        <div class = "dott RE"></div>
+        <div class = "dott LA"></div>
+        <div class = "dott FA"></div>
+        <div class = "dott LA"></div>
+        <div class = "dott RE"></div> 
+        <div class = "dott "></div>
+        <div class = "dott RE"></div>
+        <div class = "dott LA"></div>
+        <div class = "dott FA"></div>
+        <div class = "dott LA"></div>
+        <div class = "dott RE"></div> 
+        <div class = "dott "></div>
+    </div>
+
+    <canvas id="game" width="600" height="600"  >
+    </canvas>
+    <script src="snake-1.js"></script>
+</body>
+</html>
+

@@ -156,7 +156,7 @@ function drawVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
 
 // ENDLESS RUNNER GAME
 
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('canvasV');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
