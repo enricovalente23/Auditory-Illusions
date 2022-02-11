@@ -20,18 +20,18 @@ function startBlinkOnce()
 
 // AUDIO
 
-var c = new AudioContext()
+var C = new AudioContext()
 var duration = 0.1
 
 function playNote(n)
 {
-  var o = c.createOscillator()
-  var g = c.createGain()
+  var o = C.createOscillator()
+  var g = C.createGain()
   o.frequency.value = 440 * Math.pow(2, n / 12)     // all notes multiples of A (440 Hz)
   o.connect(g)
-  g.connect(c.destination)
+  g.connect(C.destination)
   o.start()
-  o.stop(c.currentTime + duration)
+  o.stop(C.currentTime + duration)
 }
 
 var N = 36                // sound "beep" frequency
