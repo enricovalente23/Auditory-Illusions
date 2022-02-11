@@ -39,3 +39,15 @@
     font-size: 20px;
     margin: 10px 0 60px;
 }
+
+.controls {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.controls img {
+    width: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}

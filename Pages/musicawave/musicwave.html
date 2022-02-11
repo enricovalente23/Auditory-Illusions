@@ -16,9 +16,14 @@
         <div class="music">
             <img src="../../Images/omino marzapane.png">
             <div class="info">
-                <h1>ALO</h1>
-                <p>Album - blablabla</p>
+                <h1>DJ RONCU$$I</h1>
+                <p>La Cavalcata dell'omino di marzapane</p>
                 <div id="waveform"></div>
+                <div class="controls">
+                    <img src="../../Images/media/play.png" id="playBtn">
+                    <img src="../../Images/media/stop.png" id="stopBtn">
+                    <img src="../../Images/media/volume.png" id="volumeBtn">
+                </div>
             </div>
         </div>
     </div>
@@ -26,13 +31,54 @@
 
 <script>
 
+    var playBtn = document.getElementById("playBtn")
+    var stopBtn = document.getElementById("stopBtn")
+    var volumeBtn = document.getElementById("volumeBtn")
+
     var wavesurfer = WaveSurfer.create({
         container: '#waveform',
-        waveColor: 'violet',
-        progressColor: 'purple'
+        waveColor: '#dde5ec',
+        progressColor: '#03cebf',
+        barWidth: 4,
+        height: 120,
+        responsive: true,
+        hideScrollbar: true,
+        barRadius: 4,
     });
 
     wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams TAGLIATA.mp3');
+
+
+
+    playBtn.onclick = function() {
+        wavesurfer.playPause()
+        if(playBtn.src.includes("play.png")){
+            playBtn.src = "../../Images/media/pause.png";
+        }
+        else {
+            playBtn.src = "../../Images/media/play.png";
+        }
+    }
+
+    stopBtn.onclick = function() {
+        wavesurfer.stop();
+        playBtn.src = "../../Images/media/play.png";
+    }
+
+    volumeBtn.onclick = function() {
+        wavesurfer.toggleMute()
+        if(volumeBtn.src.includes("volume.png")) {
+            volumeBtn.src = "../../Images/media/mute.png"
+        }
+        else {
+            volumeBtn.src = "../../Images/media/volume.png"
+        }
+    }
+
+    wavesurfer,on('finish', function () {
+        playBtn.src = "../../Images/media/play.png"
+        wavesurfer.stop();
+    });
 
 </script>
     

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,6 +9,9 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 	<script type="text/javascript" src="../../jquery.pagepiling.min.js"></script>
+
+	<script src="https://unpkg.com/wavesurfer.js"></script>
+
 	<script type="text/javascript">
 
 		var deleteLog = false;
@@ -31,84 +33,86 @@
 
 
 
-	dragElement(document.getElementById("mydiv"));
-
-	function dragElement(elmnt) {
-	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	
-	if (document.getElementById(elmnt.id + "header")) {
-		/* if present, the header is where you move the DIV from:*/
-		document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-	} else {
-		/* otherwise, move the DIV from anywhere inside the DIV:*/
-		elmnt.onmousedown = dragMouseDown;
-	}
-
-	function dragMouseDown(e) {
-		e = e || window.event;
-		e.preventDefault();
-		// get the mouse cursor position at startup:
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-		document.onmouseup = closeDragElement;
-		// call a function whenever the cursor moves:
-		document.onmousemove = elementDrag;
-	}
-
-	function elementDrag(e) {
-		e = e || window.event;
-		e.preventDefault();
-		// calculate the new cursor position:
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-		// set the element's new position:
-		elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-		elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-	}
-
-	function closeDragElement() {
-		/* stop moving when mouse button is released:*/
-		document.onmouseup = null;
-		document.onmousemove
-		 = null;
-	}
 
 
-		var wavesurfer = WaveSurfer.create({
+
+	var wavesurfer = WaveSurfer.create({
 	container: '#waveform',
 	waveColor: 'violet'
 	});
 
-	wavesurfer.load('../../audio');
+	wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams TAGLIATA.mp3');
 
 	wavesurfer.on('ready', function () {
 	// Enable creating regions by dragging
-	wavesurfer.enableDragSelection({});
+		wavesurfer.enableDragSelection({});
 
-	// Add a couple of pre-defined regions
-	wavesurfer.addRegion({
-		start: 2, // time in seconds
-		end: 5, // time in seconds
-		color: 'hsla(100, 100%, 30%, 0.1)'
-	});
-	
-	wavesurfer.addRegion({
-		start: 8,
-		end: 14,
-		color: 'hsla(200, 100%, 30%, 0.1)'
-	});
-	
-	wavesurfer.addRegion({
-		start: 28,
-		end: 36,
-		color: 'hsla(400, 100%, 30%, 0.1)'
-	});
+		// Add a couple of pre-defined regions
+		wavesurfer.addRegion({
+			start: 2, // time in seconds
+			end: 5, // time in seconds
+			color: 'hsla(100, 100%, 30%, 0.1)'
+		});
+		
+		wavesurfer.addRegion({
+			start: 8,
+			end: 14,
+			color: 'hsla(200, 100%, 30%, 0.1)'
+		});
+		
+		wavesurfer.addRegion({
+			start: 28,
+			end: 36,
+			color: 'hsla(400, 100%, 30%, 0.1)'
+		});
 	});
 
+	var playBtn = document.getElementById("playBtn")
+    var stopBtn = document.getElementById("stopBtn")
+    var volumeBtn = document.getElementById("volumeBtn")
 
-	}
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: '#dde5ec',
+        progressColor: '#03cebf',
+        barWidth: 4,
+        height: 120,
+        responsive: true,
+        hideScrollbar: true,
+        barRadius: 4,
+    });
+
+    wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams TAGLIATA.mp3');
+
+    playBtn.onclick = function() {
+        wavesurfer.playPause()
+        if(playBtn.src.includes("play.png")){
+            playBtn.src = "../../Images/media/pause.png";
+        }
+        else {
+            playBtn.src = "../../Images/media/play.png";
+        }
+    }
+
+    stopBtn.onclick = function() {
+        wavesurfer.stop();
+        playBtn.src = "../../Images/media/play.png";
+    }
+
+    volumeBtn.onclick = function() {
+        wavesurfer.toggleMute()
+        if(volumeBtn.src.includes("volume.png")) {
+            volumeBtn.src = "../../Images/media/mute.png"
+        }
+        else {
+            volumeBtn.src = "../../Images/media/volume.png"
+        }
+    }
+
+    wavesurfer,on('finish', function () {
+        playBtn.src = "../../Images/media/play.png"
+        wavesurfer.stop();
+    });
 
     </script>
 
@@ -202,10 +206,6 @@
 			color: #fff;
 	}
 
-
-
-
-
 	#bar {
 		display: inline-block;
 		position: relative;
@@ -215,21 +215,57 @@
 	}
 
 
-    
-	#mydiv {
-	position: absolute;
-	z-index: 9;
-	background-color: #f1f1f1;
-	text-align: center;
-	border: 1px solid #d3d3d3;
+
+	* {
+    padding: 0;
+    margin: 0;
+    font-family: 'poppins', sans-serif;
 	}
 
-	#mydivheader {
-	padding: 10px;
-	cursor: move;
-	z-index: 10;
-	background-color: #2196F3;
-	color: #fff;
+	.hero{
+		width: 100%;
+		height: 100vh;
+		background-image: none;
+		background-position: center;
+		background-size: contain;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.music img{
+		width: 300px;
+	}
+
+	.music{
+		width: 85%;
+		padding: 30px;
+		box-sizing: border-box;
+		background: black;
+		display: flex;
+	}
+
+	.info{
+		color: white;
+		margin-left: 30px;
+		flex: 1;
+	}
+
+	.info p{
+		font-size: 20px;
+		margin: 10px 0 60px;
+	}
+
+	.controls {
+		margin-top: 40px;
+		display: flex;
+		align-items: center;
+	}
+
+	.controls img {
+		width: 20px;
+		margin-right: 20px;
+		cursor: pointer;
 	}
 
     </style>
@@ -259,49 +295,49 @@
 
 	<div id="pagepiling">
 
+
 	    <div class="section" id="section1">
 	    	<h1>The Stereo Salesman</h1>
 	    </div>
 
+
 	    <div class="section" id="section2">
 	    	<div class="intro">
 	    		<h1>Try it yourself!</h1>
-	    		<p>Drag some people in the room to hear them talk</p>
-				<div id="mydiv">
-					<div id="mydivheader">Click here to move</div>
-					<p>Move</p>
-					<p>this</p>
-					<p>DIV</p>
-				  </div>
 	    	</div>
+
+			<div>
+				<p>Drag some people in the room to hear them talk</p>
+			</div>
+
+			<div class="hero">
+				<div class="music">
+					<img src="../../Images/omino marzapane.png">
+					<div class="info">
+						<h1>DJ RONCU$$I</h1>
+						<p>La Cavalcata dell'omino di marzapane</p>
+						<div id="waveform"></div>
+						<div class="controls">
+							<img src="../../Images/media/play.png" id="playBtn">
+							<img src="../../Images/media/stop.png" id="stopBtn">
+							<img src="../../Images/media/volume.png" id="volumeBtn">
+						</div>
+					</div>
+				</div>
+			</div>
+
 	    </div>
 
+
 	    <div class="section" id="section3">
-	    	<div class="stereobello">
-                <img src="../../Images/stereobrutto.jpg" alt="Stereo Brutto"
-				position="relative";
-				left= 10%;
-				width= 50%>
-	    	</div>
+
+
+
 	    </div>
+
 
 		<div class="section" id="section4">
             <div id = "bar">
-
-				<!-- main wavesurfer.js lib -->
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
-
-				<!-- wavesurfer.js regions -->
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
-		  
-				<div id="waveform"></div>
-		  
-				<p align="center">
-				  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
-					<i class="glyphicon glyphicon-play"></i>
-					Play
-				  </button>
-				</p>
 
 				<img src="../../Images/stereobello.jpg" alt="Stereo Bello"
 				width = 45%>
