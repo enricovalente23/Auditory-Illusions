@@ -18,23 +18,6 @@ function startBlinkOnce()
   return
 }
 
-// maybe not useful because two blinking dots are not needed, just playTwice()
-
-// function startBlinkTwice()
-// {
-//   var start = setTimeout(blink, delay)         // after 1 sec
-//   start = setTimeout(blink, delay + 100)       // 0.1 sec delay: ON
-//   start = setTimeout(blink, delay + 200)       // 0.2 sec delay: OFF
-//   start = setTimeout(blink, delay + 300)       // 0.3 sec delay: ON
-//   return
-// }
-
-function stopBlink()
-{
-  if (start)
-    clearInterval(start);
-}
-
 // AUDIO
 
 var c = new AudioContext()

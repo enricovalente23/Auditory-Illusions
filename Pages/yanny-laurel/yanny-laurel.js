@@ -1,3 +1,4 @@
+
 var Gain = 10;
 var FilterFreq = 1500;
 var FilterNum = 4;
@@ -70,9 +71,9 @@ var createFilters = function()
   return true;
 };
 
-
 var updateFilters = function()
 {
+  
   gainNode.gain.value = 0;
 
   for (var i = 0; i < filters.length; i++)
@@ -80,6 +81,7 @@ var updateFilters = function()
     filters[i].type = filterGain > 0 ? "lowshelf" : "highshelf";
     filters[i].gain.value = - Math.abs(filterGain) / FilterNum;
   }
+
   gainNode.gain.value = dbToField(Gain) / Math.sqrt(0.5 + 0.5 * dbToPower(- Math.abs(filterGain)));
 };
 
