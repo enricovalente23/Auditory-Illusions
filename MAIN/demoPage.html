@@ -260,9 +260,9 @@
 		
 				</div>
 		
-				<div id = "buttons">
-					<button id = "start" class = "pm" onclick = "ascendingShepard()"><b>PLAY</b></button>
-					<button class = "b" onclick = "Stop()"><b>STOP</b></button>
+				<div id = 'tasti'>
+					<button id = "start" class = "tasto" onclick = "ascendingShepard()"><b>PLAY</b></button>
+					<button class = "tasto" onclick = "Stop()"><b>STOP</b></button>
 				</div>
 				
 				<script src = "../Shepard Tone/shepard-game.js"></script>
@@ -301,33 +301,27 @@
 						color: black;
 					}
 
-				     button.pm {
-						margin-left: -1060px;
-						display:inline-block;
-						top: 220px;
+					#tasti {
+						margin: 20px;
+						position: absolute;
+						top: 42%;
+						left: 26%;
+						margin-right: -50%;
+						transform: translate(-50%, -50%);
 						font-size: 20px;
-						font-family: arial;
+						font-family: arial;						
+					}
+
+				    .tasto {
 						height: 60px;
 						width: 100px;
 						border-radius: 100px;
 						border-color: black;
 						background-color: #0043a8;
 						color: rgb(255, 255, 255);
+						margin-left: 0px;
 					}
-		
-					.b {margin-left: 0px;
-						display:inline-block;
-						top: 220px;
-						font-size: 20px;
-						font-family: arial;
-						height: 60px;
-						width: 100px;
-						border-radius: 100px;
-						border-color: black;
-						background-color: #0043a8;
-						color: rgb(255, 255, 255);
-					}
-		
+
 					#canvasO {
 						border: 0.5px solid rgb(0, 0, 0);
 						position: absolute;
