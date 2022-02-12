@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns = "http://www.w3.org/1999/xhtml">
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>MAIN</title>
+		<meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
+		<title>ILLUSORY</title>
 
 		<link rel = "stylesheet" type = "text/css" href = "../jquery.pagepiling.css" />
 		<link rel = "stylesheet" type = "text/css" href = "../Examples/examples.css" />
@@ -18,11 +18,11 @@
 
 				$('#pagepiling').pagepiling({
 					menu: '#menu',
-					anchors: ['page1', 'page2', 'page3', 'page4','page5','page6', 'page7', 'page8', 'page9', 'page10','page11','page12', 'page13','page14','page15','page16','page17'],
+					anchors: ['page1', 'page2', 'page3', 'page4','page5','page6', 'page7', 'page8', 'page9', 'page10', 'page11' ,'page12', 'page13', 'page14', 'page15', 'page16', 'page17'],
 					navigation: {
 						'size': '10pt',
 						'position': 'right',
-						'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4','Page 5','Page 6', 'Page 7', 'Page 8', 'Page 9', 'Page 10','Page 11','Page 12', 'Page 13','Page 14','Page 15','Page16','Page17']
+						'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4','Page 5','Page 6', 'Page 7', 'Page 8', 'Page 9', 'Page 10', 'Page 11', 'Page 12', 'Page 13', 'Page 14', 'Page 15', 'Page 16', 'Page 17']
 					}
 				});
 			});
@@ -47,8 +47,8 @@
 			<li data-menuanchor = "page13"><a href = "#page13">Illusory Discontinuity</a></li>
 			<li data-menuanchor = "page14"><a href = "#page14">Effect</a></li>
 			<li data-menuanchor = "page15"><a href = "#page15">Explanation</a></li>
-			<li data-menuanchor = "page15"><a href = "#page16">Octave Illusion</a></li>
-			<li data-menuanchor = "page15"><a href = "#page17">Effect</a></li>
+			<li data-menuanchor = "page16"><a href = "#page16">Octave Illusion</a></li>
+			<li data-menuanchor = "page17"><a href = "#page17">Effect</a></li>
 		</ul>
 
 		<div id = "pagepiling">
@@ -624,7 +624,7 @@
 				<h2>If you said one flash each: you are CORRECT!<br><br>
 					Sometimes, some people say they see TWO flashes when they hear TWO beeps.<br><br>
 					This auditory illusion is a cross-modal effect, in which what is processed in one sensory modality<br>
-					affect what is processed or experienced in another. What you visually experience is affected by what you hear.<br>
+					affects what is processed or experienced in another. What you visually experience is affected by what you hear.<br>
 					As seen, although the same number of dots flashes on the screen when one and two beeps are sounded, when there are two beeps,<br>
 					people frequently report experiencing two flashes.<br>
 					L. Shams and colleagues hypothesise that the “alteration of the visual percept is due to cross-modal perceptual interactions as opposed to cognitive, attentional, or other origins” (Shams et al., 2002).</b>
@@ -835,8 +835,8 @@
 			<div class = "section" id = "section15">
 	
 				<h1><b><i>Explanation</i></h1>
-					<br><br><br>
-					<h2>When those bursts of noise happened, did the tone seem to stop for the duration of the noise?<br>
+				<br><br><br>
+				<h2>When those bursts of noise happened, did the tone seem to stop for the duration of the noise?<br>
 						A 2011 study indicated that roughly one in four people will mistakenly perceive the tone as having been broken up.<br>
 						There seem to be detectable neurological differences in the brains of people that hear the tone as broken.<br>
 						The "Illusory discontinuity" is an auditory illusion in which a continuous ongoing sound becomes inaudible during a brief, non-masking noise.<br>
@@ -844,8 +844,8 @@
 						The most susceptible listeners describe their sensations in terms of the sound actually containing a physical gap.<br>
 						The illusory discontinuity is strongest when the interrupting sound is short (50ms). Longer sounds elicit weaker illusory discontinuity;<br>
 						this effect may be related to better auditory segregation.
-					</b><br>
-					</h2>
+				</b><br>
+				</h2>
 		
 					<style>
 	
@@ -874,22 +874,26 @@
 			</div>
 
 			<div class = "section" id = "section16">
+
 				<h1>OCTAVE ILLUSION</h1>
 
-				<style>
-					#section16{
-				  background-image: url("../Octave Illusion/background_octave.jpg");
-				  background-repeat: repeat-x;
-				  background-position: bottom;
-				  background-color: white;
-				}
-				    #section16 h1{
-						font-family: "Trirong", serif;
-						font-size: 100px;
-						color: black;
-				
-					 }
+					<style>
+
+						#section16 {
+							background-image: url("../Octave Illusion/background_octave.jpg");
+							background-repeat: repeat-x;
+							background-position: bottom;
+							background-color: white;
+						}
+
+						#section16 h1 {
+							font-family: "Trirong", serif;
+							font-size: 100px;
+							color: black;
+						}
+
 					</style>
+
 			</div>
 
 			<div class = "section" id = "section17">
@@ -897,136 +901,128 @@
 				<h1>Try to guess the structure of the following sound:</h1>
 				<h2>Please use your headphones</h2>
 
-        <button id="illusion" onclick="playinsieme()"><strong>PLAY</strong></button>
-        
-        <div  id="quiz">
-            <ul>
-            <li>
-                <input type="radio" name="answer" id="a" class="answer">
-                <label for="a" id="a_text"><strong>High tone on the left, bass tone on the right</strong> </label>
-            </li>
-
-            <li>
-                <input type="radio" name="answer" id="b" class="answer">
-                <label for="a" id="a_text"><strong>High tone on the left, bass tone on the right</strong></label>
-            </li>
-
-            <li>
-                <input type="radio" name="answer" id="correct" class="answer">
-                <label for="a" id="a_text"><strong>None of them</strong> </label>
-            </li>
-
-        </ul>
-
-       <a href=""id="risposta"onclick="result()"> <button id="submit"><strong>Submit</strong></button> </a>  
-        </div>
-
-        <script src="../Octave Illusion/octave-illusion.js"></script> 
-		
-		<style>
-			#section17{
-		  background-image: url("../Octave Illusion/background_octave.jpg");
-		  
-		  background-position: center top;
-		}
-		#section17 h1{ 
-				font-family: "Trirong", serif;
-				font-size: 50px;
+				<button id="illusion" onclick="playinsieme()"><strong>PLAY</strong></button>
 				
-				color: white;
-				font-size: 50px;
-				color: rgb(169, 84, 177);
-				text-shadow: -1px 2px 0 #000,
-							  1px 1px 0 #000,
-							 1px -1px 0 #000,
-							-1px -1px 0 #000;
+				<div id="quiz">
+
+				<ul>
+
+					<li>
+						<input type="radio" name="answer" id="a" class="answer">
+						<label for="a" id="a_text"><strong>High tone on the left, bass tone on the right</strong> </label>
+					</li>
+
+					<li>
+						<input type="radio" name="answer" id="b" class="answer">
+						<label for="a" id="a_text"><strong>High tone on the right, bass tone on the left</strong></label>
+					</li>
+
+					<li>
+						<input type="radio" name="answer" id="correct" class="answer">
+						<label for="a" id="a_text"><strong>None of them</strong> </label>
+					</li>
+
+				</ul>
+
+				<a href="" id="risposta" onclick="result()">
+					<button id="submit"><strong>Submit</strong></button>
+				</a>
+
+				</div>
+
+				<script src = "../Octave Illusion/octave-illusion.js"></script> 
 				
-			 }
-			 #section17 h2{ 
-				font-family: "Trirong", serif;
-				font-size: 30px;
-				color: black
-			 }
-	
-			 #quiz{
-				 color: #000;
-				 margin: auto;
-				 margin-top: 40px;
-				 padding: 15px;
-				 border-radius:5px;
-				 width:800px ;
-				 height: 300px;
-				 font-size: 30px;
-				 background-color: rgb(255, 255, 255);
-				 font-family: "Trirong", serif;
-			 }
-			 #section17 input {
-				-webkit-appearance: none;
-				-moz-appearance: none;
-				appearance: none;
-	
-				border-radius: 50%;
-				width: 30px;
-				height: 30px;
+					<style>
+
+						#section17 {
+							background-image: url("../Octave Illusion/background_octave.jpg");
+							background-position: center top;
+						}
+
+						#section17 h1 { 
+							font-family: "Trirong", serif;
+							font-size: 50px;
+							color: white;
+							font-size: 50px;
+							color: rgb(169, 84, 177);
+							text-shadow: -1px 2px 0 #000,
+										 1px 1px 0 #000,
+										 1px -1px 0 #000,
+										 -1px -1px 0 #000;
+						}
+
+						#section17 h2 { 
+							font-family: "Trirong", serif;
+							font-size: 30px;
+							color: black
+						}
 				
-	
-				border: 2px solid rgb(0, 0, 0);
-				transition: 0.2s all linear;
-				margin-right: 5px;
-	
-				position: relative;
-				top: 4px;
-				}
-	
-				#section17 input:checked {
-			   border: 6px solid rgb(169, 84, 177);
-			 }
-	
-			 #submit{
-				 width: 80px;
-			 height: 50px;
-			 color:rgb(0, 0, 0);
-			 border-radius: 10px;
-			 border-width: 7px;
-			 border-color: rgb(169, 84, 177);
-			 background-color: rgb(255, 255, 255);
-			 margin-left:50px;
-			 margin-top:3%;
-			 font-family: "Trirong", serif;
-			 position: relative;
-	
-			 }
-			 
-	
-			
-			 #illusion{
-			 width: 80px;
-			 height: 50px;
-			 color:black;
-			 border-radius: 10px;
-			 border-width: 7px;
-			 background-color: #ffffff;
-			 margin-left:50px;
-			 margin-top:70px;
-			 font-family: "Trirong", serif;
-			 position: relative;
-	
-			}
-	
-			#section17 ul{
-				list-style-type: none;
-			}
-			
-	
-			
-	   </style>
-	
+						#quiz {
+							color: #000;
+							margin: auto;
+							margin-top: 40px;
+							padding: 15px;
+							border-radius:5px;
+							width:800px ;
+							height: 300px;
+							font-size: 30px;
+							background-color: rgb(255, 255, 255);
+							font-family: "Trirong", serif;
+						}
 
-
-
-
-
-
+						#section17 input {
+							-webkit-appearance: none;
+							-moz-appearance: none;
+							appearance: none;
+				
+							border-radius: 50%;
+							width: 30px;
+							height: 30px;
+							
+							border: 2px solid rgb(0, 0, 0);
+							transition: 0.2s all linear;
+							margin-right: 5px;
+				
+							position: relative;
+							top: 4px;
+						}
+				
+						#section17 input:checked {
+							border: 6px solid rgb(169, 84, 177);
+						}
+				
+						#submit {
+							width: 80px;
+							height: 50px;
+							color:rgb(0, 0, 0);
+							border-radius: 10px;
+							border-width: 7px;
+							border-color: rgb(169, 84, 177);
+							background-color: rgb(255, 255, 255);
+							margin-left: 50px;
+							margin-top: 3%;
+							font-family: "Trirong", serif;
+							position: relative;
+						}
+						
+						#illusion {
+							width: 80px;
+							height: 50px;
+							color:black;
+							border-radius: 10px;
+							border-width: 7px;
+							background-color: #ffffff;
+							margin-left: 50px;
+							margin-top: 70px;
+							font-family: "Trirong", serif;
+							position: relative;
+						}
+				
+						#section17 ul {
+							list-style-type: none;
+						}
+						
+					</style>
 
 			</div>
 
