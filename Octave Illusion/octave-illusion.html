@@ -1,0 +1,131 @@
+
+<html>
+<head><link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+   </head> 
+    <body>
+        <h1>Try to guess the structure of the following sound:</h1>
+        <!--<button onclick="play_sx_2()"><strong>play bass</strong></button> <button onclick="play_sx_1()"><strong>play alt</strong></button>-->
+        <button id="illusion" onclick="playinsieme()"><strong>PLAY</strong></button>
+        
+        <div  id="quiz">
+            <ul>
+            <li>
+                <input type="radio" name="answer" id="a" class="answer">
+                <label for="a" id="a_text"><strong>High tone on the left, bass tone on the right</strong> </label>
+            </li>
+
+            <li>
+                <input type="radio" name="answer" id="b" class="answer">
+                <label for="a" id="a_text"><strong>High tone on the left, bass tone on the right</strong></label>
+            </li>
+
+            <li>
+                <input type="radio" name="answer" id="correct" class="answer">
+                <label for="a" id="a_text"><strong>None of them</strong> </label>
+            </li>
+
+        </ul>
+
+       <a href=""id="risposta"onclick="result()"> <button id="submit"><strong>Submit</strong></button> </a>  
+        </div>
+
+        <script src="octave-illusion.js"></script>  
+    </body>
+
+    
+    <style>
+        body{
+      background-image: url("background_octave.jpg");
+      
+      background-position: center top;
+    }
+         h1{ 
+            font-family: "Trirong", serif;
+            font-size: 50px;
+            margin-top: 200px;
+            margin-left:11em;
+            color: white;
+            font-size: 50px;
+            color: rgb(169, 84, 177);
+            text-shadow: -1px 2px 0 #000,
+                          1px 1px 0 #000,
+                         1px -1px 0 #000,
+                        -1px -1px 0 #000;
+            
+         }
+
+         #quiz{
+             margin: auto;
+             margin-top: 40px;
+             padding: 15px;
+             border-radius:5px;
+             width:800px ;
+             height: 250px;
+             font-size: 30px;
+             background-color: rgb(255, 255, 255);
+             font-family: "Trirong", serif;
+         }
+         input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+
+            border: 2px solid rgb(0, 0, 0);
+            transition: 0.2s all linear;
+            margin-right: 5px;
+
+            position: relative;
+            top: 4px;
+            }
+
+         input:checked {
+           border: 6px solid rgb(169, 84, 177);
+         }
+
+         #submit{
+             width: 80px;
+         height: 50px;
+         color:rgb(0, 0, 0);
+         border-radius: 10px;
+         border-width: 7px;
+         border-color: rgb(169, 84, 177);
+         background-color: rgb(255, 255, 255);
+         margin-left:50%;
+         margin-top:3%;
+         font-family: "Trirong", serif;
+         position: relative;
+
+         }
+         
+
+        
+         #illusion{
+         width: 80px;
+         height: 50px;
+         color:black;
+         border-radius: 10px;
+         border-width: 7px;
+         background-color: #ffffff;
+         margin-left:50%;
+         margin-top:70px;
+         font-family: "Trirong", serif;
+         position: relative;
+
+        }
+
+        ul{
+            list-style-type: none;
+        }
+        
+
+        
+   </style>
+
+
+</html>
+
