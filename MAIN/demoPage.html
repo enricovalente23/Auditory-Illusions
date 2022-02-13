@@ -18,11 +18,11 @@
 
 				$('#pagepiling').pagepiling({
 					menu: '#menu',
-					anchors: ['page1', 'page2', 'page3', 'page4','page5','page6', 'page7', 'page8', 'page9', 'page10', 'page11' ,'page12', 'page13', 'page14', 'page15', 'page16', 'page17','page18','page19', 'page20'],
+					anchors: ['page1', 'page2', 'page3', 'page4','page5','page6', 'page7', 'page8', 'page9', 'page10', 'page11' ,'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24'],
 					navigation: {
 						'size': '10pt',
 						'position': 'right',
-						'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4','Page 5','Page 6', 'Page 7', 'Page 8', 'Page 9', 'Page 10', 'Page 11', 'Page 12', 'Page 13', 'Page 14', 'Page 15', 'Page 16', 'Page 17','Page 18','Page 19', 'Page 20']
+						'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4','Page 5','Page 6', 'Page 7', 'Page 8', 'Page 9', 'Page 10', 'Page 11', 'Page 12', 'Page 13', 'Page 14', 'Page 15', 'Page 16', 'Page 17','Page 18','Page 19', 'Page 20', 'Page 21', 'Page 22', 'Page 23', 'Page 24']
 					}
 				});
 			});
@@ -50,8 +50,12 @@
 			<li data-menuanchor = "page16"><a href = "#page16">Octave Illusion</a></li>
 			<li data-menuanchor = "page17"><a href = "#page17">Effect</a></li>
 			<li data-menuanchor = "page18"><a href = "#page18">Stereo Salesman</a></li>
-			<li data-menuanchor = "page19"><a href = "#page19">Expensive stereo</a></li>
-			<li data-menuanchor = "page20"><a href = "#page20">Cheap stereo</a></li>
+			<li data-menuanchor = "page19"><a href = "#page19">Cheap stereo</a></li>
+			<li data-menuanchor = "page20"><a href = "#page20">Expensive stereo</a></li>
+			<li data-menuanchor = "page21"><a href = "#page21">Explanation</a></li>
+			<li data-menuanchor = "page22"><a href = "#page22">Cocktail Party</a></li>
+			<li data-menuanchor = "page23"><a href = "#page23">Effect</a></li>
+			<li data-menuanchor = "page24"><a href = "#page24">Explanation</a></li>
 		</ul>
 
 		<div id = "pagepiling">
@@ -843,12 +847,14 @@
 	
 			<div class = "section" id = "section15">
 	
-				<h1><b><i>Explanation</i></h1>
+				<h1 style="font-size: 50pt;"><b><i>Explanation</i></h1>
 				<br><br><br>
-				<h2>When those bursts of noise happened, did the tone seem to stop for the duration of the noise?<br>
+				<h2 style="font-size: 20pt;">When those bursts of noise happened, did the tone seem to stop for the duration of the noise?<br><br>
+
 						A 2011 study indicated that roughly one in four people will mistakenly perceive the tone as having been broken up.<br>
 						There seem to be detectable neurological differences in the brains of people that hear the tone as broken.<br>
-						The "Illusory discontinuity" is an auditory illusion in which a continuous ongoing sound becomes inaudible during a brief, non-masking noise.<br>
+						The "Illusory discontinuity" is an auditory illusion in which a continuous ongoing sound <br> becomes inaudible during a brief, non-masking noise.<br><br>
+
 						The illusion is perceived only by some listeners, but not by others, reflecting individual variation in hearing abilities.<br>
 						The most susceptible listeners describe their sensations in terms of the sound actually containing a physical gap.<br>
 						The illusory discontinuity is strongest when the interrupting sound is short (50ms). Longer sounds elicit weaker illusory discontinuity;<br>
@@ -1040,57 +1046,56 @@
 
 				<h1>STEREO SALESMAN</h1>
 
+				<div id="text18">
+
+					This is an exercise to test your ability in evaluating a good or a bad audio setup.
+					<br><br>
+					We will give you 2 samples of the same track played from two very different stereo setups, and you are asked to evaluate
+					how much the sound is really influenced by the quality of the setup you choose.
+					<br><br>
+					Do you think the difference of sound quality justifies the difference in price?<br>
+					Think about it while you listen to the 2 samples!
+
+				</div>
+
 				<style>
 
 					#section18 {
 
-						background-color: black;
+						background-color: white;
+						background-image: url(/Images/salesman.jpg);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: right;
+
 					}
 
 					#section18 h1 {
 						font-size: 7em;
 						font-family: 'Trirong', serif;
-						color: white;
+						color: black;
+						text-indent: 5%;
+						text-align: left;
+						vertical-align: top;
+					}
+
+					#text18 {
+						font-size: 15pt;
+						font-family: 'Trirong', serif;
+						color: black;
+						width: 45%;
+						position: relative;
+						left: 5%;
+						text-align: left;
 					}
 
 				</style>
 
 			</div>
 
+
+
 			<div class = "section" id = "section19">
-
-				<head>
-					<meta name="viewport" content="width=device-width, initial-scale=1.0">
-					<title>Sound Wave</title>
-					<link rel="stylesheet" href="../Pages/Stereobello/styleBLL.css">
-				
-				</head>
-				
-				
-				<body>
-					<div class="hero1">
-						<div class="cheap">
-							<img src="../../Images/stereobello.jpg">
-							<div class="info">
-								<h1>YAMAHA NETWORK CRX-N470D</h1>
-								<p>One of the most appreciated stereo systems of the last decade</p>
-								<p>Market Price: 1199$</p>
-								<div id="waveform1"></div>
-								<div class="controls">
-									<img src="../../Images/media/play.png" id="playBtn">
-									<img src="../../Images/media/stop.png" id="stopBtn">
-									<img src="../../Images/media/volume.png" id="volumeBtn">
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<script src = "../Pages/Stereobello/bello.js"></script>
-
-				</body>
-			</div>
-
-			<div class = "section" id = "section20">
 
 				<head>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1105,9 +1110,9 @@
 						<div class="music">
 							<img src="../../Images/stereobrutto.jpg">
 							<div class="info">
-								<h1>BARBIE SING ALONG</h1>
-								<p>One of the most famous stereo systems of the last decade (probably you had one)</p>
-								<p>Market Price: 29$</p>
+								<h1 style="color: deeppink; font-size: 50pt;">BARBIE SING ALONG</h1>
+								<p style="margin-top: 20px; font-size: 20pt;">One of the most famous stereo systems of the last decade (probably you had one).</p>
+								<p style="font-weight: 500; font-size: 40pt;">Market Price: 79$</p>
 								<div id="waveform2"></div>
 								<div class="controls">
 									<img src="../../Images/media/play.png" id="playBTN">
@@ -1123,7 +1128,247 @@
 				</body>
 			</div>
 
+
+
+			<div class = "section" id = "section20">
+
+				<head>
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Sound Wave</title>
+					<link rel="stylesheet" href="../Pages/Stereobello/styleBLL.css">
+				
+				</head>
+				
+				
+				<body>
+					<div class="hero1">
+						<div class="cheap">
+							<img src="../../Images/stereobello.jpg">
+							<div class="info">
+								<h1 style="color: #03cebf; font-size: 50pt;">YAMAHA NETWORK CRX-N470D</h1>
+								<p style="margin-top: 20px; font-size: 18pt;">One of the most appreciated stereo systems of the last decade</p>
+								<p style="font-weight: 500; font-size: 40pt;">Market Price: 699$</p>
+								<div id="waveform1"></div>
+								<div class="controls">
+									<img src="../../Images/media/play.png" id="playBtn">
+									<img src="../../Images/media/stop.png" id="stopBtn">
+									<img src="../../Images/media/volume.png" id="volumeBtn">
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<script src = "../Pages/Stereobello/bello.js"></script>
+
+				</body>
+			</div>
+
+
+
+			<div class = "section" id = "section21">
+
+				<h1>EXPLANATION</h1>
+
+				<div id="text21">
+
+					If you thought for a second that the second setup is worth even a cent more than the first one you were tricked
+					as probably many people is everyday: to be honest the audio quality is slightly better in the first sample!
+					<br><br>
+					A common trick played by deceitful audio people is to play audio through two systems for the sake of comparison,
+					one after the other, but subtly increase the volume through the system they are trying to promote. This is known
+					as the Stereo Salesman Trick.
+					<br><br>
+					This is a very reliable way to convince a naive person that something sounds better, whether it's a stereo or some
+					kind of audio processing plugin, or their mastering services. The naive client in fact won't experience the louder
+					version as louder but just punchier, stronger, or generally more clear.
+					<br><br>
+					The louder version may be different than the quieter version, and it might be better or it might be worse, but the
+					loudness will override whatever fair comparison may have happened, in favour of the louder sample.
+					The only way to fairly compare two audio samples is to do it at the same overall volume.
+
+				</div>
+
+				<style>
+
+					#section21 {
+
+						background-color: black;
+						background-image: url(/Images/salesman2.jpg);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: left;
+
+					}
+
+					#section21 h1 {
+						font-size: 5em;
+						font-family: 'Trirong', serif;
+						color: white;
+						text-indent: 53%;
+						text-align: left;
+						vertical-align: top;
+					}
+
+					#text21 {
+						font-size: 15pt;
+						font-family: 'Trirong', serif;
+						color: white;
+						width: 40%;
+						position: relative;
+						padding-left: 53%;
+						text-align: left;
+					}
+
+				</style>
+
+			</div>
+
+
+
+		<div class = "section" id = "section22">
+
+			<h1>COCKTAIL PARTY EFFECT</h1>
+
+			<style>
+
+				#section22 {
+
+					background-color: black;
+					background-image: url(/Images/folla.jpg);
+					background-repeat: no-repeat;
+					background-size: cover;
+
+				}
+
+				#section22 h1 {
+					font-size: 7em;
+					font-family: 'Trirong', serif;
+					color: black;
+				}
+
+				#text22 {
+					font-size: 15pt;
+					font-family: 'Trirong', serif;
+					color: white;
+					width: 40%;
+					position: relative;
+					padding-left: 53%;
+					text-align: left;
+				}
+
+			</style>
+
 		</div>
+
+	
+
+
+		<div class = "section" id = "section23">
+
+			<head>
+				
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Sound Wave</title>
+				<!-- <link rel="stylesheet" href="../Pages/Cocktail Party Button/CPStyle.css"> -->
+			
+			</head>
+			
+			
+			<body>
+				
+				<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+				<div class="container">
+					<h1>Try It Yourself!</h1>
+					<div class="sound-buttons">
+
+						<button class="sound-button" style="background-color: chartreuse;" data-key="30">Michael</button>
+						<button class="sound-button" data-key="65">Jim</button>
+						<button class="sound-button" data-key="83">Pam</button>
+						<button class="sound-button" data-key="68">Dwight</button>
+						<button class="sound-button" data-key="70">Creed</button>
+						<button class="sound-button" data-key="71">Kevin</button>
+						<button class="sound-button" data-key="72">Kelly</button>
+
+					</div>
+				</div>
+
+
+				<audio data-key="65" src="../../Audio Files/jim.mp3"></audio>
+				<audio data-key="83" src="../../Audio Files/pam.mp3"></audio>
+				<audio data-key="68" src="../../Audio Files/dwight.mp3"></audio>
+				<audio data-key="70" src="../../Audio Files/creed.mp3"></audio>
+				<audio data-key="71" src="../../Audio Files/kevin.mp3"></audio>
+				<audio data-key="72" src="../../Audio Files/kelly.mp3"></audio>
+				<audio data-key="30" src="../../Audio Files/michael.mp3"></audio>
+
+				<script src="CocktailParty.js"></script>
+
+			</body>
+		</div>
+
+
+
+		<div class = "section" id = "section24">
+
+			<h1>EXPLANATION</h1>
+
+			<div id="text24">
+
+				Discriminating a particular voice from a crowd of voices is something our auditory processing is pretty good at. This is due to our
+				ear specialization in listening to human voice: we have a lot more sensitivity in the frequency range of a normal conversation
+				and this allows us to be able to clearly distinguish a voice in a crowd.
+				<br><br>
+				Most people have a much easier time hearing what they want once they are keyed into a particular voice, and so a particular frequency range.
+
+			</div>
+
+			<style>
+
+				#section24 {
+
+					background-image: url(/Images/bicchieri.jpg);
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-position: bottom;
+
+				}
+
+				#section24 h1 {
+					font-size: 5em;
+					font-family: 'Trirong', serif;
+					color: white;
+					text-indent: 55%;
+					text-align: left;
+					vertical-align: top;
+					font-weight: 600;
+					position: relative;
+					top: -10%;
+					text-shadow: 2px 0 0 rgb(0, 0, 0), -2px 0 0 rgb(0, 0, 0), 0 2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 #fff, -1px 1px 0 #fff;
+				}
+
+				#text24 {
+					font-size: 16pt;
+					font-family: 'Trirong', serif;
+					color: white;
+					width: 40%;
+					position: relative;
+					left: 50%;
+					text-align: left;
+					background:rgba(233, 197, 79, 0.6);
+					border-radius: 10px;
+					padding: 10px;
+					bottom: 10%;
+					font-weight: 500;
+				}
+
+			</style>
+
+		</div>
+
+	</div>	
+
+</div>
 
 </body>
 </html>
