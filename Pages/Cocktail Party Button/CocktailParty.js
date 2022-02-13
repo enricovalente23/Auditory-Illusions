@@ -53,19 +53,11 @@ function getSelector(selector, callback){
 
 // PARTE TASTINI
 
-/* startbutton.onclick = function () {
-    button = document.querySelectorAll(".sound-button")
-    button.forEach(function (item) {
-      item.classList.add('active')
-      item.play();
-    })
-}
-  
-stopbutton.onclick = function () {
-    button = document.querySelectorAll(".sound-button")
-    button.forEach(function (item) {
-      item.classList.remove("active")
-      item.currentTime = 0;
-      item.pause()
-    })
-} */
+document.getElementById('stopbutton').onclick = function() {
+    var sounds = document.getElementsByTagName('audio');
+    for(i=0; i<sounds.length; i++) sounds[i].currentTime = 0;
+    for(i=0; i<sounds.length; i++) sounds[i].pause();
+    
+    button = document.querySelectorAll(".sound-button");
+    button.classList.toggle("active");
+};

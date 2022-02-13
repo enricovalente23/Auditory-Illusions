@@ -14,10 +14,6 @@ body {
     flex-direction: column;
 }
 
-.sound-buttons {
-
-}
-
 .sound-buttons .sound-button {
     width: 200px;
     height: 100px;
@@ -27,7 +23,7 @@ body {
     font-family: 'Red Rose', cursive;
 }
 
-.sound-buttons .sound-button.active {
+.sound-button.active {
     border-color: blue;
 }
 
