@@ -34,7 +34,6 @@ img_sx.src = 'snake_head_sx.png';
 const img_dx = new Image();  
 img_dx.src = 'snake_head_dx.png';
 
-
 const apple = new Image();   
 apple.src = 'apple.png';
 
@@ -155,7 +154,6 @@ function YouWon() {
 
   return win;
 }
-
 
 
 function isGameOver() {
