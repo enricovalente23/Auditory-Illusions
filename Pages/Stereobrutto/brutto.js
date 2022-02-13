@@ -7,7 +7,7 @@ var WAVESURFER = WaveSurfer.create({
     waveColor: '#ffdefe',
     progressColor: '#ff1496',
     barWidth: 4,
-    height: 120,
+    height: 130,
     responsive: true,
     hideScrollbar: true,
     barRadius: 4,

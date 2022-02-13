@@ -1,5 +1,6 @@
 const soundButton = document.querySelectorAll('.sound-button');
 const sounds = document.querySelectorAll('audio');
+const commands = document.querySelectorAll('button');
 
 soundButton.forEach(function (item) {
     item.addEventListener('click', function (e) {
@@ -20,7 +21,6 @@ function playSound(keycode) {
                 if (parseInt($this) === parseInt(keycode)) {
                     item.classList.add('active');
                 }
-                setTimeout(() => item.classList.remove('active'),500);
             })
             item.currentTime = 0;
             item.play();

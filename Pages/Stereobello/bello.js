@@ -13,7 +13,7 @@ var wavesurfer = WaveSurfer.create({
     barRadius: 4,
 });
 
-wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams TAGLIATA.mp3');
+wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams LOWQUALITY.mp3');
 
 playBtn.onclick = function() {
     wavesurfer.playPause()
