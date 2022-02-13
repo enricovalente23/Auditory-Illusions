@@ -1,17 +1,13 @@
-
 const soundButton = document.querySelectorAll('.sound-button');
 const sounds = document.querySelectorAll('audio');
-const commands = document.querySelectorAll('button');
 
 soundButton.forEach(function (item) {
     item.addEventListener('click', function (e) {
-        if(item)
+        if(item.classList.contains('active'))
+        stopSound(this.getAttribute('data-key'))
+        else
         playSound(this.getAttribute('data-key'));
     });
-})
-
-window.addEventListener('keydown', function (e) {
-    playSound(e.keyCode);
 })
 
 function playSound(keycode) {
@@ -24,7 +20,6 @@ function playSound(keycode) {
                     item.classList.add('active');
                 }
             })
-            item.currentTime = 0;
             item.play();
         }else{ return false;}
     })
@@ -40,8 +35,7 @@ function stopSound(keycode) {
                     item.classList.remove('active');
                 }
             })
-            item.currentTime = 0;
-            item.stop();
+            item.pause();
         }else{ return false;}
     })
 }
@@ -54,31 +48,24 @@ function getSelector(selector, callback){
 }
 
 
-function keyClicked(event) {
-    clickedKey = event.target;
-    dot = clickedKey.children[0];
-    soundButton.classList.add('active');
-  }
+
+
+
+// PARTE TASTINI
+
+startbutton.onclick = function () {
+    button = document.querySelectorAll(".sound-button")
+    button.forEach(function (item) {
+      item.classList.add('active')
+      item.play();
+    })
+}
   
-  allKeys = document.querySelectorAll(".soundButton");
-  
-  function assignClick(item) {
-    item.onclick = keyClicked;
-  }
-  
-  allKeys.forEach(assignClick);
-  
-//   on.onclick = function () {
-//     soundButton = document.querySelectorAll(".soundbutton")
-//     dots.forEach(function (item) {
-//       item.classList.add('active')
-//     })
-//   }
-  
-//   off.onclick = function () {
-//     dots = document.querySelectorAll(".soundbutton")
-//     dots.forEach(function (item) {
-//       item.classList.remove("active")
-//     })
-//   }
-  
+stopbutton.onclick = function () {
+    button = document.querySelectorAll(".sound-button")
+    button.forEach(function (item) {
+      item.classList.remove("active")
+      item.currentTime = 0;
+      item.pause()
+    })
+}
