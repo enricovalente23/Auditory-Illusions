@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html xmlns = "http://www.w3.org/1999/xhtml">
 
 	<head>
@@ -455,7 +456,7 @@
 						height: 50px;
 						color:black;
 						border-radius: 10px;
-						background-color: #ffffff;
+						background-color: white;
 						margin-top:20px;
 						margin-left: 15px;
 						font-family: "Trirong", serif;
@@ -466,7 +467,7 @@
 						height: 50px;
 						color:black;
 						border-radius: 10px;
-						background-color: #ffffff;
+						background-color: white;
 						margin-top:20px;
 						margin-left: 1120px;
 						font-family: "Trirong", serif;
@@ -568,16 +569,15 @@
 	
 				<script src = "../Pages/sifi/sifi.js"></script>
 	
-				<h1><b>You are about to be flashed by black disks.<br>
-				<br>How many times does each disk flash?</b></h1>
+				<h1><b>You are about to be flashed by black disks. Keep the eye focused on the target.<br>
+					How many times does each disk flash?</b></h1>
 	
-				<div id = "rett">
-					<div class = "dot active"></div>
-				</div>
-	
+				<img src = "/Images/mirino.png" width = "5%">
+
 				<div id = "rett">
 					<button onclick = "blinkOnce()"></button>
 					<button onclick = "blinkTwice()"></button>
+					<div class = "dot active"></div>
 				</div>
 		
 				<style>
@@ -588,13 +588,14 @@
 	
 					#section8 h1 {
 						color: #0075ff;
-						font-size: 1.5em;
+						font-size: 2em;
 						font-style: italic;
 						font-weight: bold;
-						text-align: left;
-						margin-top: 200px;
-						margin-left: 8em;
-						width: 35%;
+						margin-top: 220px;
+						margin-left: 300px;
+						padding-bottom: 50px;
+						width: 70%;
+						text-align: center;
 					}
 					
 					#section8 .dot {
@@ -604,6 +605,7 @@
 						border-radius: 50%;
 						float: right;
 						margin-bottom: 2000px;
+						margin-top: 70px;
 					}
 	
 					#section8 .active {
@@ -611,12 +613,11 @@
 					}
 
 					#section8 #rett {
-						background-color: white;
 						border-radius: 10px;
 						text-align: center;
-						width: 57%;
-						padding-top: 50px;
-						margin-left: -90px;
+						width: 150px;
+						margin-left: 1050px;
+						margin-top: 100px;
 					}
 	
 					#section8 button {
@@ -634,29 +635,42 @@
 
 			<div class = "section" id = "section9">
 	
-				<h1><b><i>Explanation</i></h1>
-				<br><br><br>
-				<h2>If you said one flash each: you are CORRECT!<br><br>
-					Sometimes, some people say they see TWO flashes when they hear TWO beeps.<br><br>
-					This auditory illusion is a cross-modal effect, in which what is processed in one sensory modality<br>
-					affects what is processed or experienced in another. What you visually experience is affected by what you hear.<br>
-					As seen, although the same number of dots flashes on the screen when one and two beeps are sounded,<br>
-					when there are two beeps, people frequently report experiencing two flashes.<br>
-					L. Shams and colleagues hypothesise that the “alteration of the visual percept is due to cross-modal perceptual interactions<br>
-					as opposed to cognitive, attentional, or other origins” (Shams et al., 2002).</b>
-				</h2>
-	
+				<div id = "explanation">
+					<h1><b><i>Explanation</i></h1>
+					<br><br><br>
+					<h2>If you said one flash each: you are CORRECT!<br><br>
+						Sometimes, some people say they see TWO flashes when they hear TWO beeps.<br><br>
+						This auditory illusion is a cross-modal effect, in which what is processed in one sensory modality<br>
+						affects what is processed or experienced in another. What you visually experience is affected by what you hear.<br>
+						As seen, although the same number of dots flashes on the screen when one and two beeps are sounded,<br>
+						when there are two beeps, people frequently report experiencing two flashes.<br>
+						L. Shams and colleagues hypothesise that the “alteration of the visual percept is due to cross-modal perceptual interactions<br>
+						as opposed to cognitive, attentional, or other origins” (Shams et al., 2002).</b>
+					</h2>
+				</div>
+
 				<style>
 	
 		
 					#section9 {
-						background-color: white;
+						background-image: url(/Images/bwstripes.jpeg);
+						background-size: cover;
+						background-position: center; 
 					}
 						
+					#section9 #explanation {
+						background-color: white;
+						width: 1400px;
+						height: 570px;
+						margin: auto;
+					}
+
 					#section9 h1 {
 						color: orange;
 						font-size: 3.5em;
 						text-align: center;
+						margin-left: 8em;
+						margin-right: 8em;
 					}
 	
 					#section9 h2 {
@@ -1262,16 +1276,16 @@
 
 		</div>
 
-
+<!-- 
 		<div class = "section" id = "section23">
 
 			<head>
 				
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<title>Sound Wave</title>
-				<!-- <link rel="stylesheet" href="../Pages/Cocktail Party Button/CPStyle.css"> -->
+				<link rel="stylesheet" href="../Pages/Cocktail Party Button/CPStyle.css"> -->
 			
-			</head>
+			<!-- </head>
 			
 			
 			<body>
@@ -1291,10 +1305,10 @@
 						<button class="sound-button" data-key="72">Kelly</button>
 
 					</div>
-				</div>
+				</div> -->
 
 
-				<audio data-key="65" src="../../Audio Files/jim.mp3"></audio>
+				<!-- <audio data-key="65" src="../../Audio Files/jim.mp3"></audio>
 				<audio data-key="83" src="../../Audio Files/pam.mp3"></audio>
 				<audio data-key="68" src="../../Audio Files/dwight.mp3"></audio>
 				<audio data-key="70" src="../../Audio Files/creed.mp3"></audio>
@@ -1305,7 +1319,7 @@
 				<script src="CocktailParty.js"></script>
 
 			</body>
-		</div>
+		</div> -->
 
 
 		<div class = "section" id = "section24">
@@ -1323,12 +1337,10 @@
 			<style>
 
 				#section24 {
-
 					background-image: url(/Images/bicchieri.jpg);
 					background-repeat: no-repeat;
 					background-size: cover;
 					background-position: bottom;
-
 				}
 
 				#section24 h1 {
@@ -1352,7 +1364,7 @@
 					position: relative;
 					left: 50%;
 					text-align: left;
-					background:rgba(233, 197, 79, 0.6);
+					background: rgba(233, 197, 79, 0.6);
 					border-radius: 10px;
 					padding: 10px;
 					bottom: 10%;
