@@ -23,20 +23,20 @@ class SnakePart {
 }
 
 const img_down = new Image();   
-img_down.src = 'snake_head_down.png';
+img_down.src = '../Images/snake_head_down.png';
 
 const img_up = new Image();   
-img_up.src = 'snake_head_up.png';
+img_up.src = '../Images/snake_head_up.png';
 
 const img_sx = new Image();   
-img_sx.src = 'snake_head_sx.png';
+img_sx.src = '../Images/snake_head_sx.png';
 
 const img_dx = new Image();  
-img_dx.src = 'snake_head_dx.png';
+img_dx.src = '../Images/snake_head_dx.png';
 
 
 const apple = new Image();   
-apple.src = 'apple.png';
+apple.src = '../Images/apple.png';
 
 
 let speed = 5;

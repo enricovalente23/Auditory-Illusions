@@ -180,20 +180,20 @@ let no_doublestart = 0;
 let AR;
 
 const playerImg = new Image();
-playerImg.src = 'eggchild.png';
+playerImg.src = '../Images/eggchild.png';
 const spriteWidth = 128;
 const spriteHeight = 128;
 let frameX = 0;
 let frameY = 0;
 
 const obsG = new Image();
-obsG.src = 'brickG.png';
+obsG.src = '../Images/brickG.png';
 const obsR = new Image();
-obsR.src = 'brickR.png';
+obsR.src = '../Images/brickR.png';
 const obsDim = 903;
 
 const background = new Image();
-background.src = '/Images/BG.png';
+background.src = '../Images/BG.png';
 
 document.addEventListener('keydown', function (evt) {
     keys[evt.code] = true;
@@ -262,7 +262,7 @@ class Player {
 
 function animateSprite(x, y, w, h) {
     ctx.clearRect(x, y, w, h);
-    if (keys['KeyS'] == true) {
+    if (keys['KeyF'] == true) {
         duckX = 6;
         duckY = 1;
         ctx.drawImage(playerImg, duckX * spriteWidth, duckY * spriteHeight, spriteWidth, spriteHeight, x - 30, y - 53, w * 4, h * 4);
