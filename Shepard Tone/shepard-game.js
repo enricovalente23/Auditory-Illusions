@@ -218,13 +218,13 @@ class Player {
 
     Animate() {
         //jump
-        if (keys['KeyW']) {
+        if (keys['KeyR']) {
             this.Jump();
         } else {
             this.jumpTimer = 0;
         }
 
-        if (keys['KeyS']) {
+        if (keys['KeyF']) {
             this.h = this.originalHeight / 2;
         } else {
             this.h = this.originalHeight;
