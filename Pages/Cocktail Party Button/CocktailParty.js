@@ -53,7 +53,7 @@ function getSelector(selector, callback){
 
 // PARTE TASTINI
 
-startbutton.onclick = function () {
+/* startbutton.onclick = function () {
     button = document.querySelectorAll(".sound-button")
     button.forEach(function (item) {
       item.classList.add('active')
@@ -68,4 +68,4 @@ stopbutton.onclick = function () {
       item.currentTime = 0;
       item.pause()
     })
-}
+} */
