@@ -1,3 +1,4 @@
+
 const soundButton = document.querySelectorAll('.sound-button');
 const sounds = document.querySelectorAll('audio');
 const commands = document.querySelectorAll('button');
@@ -53,12 +54,6 @@ function getSelector(selector, callback){
 }
 
 
-
-
-
-
-
-
 function keyClicked(event) {
     clickedKey = event.target;
     dot = clickedKey.children[0];
@@ -73,16 +68,17 @@ function keyClicked(event) {
   
   allKeys.forEach(assignClick);
   
-  on.onclick = function () {
-    soundButton = document.querySelectorAll(".soundbutton")
-    dots.forEach(function (item) {
-      item.classList.add('active')
-    })
-  }
+//   on.onclick = function () {
+//     soundButton = document.querySelectorAll(".soundbutton")
+//     dots.forEach(function (item) {
+//       item.classList.add('active')
+//     })
+//   }
   
-  off.onclick = function () {
-    dots = document.querySelectorAll(".soundbutton")
-    dots.forEach(function (item) {
-      item.classList.remove("active")
-    })
-  }
+//   off.onclick = function () {
+//     dots = document.querySelectorAll(".soundbutton")
+//     dots.forEach(function (item) {
+//       item.classList.remove("active")
+//     })
+//   }
+  

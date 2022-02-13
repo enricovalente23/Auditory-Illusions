@@ -193,7 +193,7 @@ obsR.src = 'brickR.png';
 const obsDim = 903;
 
 const background = new Image();
-background.src = 'BG.png';
+background.src = '/Images/BG.png';
 
 document.addEventListener('keydown', function (evt) {
     keys[evt.code] = true;
