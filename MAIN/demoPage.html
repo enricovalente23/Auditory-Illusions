@@ -3,6 +3,7 @@
 <html xmlns = "http://www.w3.org/1999/xhtml">
 
 	<head>
+
 		<meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
 		<title>ILLUSORY</title>
 
@@ -20,11 +21,11 @@
 
 				$('#pagepiling').pagepiling({
 					menu: '#menu',
-					anchors: ['page1', 'page2', 'page3', 'page4','page5','page6', 'page7', 'page8', 'page9', 'page10', 'page11' ,'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24'],
+					anchors: ['page0', 'page1', 'page2', 'page3', 'page4','page5','page6', 'page7', 'page8', 'page9', 'page10', 'page11' ,'page12', 'page13', 'page14', 'page15', 'page16', 'page17', 'page18', 'page19', 'page20', 'page21', 'page22', 'page23', 'page24'],
 					navigation: {
 						'size': '10pt',
 						'position': 'right',
-						'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4','Page 5','Page 6', 'Page 7', 'Page 8', 'Page 9', 'Page 10', 'Page 11', 'Page 12', 'Page 13', 'Page 14', 'Page 15', 'Page 16', 'Page 17', 'Page 18', 'Page 19', 'Page 20', 'Page 21', 'Page 22', 'Page 23', 'Page 24']
+						'tooltips': ['Page 0', 'Page 1', 'Page 2', 'Page 3', 'Page 4','Page 5','Page 6', 'Page 7', 'Page 8', 'Page 9', 'Page 10', 'Page 11', 'Page 12', 'Page 13', 'Page 14', 'Page 15', 'Page 16', 'Page 17', 'Page 18', 'Page 19', 'Page 20', 'Page 21', 'Page 22', 'Page 23', 'Page 24']
 					}
 				});
 			});
@@ -34,7 +35,8 @@
 
 	<body>
 		<ul id = "menu">
-			<li data-menuanchor = "page1" class = "active"><a href="#page1">Binaural Beats</a></li>
+			<li data-menuanchor = "page0" class = "active"><a href="#page0">Home</a></li>
+			<li data-menuanchor = "page1"><a href="#page1">Binaural Beats</a></li>
 			<li data-menuanchor = "page2"><a href = "#page2">Effect</a></li>
 			<li data-menuanchor = "page3"><a href = "#page3">The Shepard Tone</a></li>
 			<li data-menuanchor = "page4"><a href = "#page4">Effect</a></li>
@@ -62,6 +64,53 @@
 
 		<div id = "pagepiling">
 
+			<div class = "section" id = "section0">
+			
+				<video autoplay muted loop id = "myVideo">
+					<source src = "https://images.fastcompany.net/image/upload/w_1153,ar_16:9,c_fill,g_auto,f_webm,q_70/wp-cms/uploads/2019/07/p-1-90375683an-astrophysicist-explains-the-most-famous-album-art-of-the-century.gif" 
+					type = "video/mp4">
+				</video>
+			
+				<div class = "content">
+					<h1><b>ILLUSORY</b></h1><br>
+				</div>
+			
+				<div class = "content2">
+					<h2><b>An interactive collection of auditory illusions</b></h2>
+				</div>
+
+				<style>
+				
+					#section0 #myVideo {
+						position: fixed;
+						right: 0;
+						bottom: 0;
+						min-width: 100%;
+						min-height: 100%;
+					}
+				
+					#section0 .content {
+						position: fixed;
+						font-family: "Trirong", serif;
+						color: white;
+						margin-left: 5em;
+						font-size: 40px;
+						text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+					}
+
+					#section0 .content2 {
+						position: fixed;
+						font-family: "Trirong", serif;
+						font-size: 30px;
+						margin-left: 23.5em;
+						text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+						color: white;
+					}
+
+				</style>
+
+			</div>
+
 			<div class = "section" id = "section1">
 
 				<h1><b>BINAURAL BEATS</b></h1>
@@ -72,6 +121,7 @@
 						background-image: url(/Images/bb.png);
 						background-size: contain;
 					}
+
 					#section1 h1 {
 						color: #46b8ff;
 						font-size: 7em;
@@ -570,7 +620,7 @@
 	
 				<script src = "../Pages/sifi/sifi.js"></script>
 	
-				<h1><b>You are about to be flashed by black disks. Keep the eye focused on the target.<br>
+				<h1><b>You are about to be flashed by black disks. Keep the eyes focused on the target.<br>
 					How many times does each disk flash?</b></h1>
 	
 				<img src = "/Images/mirino.png" width = "5%">
