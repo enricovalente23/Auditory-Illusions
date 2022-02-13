@@ -3,7 +3,7 @@ var stopBtn = document.getElementById("stopBtn")
 var volumeBtn = document.getElementById("volumeBtn")
 
 var wavesurfer = WaveSurfer.create({
-    container: '#waveform',
+    container: '#waveform1',
     waveColor: '#dde5ec',
     progressColor: '#03cebf',
     barWidth: 4,

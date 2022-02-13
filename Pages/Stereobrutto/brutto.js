@@ -1,9 +1,9 @@
-var playBtn = document.getElementById("playBtn")
-var stopBtn = document.getElementById("stopBtn")
-var volumeBtn = document.getElementById("volumeBtn")
+var playBTN = document.getElementById("playBTN")
+var stopBTN = document.getElementById("stopBTN")
+var volumeBTN = document.getElementById("volumeBTN")
 
-var wavesurfer = WaveSurfer.create({
-    container: '#waveform',
+var WAVESURFER = WaveSurfer.create({
+    container: '#waveform2',
     waveColor: '#ffdefe',
     progressColor: '#ff1496',
     barWidth: 4,
@@ -13,36 +13,36 @@ var wavesurfer = WaveSurfer.create({
     barRadius: 4,
 });
 
-wavesurfer.load('../../Audio Files/ALO - Speed Of Dreams LOWVOLUME.mp3');
+WAVESURFER.load('../../Audio Files/ALO - Speed Of Dreams LOWVOLUME.mp3');
 
 
 
-playBtn.onclick = function() {
-    wavesurfer.playPause()
-    if(playBtn.src.includes("play.png")){
-        playBtn.src = "../../Images/media/pause.png";
+playBTN.onclick = function() {
+    WAVESURFER.playPause()
+    if(playBTN.src.includes("play.png")){
+        playBTN.src = "../../Images/media/pause.png";
     }
     else {
-        playBtn.src = "../../Images/media/play.png";
+        playBTN.src = "../../Images/media/play.png";
     }
 }
 
-stopBtn.onclick = function() {
-    wavesurfer.stop();
-    playBtn.src = "../../Images/media/play.png";
+stopBTN.onclick = function() {
+    WAVESURFER.stop();
+    playBTN.src = "../../Images/media/play.png";
 }
 
-volumeBtn.onclick = function() {
-    wavesurfer.toggleMute()
-    if(volumeBtn.src.includes("volume.png")) {
-        volumeBtn.src = "../../Images/media/mute.png"
+volumeBTN.onclick = function() {
+    WAVESURFER.toggleMute()
+    if(volumeBTN.src.includes("volume.png")) {
+        volumeBTN.src = "../../Images/media/mute.png"
     }
     else {
-        volumeBtn.src = "../../Images/media/volume.png"
+        volumeBTN.src = "../../Images/media/volume.png"
     }
 }
 
-wavesurfer.on('finish', function () {
-    playBtn.src = "../../Images/media/play.png"
-    wavesurfer.stop();
+WAVESURFER.on('finish', function () {
+    playBTN.src = "../../Images/media/play.png"
+    WAVESURFER.stop();
 });

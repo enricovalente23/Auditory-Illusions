@@ -1,4 +1,4 @@
-* {
+#section19 {
     padding: 0;
     margin: 0;
     font-family: 'poppins', sans-serif;
@@ -19,11 +19,11 @@
 }
 
 
-.music img{
+.cheap img{
     width: 950px;
 }
 
-.music{
+.cheap{
     width: 90%;
     padding: 30px;
     box-sizing: border-box;
