@@ -251,7 +251,7 @@ function drawSnake(event) {
   //ctx.drawImage(img_dx,headX*tileBlock-18,headY*tileBlock-18,512/8,512/8); 
   
   //up
-  if (event.keyCode == 38 || event.keyCode == 87) {
+  if ( event.keyCode == 87) {
     ctxx.drawImage(img_up,headX*tileBlock-18,headY*tileBlock-18,512/8,512/8); 
   }
   else if (wait[0]==1){
@@ -259,7 +259,7 @@ function drawSnake(event) {
   }
 
   //down
-  if (event.keyCode == 40 || event.keyCode == 83) {
+  if ( event.keyCode == 83) {
     ctxx.drawImage(img_down,headX*tileBlock-18,headY*tileBlock-18,512/8,512/8);
   }
   else if (wait[1]==1){
@@ -267,7 +267,7 @@ function drawSnake(event) {
   }
 
 //left
-   if (event.keyCode == 37 || event.keyCode == 65 ) {
+   if ( event.keyCode == 65 ) {
     ctxx.drawImage(img_sx,headX*tileBlock-18,headY*tileBlock-18,512/8,512/8);
   }
   else if (wait[2]==1){
@@ -275,7 +275,7 @@ function drawSnake(event) {
   }
 
   //right
-  if (event.keyCode == 39 || event.keyCode == 68) {
+  if (event.keyCode == 68) {
     ctxx.drawImage(img_dx,headX*tileBlock-18,headY*tileBlock-18,512/8,512/8);
   }
   else if (wait[3]==1){
@@ -353,14 +353,14 @@ function renderDott(dott , index) {
 
  function keyDown(event) {
   //up
-  if (event.keyCode == 38 || event.keyCode == 87) {
+  if ( event.keyCode == 87) {
     if (inputsYVelocity == 1) return;
     inputsYVelocity = -1;
     inputsXVelocity = 0;
   }
 
   //down
-  if (event.keyCode == 40 || event.keyCode == 83) {
+  if ( event.keyCode == 83) {
     // 83 is s
     if (inputsYVelocity == -1) return;
     inputsYVelocity = 1;
@@ -368,7 +368,7 @@ function renderDott(dott , index) {
   }
 
   //left
-  if (event.keyCode == 37 || event.keyCode == 65) {
+  if ( event.keyCode == 65) {
     // 65 is a
     if (inputsXVelocity == 1) return;
     inputsYVelocity = 0;
@@ -376,7 +376,7 @@ function renderDott(dott , index) {
   }
 
   //right
-  if (event.keyCode == 39 || event.keyCode == 68) {
+  if ( event.keyCode == 68) {
     
     //68 is d
     if (inputsXVelocity == -1) return;
