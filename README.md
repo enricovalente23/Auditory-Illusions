@@ -7,5 +7,5 @@ Amongst these misinterpretations, known as illusions, falls the category of audi
 
 Auditory illusions highlight areas where the human ear and brain, as organic survival tools, differentiate from perfect audio receptors; this shows that it is possible for a human being to hear something that is not there and be able to react to the sound they supposedly heard. When someone is experiencing an auditory illusion, their brain is falsely interpreting its surroundings and distorting their perception of the world around them.
 
-<b>We recommend to run the 'demoPage.html' in latest Google Chrome version with zoom at 75%.
+<b>We recommend to run the 'demoPage.html', in 'MAIN' folder, in latest Google Chrome version with zoom at 75%.<br>
 For some effects, headphones must be used.</b>
