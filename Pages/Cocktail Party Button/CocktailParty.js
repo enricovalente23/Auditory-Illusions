@@ -1,3 +1,4 @@
+
 const soundButton = document.querySelectorAll('.sound-button');
 const sounds = document.querySelectorAll('audio');
 
@@ -47,17 +48,13 @@ function getSelector(selector, callback){
     })
 }
 
-
-
-
-
 // PARTE TASTINI
 
-document.getElementById('stopbutton').onclick = function() {
-    var sounds = document.getElementsByTagName('audio');
-    for(i=0; i<sounds.length; i++) sounds[i].currentTime = 0;
-    for(i=0; i<sounds.length; i++) sounds[i].pause();
+// document.getElementById('stopbutton').onclick = function() {
+//     var sounds = document.getElementsByTagName('audio');
+//     for(i=0; i<sounds.length; i++) sounds[i].currentTime = 0;
+//     for(i=0; i<sounds.length; i++) sounds[i].pause();
     
-    button = document.querySelectorAll(".sound-button");
-    button.classList.toggle("active");
-};
+//     button = document.querySelectorAll(".sound-button");
+//     button.classList.toggle("active");
+// };
