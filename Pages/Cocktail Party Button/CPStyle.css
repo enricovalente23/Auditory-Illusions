@@ -27,11 +27,15 @@ body {
 }
 
 #expbonni {
-    height: 700px;
+    height: 350px;
     width: 1000px;
     margin-top: 100px;
-    margin-left: 600px;
-    color: white;
+    position: relative;
+    margin-left: 24%;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
     text-align: center;
-    text-shadow: 2px 0 0 rgb(0, 0, 0), -2px 0 0 rgb(0, 0, 0), 0 2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 #fff, -1px 1px 0 #fff;
+    padding: 10px;
+    font-family: 'Red Rose', cursive;
 }
