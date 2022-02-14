@@ -1356,13 +1356,14 @@
 						<h1>Try It Yourself!</h1>
 						<div class="sound-buttons">
 
-							<button class="sound-button" style="background-color: chartreuse;" data-key="30">Michael</button>
+							<button class="sound-button" data-key="30" style="background-color: chartreuse;">Michael</button>
 							<button class="sound-button" data-key="65">Jim</button>
 							<button class="sound-button" data-key="83">Pam</button>
 							<button class="sound-button" data-key="68">Dwight</button>
 							<button class="sound-button" data-key="70">Creed</button>
 							<button class="sound-button" data-key="71">Kevin</button>
 							<button class="sound-button" data-key="72">Kelly</button>
+							<button class="sound-button" id="stopbutton" style="background-color: red;">Stop All</button>
 
 						</div>
 					</div>
@@ -1373,7 +1374,7 @@
 					<audio data-key="70" src="../../Audio Files/creed.mp3"></audio>
 					<audio data-key="71" src="../../Audio Files/kevin.mp3"></audio>
 					<audio data-key="72" src="../../Audio Files/kelly.mp3"></audio>
-					<audio data-key="30" src="../../Audio Files/michael.mp3"></audio>
+					<audio data-key="30" src="../../Audio Files/michaelspeech.mp3"></audio>
 
 					<script src="../Pages/Cocktail Party Button/CocktailParty.js"></script>
 
@@ -1392,12 +1393,7 @@
 							display: flex;
 							justify-content: center;
 							align-items: center;
-							flex-direction: column;
 						}
-
-						/* #section23 .sound-buttons {
-
-						} */
 
 						#section23 .sound-buttons .sound-button {
 							width: 200px;
@@ -1433,7 +1429,7 @@
 					#section24 {
 						background-image: url(../Images/bicchieri.jpg);
 						background-repeat: no-repeat;
-						background-size: cover;
+						background-size: fill;
 						background-position: bottom;
 					}
 
